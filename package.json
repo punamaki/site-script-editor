@@ -1,10 +1,11 @@
 {
   "name": "site-script-editor",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "author": {
     "name": "punamaki"
   },
+  "license" : "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

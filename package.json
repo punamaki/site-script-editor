@@ -7,6 +7,9 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "devDependencies": {
     "@dr-kobros/react-jsoneditor": "^3.0.1",
     "@types/jest": "^21.1.9",

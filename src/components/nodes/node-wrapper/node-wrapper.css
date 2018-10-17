@@ -1,0 +1,118 @@
+.sd_site_hierarchy_node {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+}
+.sd_site_hierarchy_node .sd_site_hierarchy_node_info_icon {
+    color: rgb(0, 73, 181);
+    font-size: 9px;
+    margin-left: 7px;
+    padding-top: 2px;
+    cursor: help;
+}
+.sd_site_hierarchy_node .sd_site_hierarchy_node_info_icon:hover {
+    color: rgb(66, 181, 0);
+
+}
+.sd_site_hierarchy_node_menu_launcher {
+    background-color: #f9f9f9;
+    height: 40px;
+    border-radius: 0 5px 5px 0;
+    width: 14px;
+    border-left: 1px solid rgb(187, 187, 187);
+    box-shadow: inset 2px 0 4px -2px rgba(0,0,0,0.2);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+ .sd_site_hierarchy_node_menu_launcher i {
+
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+}
+.sd_site_hierarchy_node_menu_launcher i:hover {
+    color: rgb(24, 145, 0);
+}
+.sd_site_hierarchy_node_menu_launcher .ms-Button-menuIcon{
+display: none;
+}
+.sd_site_hierarchy_node_logo {
+    margin-left: 0px;
+    font-size: 18px;
+    color: rgb(31, 116, 179);
+}
+.sd_site_hierarchy_node_remove_icon {
+    margin-left: 0px;
+    font-size: 15px;
+    color: rgb(155, 155, 155);
+}
+ .sd_site_hierarchy_node_logo i, .sd_site_hierarchy_node_remove_icon i{
+    vertical-align: middle;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+
+.sd_site_hierarchy_edit_field .ms-TextField-field {
+    border-bottom: 1px dashed #bdbdbd;
+    color:rgb(80,80,80)
+}
+.sd_site_hierarchy_node_wrapper .rst__rowLabel {
+
+    flex: 1 1 auto;
+    padding-right: 0px; 
+    height: 100%;
+}
+.rst__row .rst__rowContents {
+    padding:0 0 0 0px;
+}
+.sd_site_hierarchy_node_menu_launcher button {
+    width:inherit;
+
+}
+.sd_site_hierarchy_node_container {
+    width:100%;
+}
+.sd_site_hierarchy_node_header {
+    font-size: 9px;
+    background-color: #f1f1f1;
+    padding: 2px 2px 2px 3px;
+    border-bottom: 1px solid #bdbdbd;
+    box-shadow: inset -1px 2px 4px -2px rgba(0,0,0,0.2);
+}
+.sd_site_hierarchy_node_content {
+    padding:8px 0 0 0px;
+}
+.sd_site_hierarchy_node_title {
+    padding:4px 0 0 10px;
+    font-weight:700;
+    display: flex;
+    justify-content: space-between;
+}
+.sd_site_hierarchy_node_menu_container i {
+    color:#007206;
+    font-size: 14px;
+}
+.sd_site_hierarchy_node_menu_container {
+    width:30px;
+}
+.sd_site_hierarchy_node_menu_regular i{
+    color:#a12525;
+    font-size: 14px;
+}
+.sd_site_hierarchy_node_menu_regular {
+    width:20px;
+}
+.numberCircle {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+    background: rgb(158, 168, 187);
+    color: rgb(255,255,255);
+    text-align: center;
+    font-size: 10px;
+    display: inline-block;
+    margin-right: 10px;
+}

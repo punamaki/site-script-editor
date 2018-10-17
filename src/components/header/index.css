@@ -1,0 +1,21 @@
+.sd_header {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(185,185,185);
+}
+.sd_header .sd_title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+.sd_header .sd_navigation_container {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    padding: 0 5px 0 0px;
+    position: absolute;
+    left: 330px;
+}

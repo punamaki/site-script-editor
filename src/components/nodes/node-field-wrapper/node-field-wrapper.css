@@ -1,0 +1,16 @@
+.sd_site_hierarchy_node_list_field {
+    width:300px;
+
+}
+
+
+.sd_site_hierarchy_node_type_fieldText i,.sd_site_hierarchy_node_type_fieldNumber i,.sd_site_hierarchy_node_type_fieldNote i,.sd_site_hierarchy_node_type_fieldUser i, .sd_site_hierarchy_node_type_fieldBoolean i, .sd_site_hierarchy_node_type_fieldDateTime i {
+    color:#a12525;
+    font-size: 14px;
+}
+.sd_site_hierarchy_node_type_fieldText i:hover, .sd_site_hierarchy_node_type_fieldNote i:hover,.sd_site_hierarchy_node_type_fieldNumber i:hover, .sd_site_hierarchy_node_type_fieldUser i:hover, .sd_site_hierarchy_node_type_fieldBoolean i:hover, .sd_site_hierarchy_node_type_fieldDateTime i:hover {
+    color:#fa0000;
+}
+.sd_site_hierarchy_node_type_fieldText .sd_site_hierarchy_node_menu_launcher, .sd_site_hierarchy_node_type_fieldNumber .sd_site_hierarchy_node_menu_launcher, .sd_site_hierarchy_node_type_fieldNote .sd_site_hierarchy_node_menu_launcher, .sd_site_hierarchy_node_type_fieldUser .sd_site_hierarchy_node_menu_launcher, .sd_site_hierarchy_node_type_fieldBoolean .sd_site_hierarchy_node_menu_launcher, .sd_site_hierarchy_node_type_fieldDateTime .sd_site_hierarchy_node_menu_launcher{
+    width:20px;
+}

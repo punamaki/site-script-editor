@@ -1,0 +1,15 @@
+
+
+.sd_site_hierarchy_node_list_view_deletion {
+    width:300px;
+}
+.sd_site_hierarchy_node_type_listViewDeletion i {
+    color:#a12525;
+    font-size: 14px;
+}
+.sd_site_hierarchy_node_type_listViewDeletion i:hover {
+    color:#fa0000;
+}
+.sd_site_hierarchy_node_type_listViewDeletion .sd_site_hierarchy_node_menu_launcher {
+    width:20px;
+}

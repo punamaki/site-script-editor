@@ -1,0 +1,53 @@
+
+.sd_site_hierarchy_tree {
+    padding-top:20px;
+    height: calc(100% - 60px);
+    overflow: auto;
+}
+
+.rst__row .rst__rowContents {
+     -webkit-box-shadow: none;
+     box-shadow: none;
+     border-radius: 0px 5px 5px 0px;
+}
+.rst__row .rst__moveHandle,.rst__row .rst__loadingHandle{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 5px 0 0 5px;
+}
+.sd_site_hierarchy_node_wrapper .rst__moveHandle {
+    width: 40px;
+    background-repeat: no-repeat!important;
+    background-position: center!important;
+    box-shadow: inset -2px 0px 4px -2px rgba(0,0,0,0.26);
+}
+.sd_site_hierarchy_node_type_root .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#249b2a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_theme .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#235f9e" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>');
+}
+.sd_site_hierarchy_node_type_lists .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#2b82ab" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_list .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#2b82ab" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_listFields .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#55adbb" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_fieldText .rst__moveHandle, .sd_site_hierarchy_node_type_fieldNumber .rst__moveHandle, .sd_site_hierarchy_node_type_fieldNote .rst__moveHandle, .sd_site_hierarchy_node_type_fieldUser .rst__moveHandle,.sd_site_hierarchy_node_type_fieldBoolean .rst__moveHandle, .sd_site_hierarchy_node_type_fieldDateTime .rst__moveHandle, .sd_site_hierarchy_node_type_fieldXML .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#55adbb" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_fieldDeletion .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#de4949" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_listContentType .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#3660dc" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_listContentTypeDeletion .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#a12525" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.sd_site_hierarchy_node_type_columnFormatter .rst__moveHandle {
+    background: #f3f3f3 url('data:image/svg+xml;utf-8,<svg fill="#209883" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}

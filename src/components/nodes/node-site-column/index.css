@@ -1,0 +1,14 @@
+.sd_site_hierarchy_node_site_column {
+    width:300px;
+}
+
+.sd_site_hierarchy_node_type_siteColumn i {
+    color:#a12525;
+    font-size: 14px;
+}
+.sd_site_hierarchy_node_type_siteColumn i:hover {
+    color:#fa0000;
+}
+.sd_site_hierarchy_node_type_siteColumn .sd_site_hierarchy_node_menu_launcher{
+    width:20px;
+}

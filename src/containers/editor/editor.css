@@ -8,6 +8,9 @@
     flex: 1;
 
 }
+.sd_editor {
+    font-family: 'Work Sans', Verdana, sans-serif;
+}
 
 .Resizer {
     background: #000;
@@ -61,6 +64,12 @@ cursor: default;
 .sd_row {
     display: flex;
 }
+.sd_col_30 {
+    width:30%;
+}
 .sd_col_50 {
     width:50%;
+}
+.sd_col_70 {
+    width:70%;
 }

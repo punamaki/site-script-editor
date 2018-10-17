@@ -14,7 +14,7 @@ export default function NodeNavLink(props : INodeProps) {
             iconName: 'Delete'
         },
         onClick: () => setTreeAndScriptData(removeNodeAtPath({treeData, path, getNodeKey})),
-        title: "Remove the content type"
+        title: "Remove the navigation link"
     };
 
     return <NodeWrapper actionProps={actionProps} smallTitle="Navigation link" menuClass="sd_site_hierarchy_node_menu_regular" infoText="Use the addNavLink verb to add a new navigation link to the site.">

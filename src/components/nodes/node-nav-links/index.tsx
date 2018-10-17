@@ -11,8 +11,8 @@ export default function NodeNavLinks(props : INodeProps) {
             iconName: 'Add'
         },
         onClick: () => addNavLinkToTree(treeData,setTreeAndScriptData),
-        title: "Add a new list"
+        title: "Add a new navigation link"
     };
-    var containerProps = {...props, actionProps, title:"Navigation links"}
+    var containerProps = {...props, actionProps, title:"Nav links"}
     return <NodeContainer {...containerProps}/>
 }

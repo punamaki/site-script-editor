@@ -9,7 +9,8 @@ import {
   addSiteColumnXMLToTree,
   addContentTypeToTree,
   addInstallSolutionToTree,
-  addUserToTree
+  addUserToTree,
+  addRemoveNavLinkToTree
 } from "../../../helpers";
 import { INodeProps } from "../../../types";
 import "./node-root.css";
@@ -34,6 +35,11 @@ export default function NodeRoot(props: INodeProps) {
           key: "newNavLink",
           name: "Add a navigation link",
           onClick: () => addNavLinkToTree(treeData, setTreeAndScriptData)
+        },
+        {
+          key: "newRemoveNavLink",
+          name: "Add a navigation link removal",
+          onClick: () => addRemoveNavLinkToTree(treeData, setTreeAndScriptData)
         },
         {
           key: "newSiteColumn",

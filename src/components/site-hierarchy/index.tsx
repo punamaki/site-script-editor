@@ -59,6 +59,8 @@ import NodeInstallSolutions from "../../components/nodes/node-install-solutions"
 import NodeInstallSolution from "../../components/nodes/node-install-solution";
 import NodeAddUsers from "../nodes/node-users";
 import NodeAddUser from "../nodes/node-user";
+import NodeRemoveNavLinks from "../nodes/node-remove-nav-links";
+import NodeRemoveNavLink from "../nodes/node-remove-nav-link";
 interface ISiteHierarchyProps {
   setSiteScriptContainer: (siteScriptContainer: ISiteScriptContainer) => void;
   setTreeAndScriptData: (treeData: TreeItem[]) => void;
@@ -181,6 +183,16 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
       height: 192,
       canDrag: true,
       canDrop: true
+    });
+    this.setNodeTypeProps("removeNavLinks", {
+      height: 62,
+      canDrag: false,
+      canDrop: false
+    });
+    this.setNodeTypeProps("removeNavLink", {
+      height: 105,
+      canDrag: true,
+      canDrop: false
     });
     this.setNodeTypeProps("triggerFlow", {
       height: 244,
@@ -361,6 +373,12 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
         break;
       case "navLink":
         returnVal = <NodeNavLink {...nodeProps} />;
+        break;
+        case "removeNavLinks":
+        returnVal = <NodeRemoveNavLinks {...nodeProps} />;
+        break;
+      case "removeNavLink":
+        returnVal = <NodeRemoveNavLink {...nodeProps} />;
         break;
       case "triggerFlow":
         returnVal = <NodeTriggerFlow {...nodeProps} />;

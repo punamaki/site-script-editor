@@ -50,6 +50,18 @@ export function ensureNavLinksNode(children : TreeItem[]) : TreeItem {
     }
     return listsNode;
 }
+export function ensureRemoveNavLinksNode(children : TreeItem[]) : TreeItem {
+    var listsNode = children.find(child => child.type === 'removeNavLinks');
+    if (!listsNode) {
+        listsNode = {
+            children: [],
+            type: 'removeNavLinks',
+            expanded: true
+        };
+        children.push(listsNode);
+    }
+    return listsNode;
+}
 export function ensureSiteColumnsNode(children : TreeItem[]) : TreeItem {
     var listsNode = children.find(child => child.type === 'siteColumns');
     if (!listsNode) {

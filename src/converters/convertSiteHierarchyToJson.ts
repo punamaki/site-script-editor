@@ -67,6 +67,9 @@ export function convertSiteHierarchyToJson(
         case "navLinks":
           actions = actions.concat(actionCreateNavLinks(child.children));
           break;
+          case "removeNavLinks":
+          actions = actions.concat(actionCreateRemoveNavLinks(child.children));
+          break;
         case "addUsers":
           actions = actions.concat(actionAddUsers(child.children));
           break;
@@ -288,6 +291,19 @@ function actionCreateNavLinks(children: TreeItem[] | undefined): IAction[] {
         displayName: child.data.displayName,
         isWebRelative: child.data.isWebRelative,
         url: child.data.url
+      };
+    });
+  }
+  return listActions;
+}
+function actionCreateRemoveNavLinks(children: TreeItem[] | undefined): IAction[] {
+  var listActions: IAction[] = [];
+  if (children) {
+    listActions = children.map(child => {
+      return {
+        verb: "removeNavLink",
+        displayName: child.data.displayName,
+        isWebRelative: child.data.isWebRelative
       };
     });
   }

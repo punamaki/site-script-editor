@@ -5,12 +5,13 @@
   "author": {
     "name": "punamaki"
   },
-  "license" : "MIT",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "/dist"
   ],
+  "keywords":["sharepoint", "site script", "site design"],
   "devDependencies": {
     "@dr-kobros/react-jsoneditor": "^3.0.1",
     "@types/jest": "^21.1.9",
@@ -34,7 +35,6 @@
     "react-scripts-ts": "2.8.0",
     "redux-devtools-extension": "^2.13.5",
     "source-map-explorer": "^1.6.0",
-    "typescript": "^2.9.1",
     "vinyl-ftp": "^0.6.0"
   },
   "dependencies": {
@@ -53,6 +53,7 @@
     "redux-thunk": "^2.3.0",
     "split.js": "^1.3.5",
     "styled-components": "^2.4.1",
+    "typescript": "^2.9.1",
     "webfontloader": "^1.6.28"
   },
   "peerDependencies": {
@@ -66,7 +67,7 @@
     "build-tcs": "tsc",
     "build-tcs-watch": "tsc --watch",
     "clean-lib": "del-cli ./dist/**/*",
-    "copy-to-lib":"copyfiles -u 1 src/**/*.json src/**/*.css dist",
+    "copy-to-lib": "copyfiles -u 1 src/**/*.json src/**/*.css dist",
     "build-lib": "npm-run-all clean-lib build-tcs copy-to-lib",
     "build-lib-watch": "npm-run-all build-lib --parallel watch-resources build-tcs-watch",
     "test": "react-scripts-ts test --env=jsdom",

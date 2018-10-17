@@ -5,7 +5,8 @@ import {
   ensureSiteColumnsNode,
   ensureContentTypesNode,
   ensureInstallSolutionsNode,
-  ensureAddUsersNode
+  ensureAddUsersNode,
+  ensureRemoveNavLinksNode
 } from "../helpers";
 
 export function addListToTree(
@@ -64,6 +65,22 @@ export function addNavLinkToTree(
     type: "navLink",
     expanded: true,
     data: { url: "", displayName: "", isWebRelative: false }
+  };
+  navLinksNode!.children!.push({
+    ...newNavNode
+  });
+  setTreeAndScriptData(newTree);
+}
+export function addRemoveNavLinkToTree(
+  treeData: TreeItem[],
+  setTreeAndScriptData: (treeData: TreeItem[]) => void
+) {
+  var newTree = [...treeData];
+  var navLinksNode = ensureRemoveNavLinksNode(newTree[0].children!);
+  var newNavNode = {
+    type: "removeNavLink",
+    expanded: true,
+    data: { displayName: "", isWebRelative: true}
   };
   navLinksNode!.children!.push({
     ...newNavNode

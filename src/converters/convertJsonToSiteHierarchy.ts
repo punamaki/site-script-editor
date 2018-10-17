@@ -5,7 +5,8 @@ import {
   ensureSiteColumnsNode,
   ensureContentTypesNode,
   ensureInstallSolutionsNode,
-  ensureAddUsersNode
+  ensureAddUsersNode,
+  ensureRemoveNavLinksNode
 } from "../helpers";
 
 export function convertJsonToSiteHierarchy(
@@ -48,6 +49,11 @@ export function convertJsonToSiteHierarchy(
           let navLinksNode = ensureNavLinksNode(children);
           let navLink = createNavLink(action);
           navLinksNode.children!.push(navLink);
+          break;
+        case "removeNavLink":
+          let removeNavLinksNode = ensureRemoveNavLinksNode(children);
+          let removeNavLink = createRemoveNavLink(action);
+          removeNavLinksNode.children!.push(removeNavLink);
           break;
         case "addPrincipalToSPGroup":
           let addUsersNode = ensureAddUsersNode(children);
@@ -111,13 +117,26 @@ export function convertJsonToSiteHierarchy(
     };
     return navLink;
   }
+  function createRemoveNavLink(action: IAction) {
+    var {displayName, isWebRelative } = action;
+    const removeNavLink: TreeItem = {
+      children: [],
+      type: "removeNavLink",
+      expanded: true,
+      data: {
+        displayName,
+        isWebRelative
+      }
+    };
+    return removeNavLink;
+  }
   function createAddUser(action: IAction) {
     var { principal, group } = action;
     const addUser: TreeItem = {
       children: [],
       type: "addUser",
       expanded: true,
-      data: {     
+      data: {
         principal,
         group
       }

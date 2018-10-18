@@ -6,7 +6,6 @@ import {IMessage, ISiteScriptContainer, ISiteScript, INodeTypeProps, IDictionary
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
 import {convertJsonToSiteHierarchy, convertSiteHierarchyToJson} from '../../converters';
-import SplitPane from 'react-split-pane';
 import {TreeItem} from 'react-sortable-tree';
 import samples from '../../samples';
 import { autobind } from '@uifabric/utilities';
@@ -94,13 +93,7 @@ IEditorState > {
     }
     render() {
         return <div className="sd_editor">
-            <SplitPane
-                split="vertical"
-                defaultSize={650}
-                primary="first"
-                pane2Style={{
-                display: "flex"
-            }}>
+
                 <div id="sd_hierarchy" key={this.state.siteHierarchyKey}><SiteHierarchy
                     setSiteScriptContainer={this.props.setSiteScriptContainer}
                     setTreeAndScriptData={this.setTreeAndScriptData}
@@ -119,7 +112,7 @@ IEditorState > {
             .setSiteScript
             .bind(this)}/>
                 </div>
-            </SplitPane>
+
         </div>;
     }
 }

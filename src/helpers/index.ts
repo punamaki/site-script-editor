@@ -28,13 +28,11 @@ export function ensureListsNode(fullTree : TreeItem[]) {
             title: 'Lists',
             children: [],
             type: 'lists',
-            expanded: true
+            expanded: false
 
         };
         newTree[0].children !.push(listsNode);
-    } else {
-        listsNode.expanded=true;
-    }
+    } 
     return newTree;
 }
 
@@ -44,7 +42,7 @@ export function ensureNavLinksNode(children : TreeItem[]) : TreeItem {
         listsNode = {
             children: [],
             type: 'navLinks',
-            expanded: true
+            expanded: false
         };
         children.push(listsNode);
     }
@@ -56,7 +54,7 @@ export function ensureRemoveNavLinksNode(children : TreeItem[]) : TreeItem {
         listsNode = {
             children: [],
             type: 'removeNavLinks',
-            expanded: true
+            expanded: false
         };
         children.push(listsNode);
     }
@@ -68,7 +66,7 @@ export function ensureSiteColumnsNode(children : TreeItem[]) : TreeItem {
         listsNode = {
             children: [],
             type: 'siteColumns',
-            expanded: true
+            expanded: false
         };
         children.push(listsNode);
     }
@@ -80,7 +78,7 @@ export function ensureContentTypesNode(children : TreeItem[]) : TreeItem {
         listsNode = {
             children: [],
             type: 'contentTypes',
-            expanded: true
+            expanded: false
         };
         children.push(listsNode);
     }
@@ -92,7 +90,7 @@ export function ensureInstallSolutionsNode(children : TreeItem[]) : TreeItem {
         listsNode = {
             children: [],
             type: 'installSolutions',
-            expanded: true
+            expanded: false
         };
         children.push(listsNode);
     }
@@ -104,7 +102,7 @@ export function ensureAddUsersNode(children : TreeItem[]) : TreeItem {
         listsNode = {
             children: [],
             type: 'addUsers',
-            expanded: true
+            expanded: false
         };
         children.push(listsNode);
     }

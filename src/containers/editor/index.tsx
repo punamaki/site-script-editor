@@ -64,14 +64,28 @@ IEditorState > {
     private setSiteScript(siteScript : ISiteScript) {
         var currentContainer = this.props.currentSiteScriptContainer;
         currentContainer.siteScript = siteScript;
+        var newTreeData = convertJsonToSiteHierarchy(currentContainer);
+        newTreeData = [this.setupExpansion(this.props.treeData[0], newTreeData[0])]
         this
             .props
             .setSiteScriptContainer(currentContainer);
+
             this
             .props
-            .setTreeData(convertJsonToSiteHierarchy(currentContainer));
+            .setTreeData(newTreeData);
     }
 
+    private setupExpansion(oldRoot:TreeItem, newRoot:TreeItem):TreeItem {
+        if(oldRoot.children) {
+            oldRoot.children!.forEach(oldChild=>{
+                const newElemFound = newRoot.children!.find(newChild=>newChild.type===oldChild.type);
+                if(newElemFound) {
+                    newElemFound.expanded=oldChild.expanded
+                }
+            })
+        }
+        return newRoot
+    }
  
     @autobind
     private setTreeAndScriptData(treeData:TreeItem[]) {

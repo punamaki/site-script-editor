@@ -221,12 +221,7 @@ export function convertJsonToSiteHierarchy(
         templateType: action.templateType
       }
     };
-    ensureFieldsNode(list);
-    ensureListContentTypesNode(list);
-    ensureColumnFormattersNode(list);
-    ensureViewsNode(list);
-    ensureFieldCustomizersNode(list);
-    ensureListViewCommandSetsNode(list);
+    ensureListSubNodes(list)
     if (action.subactions) {
       var subactions = action.subactions;
       subactions.forEach(subaction => {
@@ -440,7 +435,7 @@ function ensureListsNode(children: TreeItem[]): TreeItem {
       title: "Lists",
       children: [],
       type: "lists",
-      expanded: true
+      expanded: false
     };
     children.push(listsNode);
   }
@@ -455,7 +450,7 @@ function ensureFieldsNode(list: TreeItem) {
         title: "Fields",
         children: [],
         type: "listFields",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
@@ -473,7 +468,7 @@ function ensureListContentTypesNode(list: TreeItem) {
         title: "Content types",
         children: [],
         type: "listContentTypes",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
@@ -490,7 +485,7 @@ function ensureFieldCustomizersNode(list: TreeItem) {
       columnNode = {
         children: [],
         type: "listFieldCustomizers",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
@@ -507,7 +502,7 @@ function ensureListViewCommandSetsNode(list: TreeItem) {
       columnNode = {
         children: [],
         type: "listViewCommandSets",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
@@ -524,7 +519,7 @@ function ensureColumnFormattersNode(list: TreeItem) {
       columnNode = {
         children: [],
         type: "columnFormatters",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
@@ -540,7 +535,7 @@ function ensureViewsNode(list: TreeItem) {
         title: "Views",
         children: [],
         type: "listViews",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
@@ -558,11 +553,19 @@ function ensureContentTypeSiteColumnsNode(list: TreeItem) {
         title: "Site columns",
         children: [],
         type: "contentTypeSiteColumns",
-        expanded: true
+        expanded: false
       };
       list.children.push(columnNode);
     }
     return columnNode;
   }
   return null;
+}
+export function ensureListSubNodes(list:TreeItem) {
+  ensureFieldsNode(list);
+  ensureListContentTypesNode(list);
+  ensureColumnFormattersNode(list);
+  ensureViewsNode(list);
+  ensureFieldCustomizersNode(list);
+  ensureListViewCommandSetsNode(list);
 }

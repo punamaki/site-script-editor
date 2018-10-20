@@ -8,6 +8,7 @@ import {
   ensureAddUsersNode,
   ensureRemoveNavLinksNode
 } from "../helpers";
+import { ensureListSubNodes } from "../converters";
 
 export function addListToTree(
   treeData: TreeItem[],
@@ -16,27 +17,12 @@ export function addListToTree(
   var newTree = ensureListsNode(treeData);
   var listsNode = newTree[0].children!.find(child => child.type === "lists");
   var newList = {
-    children: [
-      {
-        title: "Fields",
-        children: [],
-        type: "listFields"
-      },
-      {
-        title: "Content types",
-        children: [],
-        type: "listContentTypes"
-      },
-      {
-        title: "Column formatters",
-        children: [],
-        type: "columnFormatters"
-      }
-    ],
+    children: [],
     type: "list",
     expanded: true,
     data: { listName: "New list", templateType: 100 }
   };
+  ensureListSubNodes(newList);
   listsNode!.children!.push({
     ...newList
   });

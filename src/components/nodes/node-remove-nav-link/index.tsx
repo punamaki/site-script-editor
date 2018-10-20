@@ -7,7 +7,7 @@ import SDTextField from "../../../components/sd-text-field";
 import "./index.css";
 import SDToggle from "../../../components/sd-toggle";
 
-export default function NodeRemoveNavLink(props: INodeProps) {
+export  function NodeRemoveNavLink(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

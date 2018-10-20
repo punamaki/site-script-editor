@@ -4,7 +4,7 @@ import './node-list-content-types.css'
 import { addContentTypeToList, addContentTypeDeletionToList } from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeListContentTypes(props : INodeProps) {
+export  function NodeListContentTypes(props : INodeProps) {
     var {path,treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

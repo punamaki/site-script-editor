@@ -9,7 +9,7 @@ import SDToggle from "../../../components/sd-toggle";
 
 interface INodeWrapperProps extends INodeProps {}
 
-export default function NodeSiteColumnXML(props: INodeWrapperProps) {
+export  function NodeSiteColumnXML(props: INodeWrapperProps) {
   var { path, treeData, setTreeAndScriptData } = props;
 
   var actionProps = {

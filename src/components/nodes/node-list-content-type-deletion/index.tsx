@@ -6,7 +6,7 @@ import NodeWrapper from '../../../components/nodes/node-wrapper';
 import SDTextField from '../../../components/sd-text-field';
 import './node-list-content-type-deletion.css'
 
-export default function NodeListContentTypeDeletion(props : INodeProps) {
+export  function NodeListContentTypeDeletion(props : INodeProps) {
     var {path, treeData, setTreeAndScriptData} = props;
     var actionProps = {
         iconProps: {

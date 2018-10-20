@@ -4,7 +4,7 @@ import './node-list-views.css'
 import { addViewToList, addViewDeletionToList } from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeListViews(props : INodeProps) {
+export  function NodeListViews(props : INodeProps) {
     var {path,treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

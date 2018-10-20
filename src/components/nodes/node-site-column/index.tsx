@@ -12,7 +12,7 @@ interface INodeWrapperProps extends INodeProps {
 
 }
 
-export default function NodeSiteColumn(props: INodeWrapperProps) {
+export  function NodeSiteColumn(props: INodeWrapperProps) {
   var { path, treeData, setTreeAndScriptData } = props;
 
   var actionProps = {

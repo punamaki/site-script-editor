@@ -4,7 +4,7 @@ import { INodeProps } from '../../../types';
 import "./node-nav-links.css"
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeNavLinks(props : INodeProps) {
+export  function NodeNavLinks(props : INodeProps) {
     var {treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

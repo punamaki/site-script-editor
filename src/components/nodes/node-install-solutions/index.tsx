@@ -4,7 +4,7 @@ import { INodeProps } from '../../../types';
 import "./index.css"
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeInstallSolutions(props : INodeProps) {
+export  function NodeInstallSolutions(props : INodeProps) {
     var {treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

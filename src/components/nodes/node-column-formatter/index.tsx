@@ -8,7 +8,7 @@ import SDCodeField from '../../sd-code-field';
 import './node-column-formatter.css'
 
 
-export default function NodeColumnFormatter(props : INodeProps) {
+export function NodeColumnFormatter(props : INodeProps) {
     var {path, treeData, setTreeAndScriptData} = props;
 
     var actionProps = {

@@ -1,6 +1,5 @@
 
 .sd_site_hierarchy_tree {
-    padding-top:20px;
     height: calc(100% - 60px);
     overflow: auto;
 }

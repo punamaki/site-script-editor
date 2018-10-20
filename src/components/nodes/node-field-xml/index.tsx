@@ -7,7 +7,7 @@ import "./node-field-xml.css";
 import SDCamlField from "../../../components/sd-caml-field";
 import SDToggle from "../../../components/sd-toggle";
 
-export default function NodeFieldXML(props: INodeProps) {
+export  function NodeFieldXML(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

@@ -6,7 +6,7 @@ import { getNodeKey } from "../../../helpers";
 import { INodeProps } from "../../../types";
 import "./node-list-view-deletion.css";
 
-export default function NodeListViewDeletion(props: INodeProps) {
+export  function NodeListViewDeletion(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

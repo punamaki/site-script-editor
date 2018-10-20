@@ -1,6 +1,7 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "linterOptions": {
+    "object-literal-sort-keys": false,
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",

@@ -6,7 +6,7 @@ import NodeWrapper from '../../../components/nodes/node-wrapper';
 import SDTextField from '../../../components/sd-text-field';
 import './node-field-deletion.css'
 
-export default function NodeFieldDeletion(props : INodeProps) {
+export  function NodeFieldDeletion(props : INodeProps) {
     var {path, treeData, setTreeAndScriptData} = props;
     var actionProps = {
         iconProps: {

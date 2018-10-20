@@ -10,7 +10,7 @@ import SDComboBox from "../../../components/sd-combo-box";
 
 interface INodeWrapperProps extends INodeProps {}
 
-export default function NodeContentType(props: INodeWrapperProps) {
+export  function NodeContentType(props: INodeWrapperProps) {
   var { path, treeData, setTreeAndScriptData } = props;
 
   var actionProps = {

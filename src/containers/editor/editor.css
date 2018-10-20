@@ -8,22 +8,16 @@
     outline: none;
     width: 650px;
 }
-#sd_content {
-    flex: 1;
-
+#sd_json_editor {
+    width:calc(100% - 650px);
 }
 .sd_editor {
     font-family: 'Work Sans', Verdana, sans-serif;
     display: flex;
-    flex: 1 1 0%;
     height: 100%;
-    position: absolute;
-    outline: none;
-    overflow: hidden;
-    user-select: text;
     flex-direction: row;
-    left: 0px;
-    right: 0px;
+    width: 100%;
+    position: relative;
 }
 
 .Resizer {

@@ -4,7 +4,7 @@ import { INodeProps } from '../../../types';
 import "./node-column-formatters.css"
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeColumnFormatters(props : INodeProps) {
+export function NodeColumnFormatters(props : INodeProps) {
     var {path,treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

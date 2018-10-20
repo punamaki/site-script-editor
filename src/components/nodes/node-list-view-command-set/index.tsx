@@ -8,7 +8,7 @@ import './node-list-view-command-set.css'
 import SDComboBox from '../../../components/sd-combo-box';
 import { IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
 
-export default function NodeListViewCommandSet(props : INodeProps) {
+export  function NodeListViewCommandSet(props : INodeProps) {
     var {path, treeData, setTreeAndScriptData} = props;
     var actionProps = {
         iconProps: {

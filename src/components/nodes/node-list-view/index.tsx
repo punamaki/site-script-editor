@@ -10,7 +10,7 @@ import SDToggle from "../../../components/sd-toggle";
 import SDCamlField from "../../../components/sd-caml-field";
 
 
-export default function NodeListView(props: INodeProps) {
+export  function NodeListView(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

@@ -4,7 +4,7 @@ import './node-list-view-command-sets.css'
 import {  addListViewCommandSet} from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeListViewCommandSets(props : INodeProps) {
+export  function NodeListViewCommandSets(props : INodeProps) {
     var {path,treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

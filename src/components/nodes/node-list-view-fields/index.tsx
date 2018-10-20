@@ -4,7 +4,7 @@ import "./node-list-view-fields.css";
 import { addViewFieldToView } from "../../../helpers";
 import NodeContainer from "../../../components/nodes/node-container";
 
-export default function NodeListViewFields(props: INodeProps) {
+export  function NodeListViewFields(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

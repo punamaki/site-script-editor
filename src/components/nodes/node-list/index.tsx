@@ -6,7 +6,7 @@ import {getNodeKey} from '../../../helpers';
 import {INodeProps} from '../../../types';
 import './node-list.css'
 
-export default function NodeList(props : INodeProps) {
+export  function NodeList(props : INodeProps) {
     var {path, treeData, setTreeAndScriptData} = props;
     var actionProps = {
         iconProps: {

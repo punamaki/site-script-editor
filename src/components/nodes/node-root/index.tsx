@@ -17,7 +17,7 @@ import "./node-root.css";
 import { IComboBoxOption } from "office-ui-fabric-react/lib/ComboBox";
 import SDComboBox from "../../../components/sd-combo-box";
 
-export default function NodeRoot(props: INodeProps) {
+export  function NodeRoot(props: INodeProps) {
   var { treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

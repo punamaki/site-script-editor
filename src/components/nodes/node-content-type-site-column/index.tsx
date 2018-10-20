@@ -8,7 +8,7 @@ import "./index.css";
 
 
 
-export default function NodeContentTypeSiteColumn(props: INodeProps) {
+export  function NodeContentTypeSiteColumn(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

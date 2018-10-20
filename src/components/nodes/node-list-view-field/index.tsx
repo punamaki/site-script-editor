@@ -8,7 +8,7 @@ import "./node-list-view-field.css";
 
 
 
-export default function NodeListViewField(props: INodeProps) {
+export  function NodeListViewField(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

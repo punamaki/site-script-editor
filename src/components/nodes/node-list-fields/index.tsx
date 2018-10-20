@@ -4,7 +4,7 @@ import { INodeProps } from '../../../types';
 import './node-fields.css'
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeFields(props : INodeProps) {
+export  function NodeListFields(props : INodeProps) {
     var {path,treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

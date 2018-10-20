@@ -7,9 +7,7 @@ import * as actions from '../../actions';
 import {connect} from 'react-redux';
 import {convertJsonToSiteHierarchy, convertSiteHierarchyToJson} from '../../converters';
 import {TreeItem} from 'react-sortable-tree';
-import samples from '../../samples';
 import { autobind } from '@uifabric/utilities';
-import { collapseTree } from '../../helpers';
 
 
 export interface IDispatchProps {
@@ -18,6 +16,7 @@ export interface IDispatchProps {
     setSiteScriptContainer : (siteScriptContainer : ISiteScriptContainer) => void;
     setTreeData : (treeData : TreeItem[]) => void;
     setNodeTypeProps : (nodeType:string, nodeTypeProps:INodeTypeProps)=>void;
+    setAllNodeTypeProps: (propsAll:IDictionary<INodeTypeProps>)=>void;
 }
 
 export interface IStateProps {
@@ -48,7 +47,11 @@ export function mapDispatchToProps(dispatch : any) : IDispatchProps {
         },
         setNodeTypeProps: (nodeType:string, nodeTypeProps:INodeTypeProps)=>{
             dispatch(actions.setNodeTypeProps(nodeType, nodeTypeProps));
+        },
+        setAllNodeTypeProps: (propsAll:IDictionary<INodeTypeProps>)=>{
+            dispatch(actions.setAllNodeTypeProps(propsAll));
         }
+
     };
 }
 
@@ -56,7 +59,6 @@ class Editor extends React.Component < IStateProps & IDispatchProps,
 IEditorState > {
     constructor(props : IStateProps & IDispatchProps) {
         super(props);
-        this.setSample("site-create-lists-add-to-site-nav");
         this.state = {siteHierarchyKey:"1000"};
     }
     private setSiteScript(siteScript : ISiteScript) {
@@ -69,18 +71,7 @@ IEditorState > {
             .props
             .setTreeData(convertJsonToSiteHierarchy(currentContainer));
     }
-    @autobind
-    private setSample(key : string) {
-        var sampleContainer = samples.find(sample => sample.id === key);
-        if (sampleContainer) {
-            this
-                .props
-                .setSiteScriptContainer(sampleContainer);
-            this
-                .props
-                .setTreeData(collapseTree(convertJsonToSiteHierarchy(sampleContainer)));
-        }
-    }
+
  
     @autobind
     private setTreeAndScriptData(treeData:TreeItem[]) {
@@ -98,13 +89,13 @@ IEditorState > {
                     setSiteScriptContainer={this.props.setSiteScriptContainer}
                     setTreeAndScriptData={this.setTreeAndScriptData}
                     treeData={this.props.treeData}
-                    setSample={this.setSample}
                     setNodeTypeProps={this.props.setNodeTypeProps}
                     nodeTypesProps={this.props.nodeTypesProps}
+                    setAllNodeTypeProps={this.props.setAllNodeTypeProps}
                     reloadTree={this.reloadTree}
                     />
                 </div>
-                <div id="sd_content"><JsonEditorWrapper
+                <div id="sd_json_editor"><JsonEditorWrapper
                     currentSiteScript={this.props.currentSiteScriptContainer
             ? this.props.currentSiteScriptContainer.siteScript
             : null}

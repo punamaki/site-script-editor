@@ -4,7 +4,7 @@ import { addSiteColumnToContentType } from '../../../helpers';
 import { INodeProps } from '../../../types';
 import "./index.css"
 
-export default function NodeContentTypeSiteColumns(props : INodeProps) {
+export  function NodeContentTypeSiteColumns(props : INodeProps) {
 
     var {path, treeData, setTreeAndScriptData} = props;
     var actionProps = {

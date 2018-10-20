@@ -8,7 +8,7 @@ import "./index.css";
 
 
 
-export default function NodeInstallSolution(props: INodeProps) {
+export  function NodeInstallSolution(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {

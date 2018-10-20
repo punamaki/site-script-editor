@@ -6,7 +6,7 @@ import NodeWrapper from '../../../components/nodes/node-wrapper';
 import SDTextField from '../../../components/sd-text-field';
 import './node-list-content-type.css'
 
-export default function NodeListContentType(props : INodeProps) {
+export  function NodeListContentType(props : INodeProps) {
     var {path, treeData, setTreeAndScriptData} = props;
     var actionProps = {
         iconProps: {

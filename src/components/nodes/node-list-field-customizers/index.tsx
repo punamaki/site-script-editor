@@ -4,7 +4,7 @@ import './node-list-field-customizers.css'
 import {  addFieldCustomizerToList} from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export default function NodeListFieldCustomizers(props : INodeProps) {
+export  function NodeListFieldCustomizers(props : INodeProps) {
     var {path,treeData, setTreeAndScriptData}=props
     var actionProps = {
         iconProps: {

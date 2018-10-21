@@ -94,6 +94,7 @@ IEditorState > {
           }
     @autobind
     private reloadTree() {
+        //THIS IS NOT IN USE. 2018.10.12 Things seem to refresh ok without this. It was causing reload of the tree and scrolling to the top
         this.setState({siteHierarchyKey:Math.floor((Math.random() * 1000000) + 1).toString()}) //This will refresh the site hierarchy by renewing the key. Otherwise some props are not recalculated
     }
     render() {

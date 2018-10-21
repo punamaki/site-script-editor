@@ -80,7 +80,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
   // }
 
   public render() {
-    var { treeData, setTreeAndScriptData, reloadTree } = this.props;
+    var { treeData, setTreeAndScriptData } = this.props;
 
     return (
       <div
@@ -94,7 +94,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
             treeData={treeData}
             onChange={data => {
               setTreeAndScriptData(data);
-              reloadTree();
+              // reloadTree();
             }}
             rowHeight={this.calcRowHeight}
             generateNodeProps={({ node, path }) => ({

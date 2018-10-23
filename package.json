@@ -1,6 +1,6 @@
 {
   "name": "site-script-editor",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
   "author": {
     "name": "punamaki"
@@ -11,7 +11,11 @@
   "files": [
     "/dist"
   ],
-  "keywords":["sharepoint", "site script", "site design"],
+  "keywords": [
+    "sharepoint",
+    "site script",
+    "site design"
+  ],
   "devDependencies": {
     "@dr-kobros/react-jsoneditor": "^3.0.1",
     "@types/jest": "^21.1.9",
@@ -40,7 +44,7 @@
   "dependencies": {
     "ajv": "^5.5.2",
     "jsoneditor": "^5.24.6",
-    "office-ui-fabric-react": "^6.7",
+    "office-ui-fabric-react": "^6.89.0",
     "react-ga": "^2.5.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

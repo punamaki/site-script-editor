@@ -17,8 +17,10 @@ import "./node-root.css";
 import { IComboBoxOption } from "office-ui-fabric-react/lib/ComboBox";
 import SDComboBox from "../../../components/sd-combo-box";
 
+
 export  function NodeRoot(props: INodeProps) {
   var { treeData, setTreeAndScriptData } = props;
+
   var actionProps = {
     iconProps: {
       iconName: "MoreVertical"
@@ -346,15 +348,16 @@ export  function NodeRoot(props: INodeProps) {
     { text: "Argentina Standard, Brazil Eastern Time (-3:00)", key: "-3"},
     { text: "Central African Time (-1:00)", key: "-1"}
   ];
-
+  
     var convertToNumberProps = {...props, convertToNumber:true}
+    var bubleContent = <div>Start by adding new items to the site script from here. Or create a new site script from the open menu. </div>
   return (
-    <NodeWrapper actionProps={actionProps} smallTitle="Home">
+    <NodeWrapper actionProps={actionProps} showCoachMark={true} bubleContent={bubleContent} bubleTitle="Add new items" smallTitle="Home" nodeName="NodeRoot">
       <div className="sd_site_hierarchy_node_root">
         {/* <div>
           <SDTextField {...props} label="Title" fieldName="title" />
         </div> */}
-        <div className="sd_row">
+        <div className="sd_row" >
           <div className="sd_col_50">
             <SDTextField {...props} label="Theme" fieldName="themeName" />
           </div>

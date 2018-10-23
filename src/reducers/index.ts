@@ -62,9 +62,32 @@ export function nodeTypesProps(
       return state;
   }
 }
+export function coachmarkStates(
+  state: IDictionary<boolean> = {},
+  action: any
+) {
+  switch (action.type) {
+    case "SET_COACHMARK_STATE":
+      var returnObj = { ...state };
+      returnObj[action.id] = action.isVisible;
+      return returnObj;
+    default:
+      return state;
+  }
+}
+export function showCoachmarks(state: boolean = true, action: any) {
+  switch (action.type) {
+    case "SHOW_COACHMARKS":
+      return action.showCoachmarks;
+    default:
+      return state;
+  }
+}
 export const rootReducer: Reducer<IStoreState> = combineReducers<IStoreState>({
   messageList,
   currentSiteScriptContainer,
   treeData,
-  nodeTypesProps
+  nodeTypesProps,
+  coachmarkStates,
+  showCoachmarks
 });

@@ -13,3 +13,9 @@ export function setNodeTypeProps(nodeType : string, nodeTypeProps:INodeTypeProps
 export function setAllNodeTypeProps(allProps:IDictionary<INodeTypeProps> ) {
     return {type: 'SET_ALL_NODE_TYPE_PROPS', allProps};
 }
+export function setCoachMarkState(id:string, isVisible:boolean) {
+    return {type: 'SET_COACHMARK_STATE', id,isVisible};
+}
+export function showCoachmarks(showCoachmarks:boolean) {
+    return {type: 'SHOW_COACHMARKS', showCoachmarks};
+}

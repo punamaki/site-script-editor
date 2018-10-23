@@ -2,7 +2,7 @@ import { IDictionary, INodeTypeProps } from "../../types";
 
 export const nodeProps: IDictionary<INodeTypeProps> = {
   root: {
-    height: 251,
+    height: 257,
     canDrag: true,
     canDrop: false
   },
@@ -17,52 +17,52 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   list: {
-    height: 195,
+    height: 202,
     canDrag: false,
     canDrop: false
   },
   fieldText: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldNumber: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldNote: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldUser: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldBoolean: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldDateTime: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldXML: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldLookupXML: {
-    height: 195,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
   fieldDeletion: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },
@@ -72,12 +72,12 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listContentType: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },
   listContentTypeDeletion: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },
@@ -87,7 +87,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   columnFormatter: {
-    height: 200,
+    height: 204,
     canDrag: true,
     canDrop: true
   },
@@ -97,7 +97,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listFieldCustomizer: {
-    height: 192,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
@@ -107,7 +107,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   navLink: {
-    height: 192,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
@@ -122,7 +122,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   triggerFlow: {
-    height: 244,
+    height: 252,
     canDrag: true,
     canDrop: true
   },
@@ -132,7 +132,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listView: {
-    height: 244,
+    height: 252,
     canDrag: true,
     canDrop: true
   },
@@ -142,7 +142,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listViewField: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },
@@ -152,12 +152,12 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listViewCommandSet: {
-    height: 244,
+    height: 256,
     canDrag: true,
     canDrop: true
   },
   listViewDeletion: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },
@@ -167,12 +167,12 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   siteColumn: {
-    height: 200,
+    height: 204,
     canDrag: true,
     canDrop: true
   },
   siteColumnXML: {
-    height: 190,
+    height: 202,
     canDrag: true,
     canDrop: true
   },
@@ -192,7 +192,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   contentTypeSiteColumn: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },
@@ -202,7 +202,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   installSolution: {
-    height: 96,
+    height: 102,
     canDrag: true,
     canDrop: true
   },

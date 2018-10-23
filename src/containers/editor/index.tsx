@@ -60,6 +60,9 @@ IEditorState > {
     constructor(props : IStateProps & IDispatchProps) {
         super(props);
         this.state = {siteHierarchyKey:"1000"};
+  if(this.isIE()) {
+      alert("Unfortunately IE is not supported. Please use a modern browser instead")
+  }
     }
     private setSiteScript(siteScript : ISiteScript) {
         var currentContainer = this.props.currentSiteScriptContainer;
@@ -74,7 +77,16 @@ IEditorState > {
             .props
             .setTreeData(newTreeData);
     }
-
+    private isIE() {
+        const match = navigator.userAgent.search(/(?:MSIE|Trident\/.*; rv:)/);
+        let isIE = false;
+    
+        if (match !== -1) {
+            isIE = true;
+        }
+    
+        return isIE;
+    }
     private setupExpansion(oldRoot:TreeItem, newRoot:TreeItem):TreeItem {
         if(oldRoot.children) {
             oldRoot.children!.forEach(oldChild=>{

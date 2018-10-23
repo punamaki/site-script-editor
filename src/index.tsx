@@ -23,6 +23,7 @@ const store = createStore<IStoreState, Action<any>, {}, {}>(
 export interface Props {
   siteScriptContainer?: ISiteScriptContainer | null;
   onSiteScriptContainerChange?:(newSiteScriptContainer:ISiteScriptContainer)=>void;
+  showHelpCoachmarks?:boolean;
 }
 
 export interface State {
@@ -30,7 +31,7 @@ export interface State {
 }
 
 export default class SiteScriptEditor extends React.Component<Props, State> {
-  public static defaultProps: Props = {};
+  public static defaultProps: Props = {showHelpCoachmarks:false};
 
   constructor(props: Props) {
     super(props);
@@ -43,6 +44,9 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
     if (siteScriptContainer) {
       store.dispatch(actions.setSiteScript(siteScriptContainer));
       store.dispatch(actions.setTreeData(convertJsonToSiteHierarchy(siteScriptContainer)));
+      if(this.props.showHelpCoachmarks) {
+        store.dispatch(actions.showCoachmarks(this.props.showHelpCoachmarks));
+      }
       this.setState({ siteScriptContainerFromParent: siteScriptContainer });
     }
   }

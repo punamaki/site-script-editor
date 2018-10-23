@@ -5,7 +5,10 @@ export interface IStoreState {
   currentSiteScriptContainer: ISiteScriptContainer | null;
   treeData: TreeItem[];
   nodeTypesProps: IDictionary<INodeTypeProps>;
+  coachmarkStates:IDictionary<boolean>;
+  showCoachmarks:boolean;
 }
+
 export interface IDictionary<TValue> {
   [id: string]: TValue;
 }

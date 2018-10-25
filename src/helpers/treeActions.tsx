@@ -1,12 +1,11 @@
 import { addNodeUnderParent, TreeItem } from "react-sortable-tree";
 import {
-  ensureListsNode,
   ensureNavLinksNode,
   ensureSiteColumnsNode,
-  ensureContentTypesNode,
   ensureInstallSolutionsNode,
   ensureAddUsersNode,
-  ensureRemoveNavLinksNode
+  ensureRemoveNavLinksNode,
+  ensureChildNode
 } from "../helpers";
 import { ensureListSubNodes } from "../converters";
 
@@ -14,8 +13,8 @@ export function addListToTree(
   treeData: TreeItem[],
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
-  var newTree = ensureListsNode(treeData);
-  var listsNode = newTree[0].children!.find(child => child.type === "lists");
+
+  var listsNode = ensureChildNode("lists", treeData[0].children!, true);
   var newList = {
     children: [],
     type: "list",
@@ -26,7 +25,7 @@ export function addListToTree(
   listsNode!.children!.push({
     ...newList
   });
-  setTreeAndScriptData(newTree);
+  setTreeAndScriptData(treeData);
 }
 export function addTriggerFlowToTree(
   treeData: TreeItem[],
@@ -46,7 +45,7 @@ export function addNavLinkToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureNavLinksNode(newTree[0].children!);
+  var navLinksNode = ensureNavLinksNode(newTree[0].children!, true);
   var newNavNode = {
     type: "navLink",
     expanded: true,
@@ -62,11 +61,11 @@ export function addRemoveNavLinkToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureRemoveNavLinksNode(newTree[0].children!);
+  var navLinksNode = ensureRemoveNavLinksNode(newTree[0].children!, true);
   var newNavNode = {
     type: "removeNavLink",
     expanded: true,
-    data: { displayName: "", isWebRelative: true}
+    data: { displayName: "", isWebRelative: true }
   };
   navLinksNode!.children!.push({
     ...newNavNode
@@ -343,7 +342,7 @@ export function addSiteColumnToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureSiteColumnsNode(newTree[0].children!);
+  var navLinksNode = ensureSiteColumnsNode(newTree[0].children!, true);
   var newNavNode = {
     children: [],
     type: "siteColumn",
@@ -363,7 +362,7 @@ export function addSiteColumnXMLToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureSiteColumnsNode(newTree[0].children!);
+  var navLinksNode = ensureSiteColumnsNode(newTree[0].children!, true);
   var newNavNode = {
     children: [],
     type: "siteColumnXML",
@@ -383,20 +382,18 @@ export function addContentTypeToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureContentTypesNode(newTree[0].children!);
+  var navLinksNode = ensureChildNode(
+    "contentTypes",
+    newTree[0].children!,
+    true
+  );
   var newNavNode = {
-    children: [
-      {
-        title: "Site columns",
-        children: [],
-        type: "contentTypeSiteColumns",
-        expanded: true
-      }
-    ],
+    children: [],
     type: "contentType",
     data: {},
     expanded: true
   };
+  ensureChildNode("contentTypeSiteColumns", newNavNode.children!, true);
   navLinksNode!.children!.push({
     ...newNavNode
   });

@@ -9,102 +9,103 @@ export function getChildrenAmount(treeData:TreeItem[], path:string[] | number[],
         return 0
     }
  }
- 
-export function ensureListsNode(fullTree : TreeItem[]) {
-    var newTree = [...fullTree];
-    if (!newTree[0]) {
-        newTree.push({title: "", children: []});
-    }
-    if (!newTree[0].children) {
-        newTree[0] = {
-            ...newTree[0],
-            children: []
-        };
-    }
-    var listsNode = newTree[0].children !.find(child => child.type === 'lists');
 
-    if (!listsNode) {
-        listsNode = {
-            title: 'Lists',
-            children: [],
-            type: 'lists',
-            expanded: false
 
-        };
-        newTree[0].children !.push(listsNode);
-    } 
-    return newTree;
-}
-
-export function ensureNavLinksNode(children : TreeItem[]) : TreeItem {
+export function ensureNavLinksNode(children : TreeItem[], expanded?:boolean) : TreeItem {
     var listsNode = children.find(child => child.type === 'navLinks');
     if (!listsNode) {
         listsNode = {
             children: [],
             type: 'navLinks',
-            expanded: false
+            expanded: expanded?true:false
         };
         children.push(listsNode);
+    } else{
+        listsNode.expanded = expanded?true:false
     }
     return listsNode;
 }
-export function ensureRemoveNavLinksNode(children : TreeItem[]) : TreeItem {
+export function ensureRemoveNavLinksNode(children : TreeItem[], expanded?:boolean) : TreeItem {
     var listsNode = children.find(child => child.type === 'removeNavLinks');
     if (!listsNode) {
         listsNode = {
             children: [],
             type: 'removeNavLinks',
-            expanded: false
+            expanded: expanded?true:false
         };
         children.push(listsNode);
+    }else{
+        listsNode.expanded = expanded?true:false
     }
     return listsNode;
 }
-export function ensureSiteColumnsNode(children : TreeItem[]) : TreeItem {
+export function ensureSiteColumnsNode(children : TreeItem[], expanded?:boolean) : TreeItem {
     var listsNode = children.find(child => child.type === 'siteColumns');
     if (!listsNode) {
         listsNode = {
             children: [],
             type: 'siteColumns',
-            expanded: false
+            expanded: expanded?true:false
         };
         children.push(listsNode);
+    } else{
+        listsNode.expanded = expanded?true:false
     }
     return listsNode;
 }
-export function ensureContentTypesNode(children : TreeItem[]) : TreeItem {
+export function ensureContentTypesNode(children : TreeItem[], expanded?:boolean) : TreeItem {
     var listsNode = children.find(child => child.type === 'contentTypes');
     if (!listsNode) {
         listsNode = {
             children: [],
             type: 'contentTypes',
-            expanded: false
+            expanded: expanded?true:false
         };
         children.push(listsNode);
+    } else{
+        listsNode.expanded = expanded?true:false
     }
     return listsNode;
 }
-export function ensureInstallSolutionsNode(children : TreeItem[]) : TreeItem {
+export function ensureInstallSolutionsNode(children : TreeItem[], expanded?:boolean) : TreeItem {
     var listsNode = children.find(child => child.type === 'installSolutions');
     if (!listsNode) {
         listsNode = {
             children: [],
             type: 'installSolutions',
-            expanded: false
+            expanded: expanded?true:false
         };
         children.push(listsNode);
+    } else{
+        listsNode.expanded = expanded?true:false
     }
     return listsNode;
 }
-export function ensureAddUsersNode(children : TreeItem[]) : TreeItem {
+export function ensureAddUsersNode(children : TreeItem[], expanded?:boolean) : TreeItem {
     var listsNode = children.find(child => child.type === 'addUsers');
     if (!listsNode) {
         listsNode = {
             children: [],
             type: 'addUsers',
-            expanded: false
+            expanded: expanded?true:false
         };
         children.push(listsNode);
+    } else {
+        listsNode.expanded = expanded?true:false
+    }
+    return listsNode;
+}
+export function ensureChildNode(type:string, children : TreeItem[], expanded?:boolean) : TreeItem {
+    var listsNode = children.find(child => child.type === type);
+    if (!listsNode) {
+        listsNode = {
+            children: [],
+            type,
+            expanded: expanded?true:false
+        };
+        children.push(listsNode);
+    } else {
+        listsNode.expanded = expanded?true:false
     }
     return listsNode;
 }

@@ -1,12 +1,5 @@
 import { addNodeUnderParent, TreeItem } from "react-sortable-tree";
-import {
-  ensureNavLinksNode,
-  ensureSiteColumnsNode,
-  ensureInstallSolutionsNode,
-  ensureAddUsersNode,
-  ensureRemoveNavLinksNode,
-  ensureChildNode
-} from "../helpers";
+import {ensureChildNode} from "../helpers";
 import { ensureListSubNodes } from "../converters";
 
 export function addListToTree(
@@ -45,7 +38,7 @@ export function addNavLinkToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureNavLinksNode(newTree[0].children!, true);
+  var navLinksNode = ensureChildNode("navLinks", treeData[0].children!, true);
   var newNavNode = {
     type: "navLink",
     expanded: true,
@@ -61,7 +54,7 @@ export function addRemoveNavLinkToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureRemoveNavLinksNode(newTree[0].children!, true);
+  var navLinksNode = ensureChildNode("removeNavLinks", newTree[0].children!, true);
   var newNavNode = {
     type: "removeNavLink",
     expanded: true,
@@ -342,7 +335,7 @@ export function addSiteColumnToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureSiteColumnsNode(newTree[0].children!, true);
+  var navLinksNode = ensureChildNode("siteColumns", newTree[0].children!, true);
   var newNavNode = {
     children: [],
     type: "siteColumn",
@@ -362,7 +355,7 @@ export function addSiteColumnXMLToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureSiteColumnsNode(newTree[0].children!, true);
+  var navLinksNode = ensureChildNode("siteColumns", newTree[0].children!, true);
   var newNavNode = {
     children: [],
     type: "siteColumnXML",
@@ -428,7 +421,11 @@ export function addInstallSolutionToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureInstallSolutionsNode(newTree[0].children!);
+  var navLinksNode = ensureChildNode(
+    "installSolutions",
+    newTree[0].children!,
+    true
+  );
   var newNavNode = {
     type: "installSolution",
     data: {},
@@ -444,7 +441,7 @@ export function addUserToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var parentNode = ensureAddUsersNode(newTree[0].children!);
+  var parentNode = ensureChildNode("addUsers", newTree[0].children!, true);
   var newNavNode = {
     type: "addUser",
     expanded: true,

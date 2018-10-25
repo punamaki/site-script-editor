@@ -1,12 +1,7 @@
 import { IAction, ISiteScriptContainer } from "../types";
 import { TreeItem } from "react-sortable-tree";
 import {
-  ensureNavLinksNode,
-  ensureSiteColumnsNode,
-  ensureContentTypesNode,
-  ensureInstallSolutionsNode,
-  ensureAddUsersNode,
-  ensureRemoveNavLinksNode
+  ensureChildNode
 } from "../helpers";
 
 export function convertJsonToSiteHierarchy(
@@ -41,32 +36,37 @@ export function convertJsonToSiteHierarchy(
           returnObj.data["hourFormat"] = action.hourFormat;
           break;
         case "createSPList":
-          let listsNode = ensureListsNode(children);
+          let listsNode = ensureChildNode("lists", children);
           let list = createSPList(action);
           listsNode.children!.push(list);
           break;
         case "addNavLink":
-          let navLinksNode = ensureNavLinksNode(children);
+          let navLinksNode = ensureChildNode("navLinks", children);
           let navLink = createNavLink(action);
           navLinksNode.children!.push(navLink);
           break;
         case "removeNavLink":
-          let removeNavLinksNode = ensureRemoveNavLinksNode(children);
+          let removeNavLinksNode = ensureChildNode("removeNavLinks", children);
           let removeNavLink = createRemoveNavLink(action);
           removeNavLinksNode.children!.push(removeNavLink);
           break;
         case "addPrincipalToSPGroup":
-          let addUsersNode = ensureAddUsersNode(children);
+          let addUsersNode = ensureChildNode("addUsers", children);
           let addUser = createAddUser(action);
           addUsersNode.children!.push(addUser);
           break;
         case "createSiteColumn":
-          let siteColumnsNode = ensureSiteColumnsNode(children);
+          let siteColumnsNode = ensureChildNode("siteColumns", children);
           let siteColumn = createSiteColumn(action);
           siteColumnsNode.children!.push(siteColumn);
           break;
+        case "createSiteColumnXml":
+          let siteColumnsXmlNode = ensureChildNode("siteColumns", children);
+          let siteColumnXml = createSiteColumnXml(action);
+          siteColumnsXmlNode.children!.push(siteColumnXml);
+          break;
         case "createContentType":
-          let contentTypesNode = ensureContentTypesNode(children);
+          let contentTypesNode = ensureChildNode("contentTypes", children);
           let contentType = createContentType(action);
           contentTypesNode.children!.push(contentType);
           break;
@@ -78,7 +78,7 @@ export function convertJsonToSiteHierarchy(
           returnObj.data["hubSiteId"] = action.hubSiteId;
           break;
         case "installSolution":
-          let installSolutionNode = ensureInstallSolutionsNode(children);
+          let installSolutionNode = ensureChildNode("installSolutions", children);
           let installSolution = createInstallSolution(action);
           installSolutionNode.children!.push(installSolution);
           break;
@@ -175,6 +175,22 @@ export function convertJsonToSiteHierarchy(
         isRequired,
         group,
         enforceUnique
+      }
+    };
+    return siteColumn;
+  }
+  function createSiteColumnXml(action: IAction) {
+    var {
+      schemaXml,
+      pushChanges
+    } = action;
+    const siteColumn: TreeItem = {
+      children: [],
+      type: "siteColumnXML",
+      expanded: true,
+      data: {
+        schemaXml,
+        pushChanges
       }
     };
     return siteColumn;
@@ -426,20 +442,6 @@ export function convertJsonToSiteHierarchy(
     }
     return list;
   }
-}
-
-function ensureListsNode(children: TreeItem[]): TreeItem {
-  var listsNode = children.find(child => child.type === "lists");
-  if (!listsNode) {
-    listsNode = {
-      title: "Lists",
-      children: [],
-      type: "lists",
-      expanded: false
-    };
-    children.push(listsNode);
-  }
-  return listsNode;
 }
 
 function ensureFieldsNode(list: TreeItem) {

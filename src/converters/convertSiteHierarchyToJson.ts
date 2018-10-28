@@ -67,7 +67,7 @@ export function convertSiteHierarchyToJson(
         case "navLinks":
           actions = actions.concat(actionCreateNavLinks(child.children));
           break;
-          case "removeNavLinks":
+        case "removeNavLinks":
           actions = actions.concat(actionCreateRemoveNavLinks(child.children));
           break;
         case "addUsers":
@@ -82,6 +82,11 @@ export function convertSiteHierarchyToJson(
         case "installSolutions":
           actions = actions.concat(
             actionCreateInstallSolutions(child.children)
+          );
+          break;
+        case "associateExtensions":
+          actions = actions.concat(
+            actionCreateAssociateExtension(child.children)
           );
           break;
         case "triggerFlow":
@@ -148,7 +153,7 @@ function actionCreateSPList(children: TreeItem[] | undefined): IAction[] {
       let listAction = {
         verb: "createSPList",
         listName: child.data.listName,
-        templateType: 100,
+        templateType: child.data.templateType,
         subactions: subactions
       };
       if (child.data.listDescription) {
@@ -296,7 +301,9 @@ function actionCreateNavLinks(children: TreeItem[] | undefined): IAction[] {
   }
   return listActions;
 }
-function actionCreateRemoveNavLinks(children: TreeItem[] | undefined): IAction[] {
+function actionCreateRemoveNavLinks(
+  children: TreeItem[] | undefined
+): IAction[] {
   var listActions: IAction[] = [];
   if (children) {
     listActions = children.map(child => {
@@ -388,6 +395,35 @@ function actionCreateInstallSolutions(
       return {
         verb: "installSolution",
         id: child.data.id
+      };
+    });
+  }
+  return listActions;
+}
+function actionCreateAssociateExtension(
+  children: TreeItem[] | undefined
+): IAction[] {
+  var listActions: IAction[] = [];
+  if (children) {
+    listActions = children.map(child => {
+      let {
+        title,
+        location,
+        clientSideComponentId,
+        clientSideComponentProperties,
+        registrationId,
+        registrationType,
+        scope
+      } = child.data;
+      return {
+        verb: "associateExtension",
+        title,
+        location,
+        clientSideComponentId,
+        clientSideComponentProperties,
+        registrationId,
+        registrationType,
+        scope
       };
     });
   }

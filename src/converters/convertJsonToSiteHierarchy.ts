@@ -1,8 +1,6 @@
 import { IAction, ISiteScriptContainer } from "../types";
 import { TreeItem } from "react-sortable-tree";
-import {
-  ensureChildNode
-} from "../helpers";
+import { ensureChildNode } from "../helpers";
 
 export function convertJsonToSiteHierarchy(
   siteScriptContainer: ISiteScriptContainer
@@ -78,9 +76,20 @@ export function convertJsonToSiteHierarchy(
           returnObj.data["hubSiteId"] = action.hubSiteId;
           break;
         case "installSolution":
-          let installSolutionNode = ensureChildNode("installSolutions", children);
+          let installSolutionNode = ensureChildNode(
+            "installSolutions",
+            children
+          );
           let installSolution = createInstallSolution(action);
           installSolutionNode.children!.push(installSolution);
+          break;
+        case "associateExtension":
+          let associateExtensionNode = ensureChildNode(
+            "associateExtensions",
+            children
+          );
+          let associateExtension = createAssociateExtension(action);
+          associateExtensionNode.children!.push(associateExtension);
           break;
         default:
           break;
@@ -118,7 +127,7 @@ export function convertJsonToSiteHierarchy(
     return navLink;
   }
   function createRemoveNavLink(action: IAction) {
-    var {displayName, isWebRelative } = action;
+    var { displayName, isWebRelative } = action;
     const removeNavLink: TreeItem = {
       children: [],
       type: "removeNavLink",
@@ -155,6 +164,32 @@ export function convertJsonToSiteHierarchy(
     };
     return navLink;
   }
+  function createAssociateExtension(action: IAction) {
+    var {
+      title,
+      location,
+      clientSideComponentId,
+      clientSideComponentProperties,
+      registrationId,
+      registrationType,
+      scope
+    } = action;
+    const navLink: TreeItem = {
+      children: [],
+      type: "associateExtension",
+      expanded: true,
+      data: {
+        title,
+        location,
+        clientSideComponentId,
+        clientSideComponentProperties,
+        registrationId,
+        registrationType,
+        scope
+      }
+    };
+    return navLink;
+  }
   function createSiteColumn(action: IAction) {
     var {
       fieldType,
@@ -180,10 +215,7 @@ export function convertJsonToSiteHierarchy(
     return siteColumn;
   }
   function createSiteColumnXml(action: IAction) {
-    var {
-      schemaXml,
-      pushChanges
-    } = action;
+    var { schemaXml, pushChanges } = action;
     const siteColumn: TreeItem = {
       children: [],
       type: "siteColumnXML",
@@ -237,7 +269,7 @@ export function convertJsonToSiteHierarchy(
         templateType: action.templateType
       }
     };
-    ensureListSubNodes(list)
+    ensureListSubNodes(list);
     if (action.subactions) {
       var subactions = action.subactions;
       subactions.forEach(subaction => {
@@ -563,7 +595,7 @@ function ensureContentTypeSiteColumnsNode(list: TreeItem) {
   }
   return null;
 }
-export function ensureListSubNodes(list:TreeItem) {
+export function ensureListSubNodes(list: TreeItem) {
   ensureFieldsNode(list);
   ensureListContentTypesNode(list);
   ensureColumnFormattersNode(list);

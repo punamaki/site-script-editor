@@ -1,12 +1,11 @@
 import { addNodeUnderParent, TreeItem } from "react-sortable-tree";
-import {ensureChildNode} from "../helpers";
+import { ensureChildNode } from "../helpers";
 import { ensureListSubNodes } from "../converters";
 
 export function addListToTree(
   treeData: TreeItem[],
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
-
   var listsNode = ensureChildNode("lists", treeData[0].children!, true);
   var newList = {
     children: [],
@@ -54,7 +53,11 @@ export function addRemoveNavLinkToTree(
   setTreeAndScriptData: (treeData: TreeItem[]) => void
 ) {
   var newTree = [...treeData];
-  var navLinksNode = ensureChildNode("removeNavLinks", newTree[0].children!, true);
+  var navLinksNode = ensureChildNode(
+    "removeNavLinks",
+    newTree[0].children!,
+    true
+  );
   var newNavNode = {
     type: "removeNavLink",
     expanded: true,
@@ -446,6 +449,29 @@ export function addUserToTree(
     type: "addUser",
     expanded: true,
     data: { principal: "", group: "" }
+  };
+  parentNode!.children!.push({
+    ...newNavNode
+  });
+  setTreeAndScriptData(newTree);
+}
+export function addAssociateExtensionToTree(
+  treeData: TreeItem[],
+  setTreeAndScriptData: (treeData: TreeItem[]) => void
+) {
+  var newTree = [...treeData];
+  var parentNode = ensureChildNode(
+    "associateExtensions",
+    newTree[0].children!,
+    true
+  );
+  var newNavNode = {
+    type: "associateExtension",
+    expanded: true,
+    data: {
+      location: "ClientSideExtension.ApplicationCustomizer",
+      scope: "Web"
+    }
   };
   parentNode!.children!.push({
     ...newNavNode

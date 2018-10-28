@@ -17,7 +17,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   list: {
-    height: 202,
+    height: 152,
     canDrag: false,
     canDrop: false
   },
@@ -213,6 +213,16 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
   },
   addUser: {
     height: 149,
+    canDrag: true,
+    canDrop: true
+  },
+  associateExtensions: {
+    height: 62,
+    canDrag: false,
+    canDrop: false
+  },
+  associateExtension: {
+    height: 255,
     canDrag: true,
     canDrop: true
   }

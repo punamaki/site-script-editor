@@ -42,3 +42,5 @@ export * from "./node-user";
 export * from "./node-remove-nav-links";
 export * from "./node-remove-nav-link";
 export * from "./node-props";
+export * from "./node-associate-extension";
+export * from "./node-associate-extensions";

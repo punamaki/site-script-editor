@@ -10,7 +10,8 @@ import {
   addContentTypeToTree,
   addInstallSolutionToTree,
   addUserToTree,
-  addRemoveNavLinkToTree
+  addRemoveNavLinkToTree,
+  addAssociateExtensionToTree
 } from "../../../helpers";
 import { INodeProps } from "../../../types";
 import "./node-root.css";
@@ -73,6 +74,11 @@ export  function NodeRoot(props: INodeProps) {
           key: "newTriggerFlow",
           name: "Add a Flow trigger",
           onClick: () => addTriggerFlowToTree(treeData, setTreeAndScriptData)
+        },
+        {
+          key: "newAssociateExtension",
+          name: "Associate extension",
+          onClick: () => addAssociateExtensionToTree(treeData, setTreeAndScriptData)
         }
       ]
     },
@@ -359,15 +365,15 @@ export  function NodeRoot(props: INodeProps) {
         </div> */}
         <div className="sd_row" >
           <div className="sd_col_50">
-            <SDTextField {...props} label="Theme" fieldName="themeName" />
+            <SDTextField {...props} label="Theme" fieldName="themeName" infoText="Use the applyTheme verb to add a custom theme to the site. Note that this site action only works for applying custom themes; to apply one of our in-product SharePoint themes, create a copy as a custom one and reference that one."/>
           </div>
           <div className="sd_col_50">
-            <SDTextField {...props} label="Logo url" fieldName="url" />
+            <SDTextField {...props} label="Logo url" fieldName="url" infoText="Use the setSiteLogo verb to specify a logo for your site. Note: This action only works on the communication site template (68)."/>
           </div>
         </div>
         <div className="sd_row">
           <div className="sd_col_50">
-            <SDTextField {...props} label="Hub site id" fieldName="hubSiteId" />
+            <SDTextField {...props} label="Hub site id" fieldName="hubSiteId" infoText="Use the joinHubSite verb to join the site to a designated hub site."/>
           </div>
           <div className="sd_col_50">
             <SDComboBox

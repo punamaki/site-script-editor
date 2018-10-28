@@ -1,0 +1,14 @@
+.sd_site_hierarchy_node_type_associateExtension .sd_row{
+    width:418px;
+}
+
+.sd_site_hierarchy_node_type_associateExtension i {
+    color:#a12525;
+    font-size: 14px;
+}
+.sd_site_hierarchy_node_type_associateExtension i:hover {
+    color:#fa0000;
+}
+.sd_site_hierarchy_node_type_associateExtension .sd_site_hierarchy_node_menu_launcher{
+    width:20px;
+}

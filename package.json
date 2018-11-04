@@ -44,7 +44,8 @@
   "dependencies": {
     "ajv": "^5.5.2",
     "jsoneditor": "^5.24.6",
-    "office-ui-fabric-react": "^6.89.0",
+    "office-ui-fabric-react": "^6.98.1",
+    "react-dom": "^16.6.0",
     "react-ga": "^2.5.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -62,7 +63,7 @@
   },
   "peerDependencies": {
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.6.0"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",

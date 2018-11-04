@@ -18,7 +18,9 @@ export interface IDispatchProps {
     setNodeTypeProps : (nodeType:string, nodeTypeProps:INodeTypeProps)=>void;
     setAllNodeTypeProps: (propsAll:IDictionary<INodeTypeProps>)=>void;
 }
-
+export interface IProps {
+    onSiteScriptContainerChange?:(newSiteScriptContainer:ISiteScriptContainer)=>void;
+}
 export interface IStateProps {
     messageList : IMessage[];
     currentSiteScriptContainer : ISiteScriptContainer;
@@ -27,6 +29,7 @@ export interface IStateProps {
 }
 export interface IEditorState {
     siteHierarchyKey:string;
+    siteScriptContainerOld:ISiteScriptContainer |null;
 }
 export function mapStateToProps({messageList, currentSiteScriptContainer, treeData,nodeTypesProps} : IStateProps) {
     return {messageList, currentSiteScriptContainer, treeData,nodeTypesProps};
@@ -55,11 +58,11 @@ export function mapDispatchToProps(dispatch : any) : IDispatchProps {
     };
 }
 
-class Editor extends React.Component < IStateProps & IDispatchProps,
+class Editor extends React.Component < IStateProps & IDispatchProps & IProps,
 IEditorState > {
-    constructor(props : IStateProps & IDispatchProps) {
+    constructor(props : IStateProps & IDispatchProps & IProps) {
         super(props);
-        this.state = {siteHierarchyKey:"1000"};
+        this.state = {siteHierarchyKey:"1000",siteScriptContainerOld:null};
   if(this.isIE()) {
       alert("Unfortunately IE is not supported. Please use a modern browser instead")
   }
@@ -98,7 +101,17 @@ IEditorState > {
         }
         return newRoot
     }
- 
+    @autobind
+    public componentWillReceiveProps(newProps: IStateProps & IDispatchProps & IProps) {
+
+  
+      if(this.state.siteScriptContainerOld!==newProps.currentSiteScriptContainer) {
+          if(this.props.onSiteScriptContainerChange) {
+            this.props.onSiteScriptContainerChange(newProps.currentSiteScriptContainer)
+          }
+      }
+  
+    }
     @autobind
     private setTreeAndScriptData(treeData:TreeItem[]) {
         this.props.setTreeData(treeData);
@@ -113,7 +126,6 @@ IEditorState > {
         return <div className="sd_editor">
 
                 <div id="sd_hierarchy" key={this.state.siteHierarchyKey}><SiteHierarchy
-                    setSiteScriptContainer={this.props.setSiteScriptContainer}
                     setTreeAndScriptData={this.setTreeAndScriptData}
                     treeData={this.props.treeData}
                     setNodeTypeProps={this.props.setNodeTypeProps}

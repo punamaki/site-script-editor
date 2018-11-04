@@ -5,6 +5,8 @@ import { INodeProps } from "../../../types";
 import NodeWrapper from "../../../components/nodes/node-wrapper";
 import SDTextField from "../../../components/sd-text-field";
 import "./index.css";
+import SDComboBox from "../../sd-combo-box";
+import { IComboBoxOption } from "office-ui-fabric-react/lib/ComboBox";
 
 export function NodeAddUser(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
@@ -16,7 +18,20 @@ export function NodeAddUser(props: INodeProps) {
       setTreeAndScriptData(removeNodeAtPath({ treeData, path, getNodeKey })),
     title: "Remove the content type"
   };
-
+  var options: IComboBoxOption[] = [
+    {
+      key: "Visitors",
+      text: "Visitors"
+    },
+    {
+      key: "Members",
+      text: "Members"
+    },
+    {
+      key: "Owners",
+      text: "Owners"
+    }
+  ];
   return (
     <NodeWrapper
       actionProps={actionProps}
@@ -33,7 +48,13 @@ export function NodeAddUser(props: INodeProps) {
           />
         </div>
         <div>
-          <SDTextField {...props} label="Group" fieldName="group" />
+        <SDComboBox
+              {...props}
+              label="Group"
+              fieldName="group"
+              options={options}
+            />
+
         </div>
       </div>
     </NodeWrapper>

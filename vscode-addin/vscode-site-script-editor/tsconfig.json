@@ -1,36 +1,34 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "baseUrl": ".",
+    "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "allowJs": false,
+    "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
+    "importHelpers": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "baseUrl": "src",
-    "experimentalDecorators": true,
-    "declaration":true
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
     "build",
     "scripts",
-    "dist",
     "acceptance-tests",
     "webpack",
     "jest",
-    "src/setupTests.ts",
-    "./gulpfile.js",
-    "example",
-    "vscode-addin"
+    "src/setupTests.ts"
   ]
 }

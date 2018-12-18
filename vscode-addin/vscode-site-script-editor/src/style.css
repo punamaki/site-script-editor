@@ -1,0 +1,35 @@
+#sd_json_editor {
+    display: none;
+}
+
+.sd_main{
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    font-family: 'Work Sans', Verdana, sans-serif;
+}
+.sd_main #sd_hierarchy {
+    width: 100%;
+}
+.sd_body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1;
+        flex: 1 1;
+}
+
+.sd_editor_container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1;
+        flex: 1 1;
+    -ms-flex-direction: column;
+        flex-direction: column;
+}
+
+/* showHelpCoachmarks fix */
+.ms-Layer div[class^=pulsingBeacon], .ms-Layer div[class^=pulsingBeacon] + div[class^=translateAnimationContainer] {
+    display: none !important;
+}

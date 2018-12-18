@@ -1,0 +1,28 @@
+{
+  "name": "script-editor-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "autobind-decorator": "^2.4.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts-ts": "3.1.0",
+    "site-script-editor": "file:../..",
+    "typescript": "^2.9.1"
+  },
+  "scripts": {
+    "copy": "copyfiles --flat build/static/js/*.js build/static/css/*.css ../web-view",
+    "clean-web-view": "del-cli --force ../web-view/**/*",
+    "start": "react-scripts-ts start",
+    "build": "npm run clean-web-view && react-scripts-ts build && npm run copy",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@types/node": "^10.11.7",
+    "@types/react-dom": "^16.0.9",
+    "copyfiles": "^2.1.0",
+    "del-cli": "^1.1.0"
+  }
+}

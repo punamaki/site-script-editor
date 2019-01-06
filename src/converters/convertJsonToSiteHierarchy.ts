@@ -153,13 +153,13 @@ export function convertJsonToSiteHierarchy(
     return addUser;
   }
   function createInstallSolution(action: IAction) {
-    var { id } = action;
+    var { id, name } = action;
     const navLink: TreeItem = {
       children: [],
       type: "installSolution",
       expanded: true,
       data: {
-        id
+        id, name
       }
     };
     return navLink;

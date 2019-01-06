@@ -202,7 +202,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   installSolution: {
-    height: 102,
+    height: 148,
     canDrag: true,
     canDrop: true
   },

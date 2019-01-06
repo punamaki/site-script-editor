@@ -394,7 +394,8 @@ function actionCreateInstallSolutions(
     listActions = children.map(child => {
       return {
         verb: "installSolution",
-        id: child.data.id
+        id: child.data.id,
+        name:child.data.name
       };
     });
   }

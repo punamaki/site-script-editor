@@ -6,9 +6,7 @@ import { getNodeKey } from "../../../helpers";
 import { INodeProps } from "../../../types";
 import "./index.css";
 
-
-
-export  function NodeInstallSolution(props: INodeProps) {
+export function NodeInstallSolution(props: INodeProps) {
   var { path, treeData, setTreeAndScriptData } = props;
   var actionProps = {
     iconProps: {
@@ -20,9 +18,18 @@ export  function NodeInstallSolution(props: INodeProps) {
   };
 
   return (
-    <NodeWrapper actionProps={actionProps} smallTitle="Install an add-in or solution" infoText="Use the installSolution action to install a deployed add-in or SharePoint Framework solution from the tenant app catalog.">
+    <NodeWrapper
+      actionProps={actionProps}
+      smallTitle="Install an add-in or solution"
+      infoText="Use the installSolution action to install a deployed add-in or SharePoint Framework solution from the tenant app catalog."
+    >
       <div className="sd_site_hierarchy_node_InstallSolution">
-      <SDTextField {...props} label="Id" fieldName="id" />
+        <div className="sd_row">
+          <SDTextField {...props} label="Name" fieldName="name" />
+        </div>
+        <div className="sd_row">
+          <SDTextField {...props} label="Id" fieldName="id" />
+        </div>
       </div>
     </NodeWrapper>
   );

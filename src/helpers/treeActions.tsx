@@ -431,7 +431,7 @@ export function addInstallSolutionToTree(
   );
   var newNavNode = {
     type: "installSolution",
-    data: {},
+    data: {id:"",name:""},
     expanded: true
   };
   navLinksNode!.children!.push({

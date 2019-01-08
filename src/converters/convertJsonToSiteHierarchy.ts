@@ -387,7 +387,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "associateFieldCustomizer":
             if (list.children) {
-              var columnNode = ensureColumnFormattersNode(list);
+              var columnNode = ensureFieldCustomizersNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listFieldCustomizer",

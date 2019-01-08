@@ -140,6 +140,7 @@ function actionCreateSPList(children: TreeItem[] | undefined): IAction[] {
               subactions = subactions.concat(
                 actionCreateFieldCustomizers(child2.children)
               );
+              break;
             case "listViewCommandSets":
               subactions = subactions.concat(
                 actionCreateListViewCommandSets(child2.children)

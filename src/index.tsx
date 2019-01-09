@@ -12,6 +12,7 @@ import { initializeIcons } from "@uifabric/icons";
 import * as actions from "./actions";
 import { autobind } from "@uifabric/utilities";
 import { convertJsonToSiteHierarchy } from "./converters";
+import { setupExpansion } from './helpers';
 
 const loggerMiddleware = createLogger();
 const store = createStore<IStoreState, Action<any>, {}, {}>(
@@ -42,8 +43,14 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
     siteScriptContainer: ISiteScriptContainer | null
   ) {
     if (siteScriptContainer) {
+      const oldTreeData = store.getState().treeData;
+      let newTreeData = convertJsonToSiteHierarchy(siteScriptContainer);
+      if(oldTreeData && oldTreeData.length > 0) {
+        newTreeData = [setupExpansion(oldTreeData[0], newTreeData[0])];
+      }
+
       store.dispatch(actions.setSiteScript(siteScriptContainer));
-      store.dispatch(actions.setTreeData(convertJsonToSiteHierarchy(siteScriptContainer)));
+      store.dispatch(actions.setTreeData(newTreeData));
       if(this.props.showHelpCoachmarks) {
         store.dispatch(actions.showCoachmarks(this.props.showHelpCoachmarks));
       }

@@ -2,8 +2,6 @@ import * as React from 'react';
 import {ComboBox, IComboBoxOption} from 'office-ui-fabric-react/lib/ComboBox';
 import {TreeItem, changeNodeAtPath} from 'react-sortable-tree';
 import './sd-combo-box.css';
-
-
 interface ISDTextFieldProps {
     node : TreeItem;
     path : string[] | number[];
@@ -24,7 +22,7 @@ export default function SDComboBox(props : ISDTextFieldProps) {
         var newNode = {...node};
         var returnValue;
         if(option) {
-            returnValue=option.key
+            returnValue=option.key;
         } else {
             returnValue=value;
         }
@@ -40,13 +38,13 @@ export default function SDComboBox(props : ISDTextFieldProps) {
             getNodeKey,
             newNode
         }));
-    }
+    };
     function convertToText(val:any) {
         
         if(val && typeof val === "number") {
             return val.toString();
         } else  {
-            return val
+            return val;
         }
     }
     return <ComboBox
@@ -58,5 +56,5 @@ export default function SDComboBox(props : ISDTextFieldProps) {
         options={props.options}
         onChanged={onChanged}
         text={convertToText(props.node.data[props.fieldName])}
-        />
+        />;
 }

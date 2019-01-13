@@ -12,6 +12,8 @@ export * from "./node-field-deletion";
 export * from "./node-list-content-type";
 export * from "./node-list-content-types";
 export * from "./node-list-content-type-deletion";
+export * from "./node-list-site-column";
+export * from "./node-list-site-columns";
 export * from "./node-column-formatter";
 export * from "./node-column-formatters";
 export * from "./node-nav-links";

@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {convertJsonToSiteHierarchy, convertSiteHierarchyToJson} from '../../converters';
 import {TreeItem} from 'react-sortable-tree';
 import { autobind } from '@uifabric/utilities';
+import { setupExpansion } from '../../helpers';
 
 
 export interface IDispatchProps {
@@ -71,7 +72,7 @@ IEditorState > {
         var currentContainer = this.props.currentSiteScriptContainer;
         currentContainer.siteScript = siteScript;
         var newTreeData = convertJsonToSiteHierarchy(currentContainer);
-        newTreeData = [this.setupExpansion(this.props.treeData[0], newTreeData[0])]
+        newTreeData = [setupExpansion(this.props.treeData[0], newTreeData[0])]
         this
             .props
             .setSiteScriptContainer(currentContainer);
@@ -90,17 +91,7 @@ IEditorState > {
     
         return isIE;
     }
-    private setupExpansion(oldRoot:TreeItem, newRoot:TreeItem):TreeItem {
-        if(oldRoot.children) {
-            oldRoot.children!.forEach(oldChild=>{
-                const newElemFound = newRoot.children!.find(newChild=>newChild.type===oldChild.type);
-                if(newElemFound) {
-                    newElemFound.expanded=oldChild.expanded
-                }
-            })
-        }
-        return newRoot
-    }
+    
     @autobind
     public componentWillReceiveProps(newProps: IStateProps & IDispatchProps & IProps) {
 

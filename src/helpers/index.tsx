@@ -7,9 +7,9 @@ import * as React from "react";
 export function getChildrenAmount(treeData:TreeItem[], path:string[] | number[], getNodeKey:GetNodeKeyFunction ):number {
     const partialTree =  getNodeAtPath({ treeData, path, getNodeKey });
     if(partialTree && partialTree.node && partialTree.node.children) {
-     return partialTree.node.children.length
+     return partialTree.node.children.length;
     } else {
-        return 0
+        return 0;
     }
  }
 
@@ -23,7 +23,7 @@ export function ensureChildNode(type:string, children : TreeItem[], expanded?:bo
         };
         children.push(listsNode);
     } else {
-        listsNode.expanded = expanded?true:false
+        listsNode.expanded = expanded?true:false;
     }
     return listsNode;
 }

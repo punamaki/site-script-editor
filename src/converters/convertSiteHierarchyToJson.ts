@@ -126,6 +126,11 @@ function actionCreateSPList(children: TreeItem[] | undefined): IAction[] {
                 actionCreateListContentTypes(child2.children)
               );
               break;
+            case "listSiteColumns":
+              subactions = subactions.concat(
+                actionCreateListSiteColumns(child2.children)
+              );
+              break;
             case "columnFormatters":
               subactions = subactions.concat(
                 actionCreateColumnFormatters(child2.children)
@@ -195,6 +200,23 @@ function actionCreateListContentTypes(
   }
   return listActions;
 }
+function actionCreateListSiteColumns(
+  children: TreeItem[] | undefined
+): IAction[] {
+  var listActions: IAction[] = [];
+  if (children) {
+    listActions = children.map(child => {
+      switch (child.type) {
+        case "listSiteColumn":
+          return { verb: "addSiteColumn", internalName: child.data.internalName };
+        default:
+          return { verb: "" };
+      }
+    });
+  }
+  return listActions;
+}
+
 function actionCreateSPFields(children: TreeItem[] | undefined): IAction[] {
   var listActions: IAction[] = [];
   if (children) {

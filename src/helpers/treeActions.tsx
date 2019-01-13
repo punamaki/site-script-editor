@@ -287,7 +287,7 @@ export function addViewToList(
         }
       ],
       type: "listView",
-      data: { name: "" }
+      data: { name:"", query: "", rowLimit: 100, isPaged: false, makeDefault: false }
     }
   });
   setTreeAndScriptData(fullTree.treeData);
@@ -501,7 +501,7 @@ export function addInstallSolutionToTree(
   );
   var newNavNode = {
     type: "installSolution",
-    data: {id:"",name:""},
+    data: { id: "", name: "" },
     expanded: true
   };
   navLinksNode!.children!.push({

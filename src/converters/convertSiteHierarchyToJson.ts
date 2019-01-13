@@ -300,7 +300,7 @@ function actionCreateListViews(children: TreeItem[] | undefined): IAction[] {
             verb: "addSPView",
             name: child.data.name,
             query: child.data.query,
-            rowLimit: child.data.rowLimit,
+            rowLimit: Number(child.data.rowLimit),
             isPaged: child.data.isPaged,
             makeDefault: child.data.makeDefault,
             viewFields

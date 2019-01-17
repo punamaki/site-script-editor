@@ -287,7 +287,7 @@ export function addViewToList(
         }
       ],
       type: "listView",
-      data: { name: "" }
+      data: { name:"", query: "", rowLimit: 100, isPaged: false, makeDefault: false }
     }
   });
   setTreeAndScriptData(fullTree.treeData);
@@ -353,6 +353,30 @@ export function addSiteColumnToTree(
   });
   setTreeAndScriptData(newTree);
 }
+export function addSiteColumn(
+  path: string[] | number[],
+  treeData: TreeItem[],
+  setTreeAndScriptData: (treeData: TreeItem[]) => void
+) {
+  var getNodeKey = ({ treeIndex }: any) => treeIndex;
+
+  var fullTree = addNodeUnderParent({
+    treeData: treeData,
+    parentKey: path[path.length - 1],
+    expandParent: true,
+    getNodeKey,
+    newNode: {
+      children: [],
+      type: "siteColumn",
+      data: {
+        fieldType: "Text",
+        displayName: "New field",
+        internalName: "newField"
+      }
+    }
+  });
+  setTreeAndScriptData(fullTree.treeData);
+}
 export function addSiteColumnXMLToTree(
   treeData: TreeItem[],
   setTreeAndScriptData: (treeData: TreeItem[]) => void
@@ -372,6 +396,29 @@ export function addSiteColumnXMLToTree(
     ...newNavNode
   });
   setTreeAndScriptData(newTree);
+}
+export function addSiteColumnXML(
+  path: string[] | number[],
+  treeData: TreeItem[],
+  setTreeAndScriptData: (treeData: TreeItem[]) => void
+) {
+  var getNodeKey = ({ treeIndex }: any) => treeIndex;
+  var fullTree = addNodeUnderParent({
+    treeData: treeData,
+    parentKey: path[path.length - 1],
+    expandParent: true,
+    getNodeKey,
+    newNode: {
+      children: [],
+      type: "siteColumnXML",
+      data: {
+        schemaXml:
+          '<Field Type="Choice" DisplayName="Project Status" Required="FALSE" Format="Dropdown" StaticName="ProjectStatus" Name="ProjectStatus"><Default>In Progress</Default><CHOICES><CHOICE>In Progress</CHOICE><CHOICE>In Review</CHOICE><CHOICE>Done</CHOICE><CHOICE>Has Issues</CHOICE></CHOICES></Field>',
+        pushChanges: true
+      }
+    }
+  });
+  setTreeAndScriptData(fullTree.treeData);
 }
 export function addContentTypeToTree(
   treeData: TreeItem[],
@@ -418,6 +465,29 @@ export function addSiteColumnToContentType(
     }
   });
   setTreeAndScriptData(fullTree.treeData);
+} 
+
+export function addSiteColumnToList(
+  path: string[] | number[],
+  treeData: TreeItem[],
+  setTreeAndScriptData: (treeData: TreeItem[]) => void
+) {
+  var getNodeKey = ({ treeIndex }: any) => treeIndex;
+
+  var fullTree = addNodeUnderParent({
+    treeData: treeData,
+    parentKey: path[path.length - 1],
+    expandParent: true,
+    getNodeKey,
+    newNode: {
+      children: [],
+      type: "listSiteColumn",
+      data: {
+        internalName: ""
+      }
+    }
+  });
+  setTreeAndScriptData(fullTree.treeData);
 }
 export function addInstallSolutionToTree(
   treeData: TreeItem[],
@@ -431,7 +501,7 @@ export function addInstallSolutionToTree(
   );
   var newNavNode = {
     type: "installSolution",
-    data: {},
+    data: { id: "", name: "" },
     expanded: true
   };
   navLinksNode!.children!.push({

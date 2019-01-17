@@ -30,6 +30,7 @@
     "jest",
     "src/setupTests.ts",
     "./gulpfile.js",
-    "example"
+    "example",
+    "vscode-addin"
   ]
 }

@@ -126,6 +126,11 @@ function actionCreateSPList(children: TreeItem[] | undefined): IAction[] {
                 actionCreateListContentTypes(child2.children)
               );
               break;
+            case "listSiteColumns":
+              subactions = subactions.concat(
+                actionCreateListSiteColumns(child2.children)
+              );
+              break;
             case "columnFormatters":
               subactions = subactions.concat(
                 actionCreateColumnFormatters(child2.children)
@@ -140,6 +145,7 @@ function actionCreateSPList(children: TreeItem[] | undefined): IAction[] {
               subactions = subactions.concat(
                 actionCreateFieldCustomizers(child2.children)
               );
+              break;
             case "listViewCommandSets":
               subactions = subactions.concat(
                 actionCreateListViewCommandSets(child2.children)
@@ -194,6 +200,23 @@ function actionCreateListContentTypes(
   }
   return listActions;
 }
+function actionCreateListSiteColumns(
+  children: TreeItem[] | undefined
+): IAction[] {
+  var listActions: IAction[] = [];
+  if (children) {
+    listActions = children.map(child => {
+      switch (child.type) {
+        case "listSiteColumn":
+          return { verb: "addSiteColumn", internalName: child.data.internalName };
+        default:
+          return { verb: "" };
+      }
+    });
+  }
+  return listActions;
+}
+
 function actionCreateSPFields(children: TreeItem[] | undefined): IAction[] {
   var listActions: IAction[] = [];
   if (children) {
@@ -277,7 +300,7 @@ function actionCreateListViews(children: TreeItem[] | undefined): IAction[] {
             verb: "addSPView",
             name: child.data.name,
             query: child.data.query,
-            rowLimit: child.data.rowLimit,
+            rowLimit: Number(child.data.rowLimit),
             isPaged: child.data.isPaged,
             makeDefault: child.data.makeDefault,
             viewFields
@@ -394,7 +417,8 @@ function actionCreateInstallSolutions(
     listActions = children.map(child => {
       return {
         verb: "installSolution",
-        id: child.data.id
+        id: child.data.id,
+        name:child.data.name
       };
     });
   }

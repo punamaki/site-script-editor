@@ -1,10 +1,10 @@
 import * as React from "react";
-//import JsonEditor from "@dr-kobros/react-jsoneditor";
+
 import JsonEditorReact from "../../components/json-editor-react";
 import { ISiteScript } from "../../types";
-// var schema = require("../../schema/site-design-script-actions.schema.json");
+var schema = require("../../schema/site-design-script-actions.schema.json");
 import "./index.css";
-// var Ajv = require('ajv');
+var Ajv = require('ajv');
 
 interface IJsonEditorWrapperProps {
   currentSiteScript: ISiteScript | null | undefined;
@@ -13,14 +13,14 @@ interface IJsonEditorWrapperProps {
 
 const JsonEditorWrapper: React.SFC<IJsonEditorWrapperProps> = props => {
   // Editor configuration. See jsoneditor's API.
-  // var ajv = new Ajv();
+  var ajv = new Ajv();
   
-  // ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
-  // ajv.addSchema(schema, 'JSON Schema for SiteScript Extensions')
+  ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
+  ajv.addSchema(schema, 'JSON Schema for SiteScript Extensions')
   const options = {
     mode: "code",
-    // schema,
-    // ajv
+    schema,
+    ajv
   };
   return (
     <JsonEditorReact

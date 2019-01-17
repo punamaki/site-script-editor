@@ -161,6 +161,16 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrag: true,
     canDrop: true
   },
+  listSiteColumns: {
+    height: 62,
+    canDrag: false,
+    canDrop: false
+  },
+  listSiteColumn: {
+    height: 102,
+    canDrag: true,
+    canDrop: true
+  },
   siteColumns: {
     height: 62,
     canDrag: false,
@@ -202,7 +212,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   installSolution: {
-    height: 102,
+    height: 148,
     canDrag: true,
     canDrop: true
   },

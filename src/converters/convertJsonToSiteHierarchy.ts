@@ -153,13 +153,14 @@ export function convertJsonToSiteHierarchy(
     return addUser;
   }
   function createInstallSolution(action: IAction) {
-    var { id } = action;
+    var { id, name } = action;
     const navLink: TreeItem = {
       children: [],
       type: "installSolution",
       expanded: true,
       data: {
-        id
+        id,
+        name
       }
     };
     return navLink;
@@ -226,6 +227,18 @@ export function convertJsonToSiteHierarchy(
       }
     };
     return siteColumn;
+  }
+  function createListSiteColumn(action: IAction) {
+    var { internalName} = action;
+    const item: TreeItem = {
+      children: [],
+      type: "listSiteColumn",
+      expanded: true,
+      data: {
+        internalName
+      }
+    };
+    return item;
   }
   function createContentType(action: IAction) {
     var { name, parentName, parentId, id, hidden, description } = action;
@@ -387,7 +400,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "associateFieldCustomizer":
             if (list.children) {
-              var columnNode = ensureColumnFormattersNode(list);
+              var columnNode = ensureFieldCustomizersNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listFieldCustomizer",
@@ -467,6 +480,13 @@ export function convertJsonToSiteHierarchy(
               }
             }
             break;
+          case "addSiteColumn":
+            if (list.children) {
+              let siteColumnsNode = ensureListSiteColumnsNode(list);
+              let siteColumn = createListSiteColumn(subaction);
+              siteColumnsNode!.children!.push(siteColumn);
+            }
+            break;
           default:
             break;
         }
@@ -510,6 +530,7 @@ function ensureListContentTypesNode(list: TreeItem) {
   }
   return null;
 }
+
 function ensureFieldCustomizersNode(list: TreeItem) {
   if (list.children) {
     let columnNode = list.children.find(
@@ -595,6 +616,22 @@ function ensureContentTypeSiteColumnsNode(list: TreeItem) {
   }
   return null;
 }
+function ensureListSiteColumnsNode(list: TreeItem) {
+  if (list.children) {
+    let columnNode = list.children.find(child => child.type === "listSiteColumns");
+    if (!columnNode) {
+      columnNode = {
+        title: "Site Columns",
+        children: [],
+        type: "listSiteColumns",
+        expanded: false
+      };
+      list.children.push(columnNode);
+    }
+    return columnNode;
+  }
+  return null;
+}
 export function ensureListSubNodes(list: TreeItem) {
   ensureFieldsNode(list);
   ensureListContentTypesNode(list);
@@ -602,4 +639,6 @@ export function ensureListSubNodes(list: TreeItem) {
   ensureViewsNode(list);
   ensureFieldCustomizersNode(list);
   ensureListViewCommandSetsNode(list);
+  ensureListViewCommandSetsNode(list);
+  ensureListSiteColumnsNode(list);
 }

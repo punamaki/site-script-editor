@@ -20,7 +20,14 @@ const siteScriptContainer = {
         "version": 1
         }
 }
-<SiteScriptEditor siteScriptContainer={siteScriptContainer}/>
+const onSiteScriptContainerChange = newSiteScriptContainer => {
+        //do something with the newSiteScriptContainer
+}
+
+<SiteScriptEditor
+    siteScriptContainer={siteScriptContainer}
+    onSiteScriptContainerChange={onSiteScriptContainerChange}
+/>
 ```
 
 Site Script Editor is available online at [sitedesigner.io](https://www.sitedesigner.io "Site Designer for SharePoint") (courtesy of [Frontium.com](https://www.frontium.com "Frontium")).

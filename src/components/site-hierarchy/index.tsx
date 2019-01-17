@@ -7,7 +7,6 @@ import SortableTree, {
   NodeData
 } from "react-sortable-tree";
 import {
-  ISiteScriptContainer,
   INodeProps,
   TSetNodeTypeProps,
   INodeTypeProps,
@@ -19,7 +18,6 @@ import * as nodes from "../../components/nodes/";
 
 
 interface ISiteHierarchyProps {
-  setSiteScriptContainer: (siteScriptContainer: ISiteScriptContainer) => void;
   setTreeAndScriptData: (treeData: TreeItem[]) => void;
   treeData: TreeItem[];
   setNodeTypeProps: TSetNodeTypeProps;

@@ -16,7 +16,6 @@ import "react-sortable-tree/style.css";
 import { autobind } from "@uifabric/utilities";
 import * as nodes from "../../components/nodes/";
 
-
 interface ISiteHierarchyProps {
   setTreeAndScriptData: (treeData: TreeItem[]) => void;
   treeData: TreeItem[];
@@ -24,6 +23,7 @@ interface ISiteHierarchyProps {
   setAllNodeTypeProps: (propsAll: IDictionary<INodeTypeProps>) => void;
   nodeTypesProps: IDictionary<INodeTypeProps>;
   reloadTree: () => void;
+  isVirtualized?: boolean;
 }
 
 export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
@@ -33,13 +33,15 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
   }
 
   private setNode(nodeProps: INodeProps) {
-   const nodeName = this.convertToElementName(nodeProps.node.type);
+    const nodeName = this.convertToElementName(nodeProps.node.type);
     return React.createElement(nodes[nodeName], nodeProps);
     // return <NodeAddUser {...nodeProps}/>
   }
+
   private convertToElementName(nodeName: string) {
     return "Node" + nodeName.charAt(0).toUpperCase() + nodeName.slice(1);
   }
+
   @autobind
   private calcRowHeight(data: any) {
     if (
@@ -50,6 +52,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     }
     return 72;
   }
+
   @autobind
   private canDrag(data: ExtendedNodeData) {
     if (
@@ -60,6 +63,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     }
     return false;
   }
+
   @autobind
   private canDrop(data: PreviousAndNextLocation & NodeData) {
     if (
@@ -70,6 +74,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     }
     return false;
   }
+
   // @autobind
   // private setNodeTypeProps(nodeType: string, nodeTypeProps: INodeTypeProps) {
   //   if (!this.props.nodeTypesProps[nodeType]) {
@@ -106,6 +111,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
             })}
             canDrag={this.canDrag}
             canDrop={this.canDrop}
+            isVirtualized={this.props.isVirtualized ? this.props.isVirtualized : false}
           />
         </div>
       </div>

@@ -3,9 +3,9 @@ import { INodeProps } from '../../../types';
 import NodeContainer from '../../../components/nodes/node-container';
 import { addAssociateExtensionToTree } from '../../../helpers';
 
-export  function NodeAssociateExtensions(props : INodeProps) {
-    var {treeData, setTreeAndScriptData}=props
-    var actionProps = {
+export function NodeAssociateExtensions(props: INodeProps) {
+    const { treeData, setTreeAndScriptData } = props;
+    const actionProps = {
         iconProps: {
             iconName: 'Add'
         },
@@ -15,11 +15,11 @@ export  function NodeAssociateExtensions(props : INodeProps) {
                 {
                     key: 'newAssociateExtension',
                     name: 'Associate extension',
-                    onClick: () => addAssociateExtensionToTree(treeData,setTreeAndScriptData),
+                    onClick: () => addAssociateExtensionToTree(treeData, setTreeAndScriptData),
                 }
             ]
         }
     };
-    var containerProps = {...props, actionProps, title:"Associated extensions"}
-    return <NodeContainer {...containerProps}/>
+    const containerProps = { ...props, actionProps, title: "Associated extensions" };
+    return <NodeContainer {...containerProps} />;
 }

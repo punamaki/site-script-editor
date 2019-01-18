@@ -5,8 +5,8 @@ import { ensureChildNode } from "../helpers";
 export function convertJsonToSiteHierarchy(
   siteScriptContainer: ISiteScriptContainer
 ): TreeItem[] {
-  var children: TreeItem[] = [];
-  var returnObj = {
+  let children: TreeItem[] = [];
+  let returnObj = {
     title: siteScriptContainer.title,
     expanded: true,
     children: children,
@@ -14,8 +14,8 @@ export function convertJsonToSiteHierarchy(
     data: {}
   };
   if (siteScriptContainer && siteScriptContainer.siteScript) {
-    var siteScript = siteScriptContainer.siteScript;
-    var actions = siteScript.actions;
+    let siteScript = siteScriptContainer.siteScript;
+    let actions = siteScript.actions;
     actions.forEach(action => {
       switch (action.verb) {
         case "applyTheme":
@@ -99,7 +99,7 @@ export function convertJsonToSiteHierarchy(
   }
   return [];
   function createTriggerFlow(action: IAction) {
-    var { url, name, parameters } = action;
+    let { url, name, parameters } = action;
     const item: TreeItem = {
       children: [],
       type: "triggerFlow",
@@ -113,7 +113,7 @@ export function convertJsonToSiteHierarchy(
     return item;
   }
   function createNavLink(action: IAction) {
-    var { url, displayName, isWebRelative } = action;
+    let { url, displayName, isWebRelative } = action;
     const navLink: TreeItem = {
       children: [],
       type: "navLink",
@@ -127,7 +127,7 @@ export function convertJsonToSiteHierarchy(
     return navLink;
   }
   function createRemoveNavLink(action: IAction) {
-    var { displayName, isWebRelative } = action;
+    let { displayName, isWebRelative } = action;
     const removeNavLink: TreeItem = {
       children: [],
       type: "removeNavLink",
@@ -140,7 +140,7 @@ export function convertJsonToSiteHierarchy(
     return removeNavLink;
   }
   function createAddUser(action: IAction) {
-    var { principal, group } = action;
+    let { principal, group } = action;
     const addUser: TreeItem = {
       children: [],
       type: "addUser",
@@ -153,7 +153,7 @@ export function convertJsonToSiteHierarchy(
     return addUser;
   }
   function createInstallSolution(action: IAction) {
-    var { id, name } = action;
+    let { id, name } = action;
     const navLink: TreeItem = {
       children: [],
       type: "installSolution",
@@ -166,7 +166,7 @@ export function convertJsonToSiteHierarchy(
     return navLink;
   }
   function createAssociateExtension(action: IAction) {
-    var {
+    let {
       title,
       location,
       clientSideComponentId,
@@ -192,7 +192,7 @@ export function convertJsonToSiteHierarchy(
     return navLink;
   }
   function createSiteColumn(action: IAction) {
-    var {
+    let {
       fieldType,
       internalName,
       displayName,
@@ -216,7 +216,7 @@ export function convertJsonToSiteHierarchy(
     return siteColumn;
   }
   function createSiteColumnXml(action: IAction) {
-    var { schemaXml, pushChanges } = action;
+    let { schemaXml, pushChanges } = action;
     const siteColumn: TreeItem = {
       children: [],
       type: "siteColumnXML",
@@ -229,7 +229,7 @@ export function convertJsonToSiteHierarchy(
     return siteColumn;
   }
   function createListSiteColumn(action: IAction) {
-    var { internalName} = action;
+    let { internalName } = action;
     const item: TreeItem = {
       children: [],
       type: "listSiteColumn",
@@ -241,7 +241,7 @@ export function convertJsonToSiteHierarchy(
     return item;
   }
   function createContentType(action: IAction) {
-    var { name, parentName, parentId, id, hidden, description } = action;
+    let { name, parentName, parentId, id, hidden, description } = action;
     const contentType: TreeItem = {
       children: [],
       type: "contentType",
@@ -255,9 +255,9 @@ export function convertJsonToSiteHierarchy(
         description
       }
     };
-    var siteColsNode = ensureContentTypeSiteColumnsNode(contentType);
+    let siteColsNode = ensureContentTypeSiteColumnsNode(contentType);
     if (action.subactions) {
-      var subactions = action.subactions;
+      let subactions = action.subactions;
       subactions.forEach(subaction => {
         if (siteColsNode) {
           let data = { internalName: subaction.internalName };
@@ -284,7 +284,8 @@ export function convertJsonToSiteHierarchy(
     };
     ensureListSubNodes(list);
     if (action.subactions) {
-      var subactions = action.subactions;
+      let subactions = action.subactions;
+      let columnNode: TreeItem | null;
       subactions.forEach(subaction => {
         switch (subaction.verb) {
           case "setDescription":
@@ -295,8 +296,8 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addSPFieldXml":
             if (list.children) {
-              var columnNode = ensureFieldsNode(list);
-              var addToDefaultView = subaction.addToDefaultView
+              columnNode= ensureFieldsNode(list);
+              let addToDefaultView = subaction.addToDefaultView
                 ? subaction.addToDefaultView
                 : false;
               if (columnNode) {
@@ -313,18 +314,18 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addSPField":
             if (list.children) {
-              var columnNode = ensureFieldsNode(list);
-              var isRequired = subaction.isRequired
+              columnNode= ensureFieldsNode(list);
+              let isRequired = subaction.isRequired
                 ? subaction.isRequired
                 : false;
-              var addToDefaultView = subaction.addToDefaultView
+              let addToDefaultView = subaction.addToDefaultView
                 ? subaction.addToDefaultView
                 : false;
-              var enforceUnique = subaction.enforceUnique
+              let enforceUnique = subaction.enforceUnique
                 ? subaction.enforceUnique
                 : false;
-              var fieldType = subaction.fieldType;
-              var data = {
+              let fieldType = subaction.fieldType;
+              let data = {
                 displayName: subaction.displayName,
                 internalName: subaction.internalName,
                 isRequired,
@@ -343,7 +344,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "deleteSPField":
             if (list.children) {
-              var columnNode = ensureFieldsNode(list);
+              columnNode= ensureFieldsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "fieldDeletion",
@@ -357,7 +358,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addContentType":
             if (list.children) {
-              var columnNode = ensureListContentTypesNode(list);
+              columnNode= ensureListContentTypesNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listContentType",
@@ -371,7 +372,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "removeContentType":
             if (list.children) {
-              var columnNode = ensureListContentTypesNode(list);
+              columnNode= ensureListContentTypesNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listContentTypeDeletion",
@@ -385,7 +386,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "setSPFieldCustomFormatter":
             if (list.children) {
-              var columnNode = ensureColumnFormattersNode(list);
+              columnNode= ensureColumnFormattersNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "columnFormatter",
@@ -400,7 +401,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "associateFieldCustomizer":
             if (list.children) {
-              var columnNode = ensureFieldCustomizersNode(list);
+              columnNode= ensureFieldCustomizersNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listFieldCustomizer",
@@ -417,7 +418,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "associateListViewCommandSet":
             if (list.children) {
-              var columnNode = ensureListViewCommandSetsNode(list);
+              columnNode= ensureListViewCommandSetsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listViewCommandSet",
@@ -435,7 +436,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addSPView":
             if (list.children) {
-              var columnNode = ensureViewsNode(list);
+              columnNode= ensureViewsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listView",
@@ -468,7 +469,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "removeSPView":
             if (list.children) {
-              var columnNode = ensureViewsNode(list);
+              columnNode= ensureViewsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listViewDeletion",

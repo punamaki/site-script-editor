@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {INodeProps} from '../../../types';
-import './node-list-views.css'
+import { INodeProps } from '../../../types';
+import './node-list-views.css';
 import { addViewToList, addViewDeletionToList } from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export  function NodeListViews(props : INodeProps) {
-    var {path,treeData, setTreeAndScriptData}=props
-    var actionProps = {
+export function NodeListViews(props: INodeProps) {
+    const { path, treeData, setTreeAndScriptData } = props;
+    const actionProps = {
         iconProps: {
             iconName: 'Add'
         },
@@ -16,18 +16,18 @@ export  function NodeListViews(props : INodeProps) {
                 {
                     key: 'newView',
                     name: 'Add a view',
-                    onClick: () => addViewToList(path,treeData,setTreeAndScriptData),
+                    onClick: () => addViewToList(path, treeData, setTreeAndScriptData),
                 },
                 {
                     key: 'newViewDeletion',
                     name: 'Add a default view removal',
-                    onClick: () => addViewDeletionToList(path,treeData,setTreeAndScriptData),
+                    onClick: () => addViewDeletionToList(path, treeData, setTreeAndScriptData),
                 }
             ]
         },
 
     };
 
-    var containerProps = {...props, actionProps, title:"Views"}
-    return <NodeContainer {...containerProps}/>
+    const containerProps = { ...props, actionProps, title: "Views" };
+    return <NodeContainer {...containerProps} />;
 } 

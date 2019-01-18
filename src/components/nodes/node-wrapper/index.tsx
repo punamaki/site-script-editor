@@ -20,7 +20,7 @@ export interface INodeWrapperProps {
   showCoachMark?: boolean;
   bubleTitle?: string;
   bubleContent?: JSX.Element;
-  nodeName?:string;
+  nodeName?: string;
 }
 export interface IConnectedState {
   coachmarkStates: IDictionary<boolean>;
@@ -39,17 +39,15 @@ export function mapDispatchToProps(dispatch: any): IConnectedDispatch {
   };
 }
 
-class NodeWrapper extends React.Component<
-  INodeWrapperProps & IConnectedState & IConnectedDispatch
-> {
+class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & IConnectedDispatch> {
   private menuButtonRef = createRef<HTMLDivElement>();
   private info = this.props.infoText ? (
     <TooltipHost content={this.props.infoText} calloutProps={{ gapSpace: 0 }}>
       <Icon iconName="Info" className="sd_site_hierarchy_node_info_icon" />
     </TooltipHost>
   ) : (
-    ""
-  );
+      ""
+    );
 
   private wrapperRef: any;
 
@@ -60,39 +58,35 @@ class NodeWrapper extends React.Component<
   @autobind
   private handleClickOutside(event: any) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      if(this.props.nodeName) {
-        this.props.setCoachMarkState(this.props.nodeName, false)
+      if (this.props.nodeName) {
+        this.props.setCoachMarkState(this.props.nodeName, false);
       }
-      
     }
   }
 
   componentDidMount() {
-    if(this.props.showCoachMark) {
+    if (this.props.showCoachMark) {
       document.addEventListener("mousedown", this.handleClickOutside);
-      if(this.props.showCoachMark && this.props.nodeName && !this.props.coachmarkStates.hasOwnProperty(this.props.nodeName)) {
-        this.props.setCoachMarkState(this.props.nodeName, true)
+      if (this.props.showCoachMark && this.props.nodeName && !this.props.coachmarkStates.hasOwnProperty(this.props.nodeName)) {
+        this.props.setCoachMarkState(this.props.nodeName, true);
       }
     }
 
   }
 
   componentWillUnmount() {
-    if(this.props.showCoachMark) {
-    document.removeEventListener("mousedown", this.handleClickOutside);
+    if (this.props.showCoachMark) {
+      document.removeEventListener("mousedown", this.handleClickOutside);
     }
   }
+
   @autobind
   private showCoachMark() {
     const showCoachMark = this.props.showCoachMark ? true : false;
-    if(showCoachMark  && this.props.nodeName && this.props.coachmarkStates[this.props.nodeName] && this.props.coachmarkStates[this.props.nodeName]) {
-      return true
-    }
-    return false;
-    
+    return showCoachMark && this.props.nodeName && this.props.coachmarkStates[this.props.nodeName] && this.props.coachmarkStates[this.props.nodeName];
   }
+
   render() {
-    
     return (
       <div className="sd_site_hierarchy_node">
         <div className="sd_site_hierarchy_node_container">
@@ -102,8 +96,8 @@ class NodeWrapper extends React.Component<
               {this.info}
             </div>
           ) : (
-            <div />
-          )}
+              <div />
+            )}
           <div className="sd_site_hierarchy_node_content">
             {this.props.children}
           </div>
@@ -118,8 +112,8 @@ class NodeWrapper extends React.Component<
             <IconButton {...this.props.actionProps} />
           </div>
         ) : (
-          <div />
-        )}
+            <div />
+          )}
         {this.showCoachMark() && (
           <div ref={this.setWrapperRef}>
             <Coachmark
@@ -131,9 +125,9 @@ class NodeWrapper extends React.Component<
               delayBeforeMouseOpen={500}
             >
               {" "}
-              <TeachingBubbleContent 
-              headline={this.props.bubleTitle}
-              hasCloseIcon={true}>
+              <TeachingBubbleContent
+                headline={this.props.bubleTitle}
+                hasCloseIcon={true}>
                 {this.props.bubleContent}
               </TeachingBubbleContent>
             </Coachmark>

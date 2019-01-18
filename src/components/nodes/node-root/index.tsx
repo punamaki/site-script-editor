@@ -18,11 +18,10 @@ import "./node-root.css";
 import { IComboBoxOption } from "office-ui-fabric-react/lib/ComboBox";
 import SDComboBox from "../../../components/sd-combo-box";
 
+export function NodeRoot(props: INodeProps) {
+  let { treeData, setTreeAndScriptData } = props;
 
-export  function NodeRoot(props: INodeProps) {
-  var { treeData, setTreeAndScriptData } = props;
-
-  var actionProps = {
+  let actionProps = {
     iconProps: {
       iconName: "MoreVertical"
     },
@@ -84,7 +83,7 @@ export  function NodeRoot(props: INodeProps) {
     },
     title: "Add"
   };
-  var options: IComboBoxOption[] = [
+  let options: IComboBoxOption[] = [
     {
       key: "",
       text: ""
@@ -106,7 +105,7 @@ export  function NodeRoot(props: INodeProps) {
       text: "ExternalUserAndGuestSharing"
     }
   ];
-  var optionsLocale: IComboBoxOption[] = [
+  let optionsLocale: IComboBoxOption[] = [
     { text: "", key: "" },
     { text: "Afrikaans (1078)", key: "1078" },
     { text: "Albanian (1052)", key: "1052" },
@@ -296,7 +295,7 @@ export  function NodeRoot(props: INodeProps) {
     { text: "Yiddish (1085)", key: "1085" },
     { text: "Zulu (1077)", key: "1077" }
   ];
-  var optionsHourFormat: IComboBoxOption[] = [
+  let optionsHourFormat: IComboBoxOption[] = [
     {
       key: "",
       text: ""
@@ -310,7 +309,7 @@ export  function NodeRoot(props: INodeProps) {
       text: "12"
     }
   ];
-  var optionsSortOrder: IComboBoxOption[] = [
+  let optionsSortOrder: IComboBoxOption[] = [
     {
       key: "",
       text: ""
@@ -324,39 +323,40 @@ export  function NodeRoot(props: INodeProps) {
       text: "Default (25)"
     }
   ];
-  var optionsTimeZone: IComboBoxOption[] = [
-    { text: "", key: ""},
-    { text: "Greenwich Mean and Universal Coordinated Time (0)", key: "0"},
-    { text: "European Central Time (+1:00)", key: "1"},
-    { text: "Eastern European, Egypt Standard Time (+2:00)", key: "2"},
-    { text: "Eastern African Time (+3:00)", key: "3"},
-    { text: "Middle East Time (+3:30)", key: "3.5"},
-    { text: "Near East Time (+4:00)", key: "4"},
-    { text: "Pakistan Lahore Time (+5:00)", key: "5"},
-    { text: "India Standard Time (+5:30)", key: "5.5"},
-    { text: "Bangladesh Standard Time (+6:00)", key: "6"},
-    { text: "Vietnam Standard Time (+7:00)", key: "7"},
-    { text: "China Taiwan Time (+8:00)", key: "8"},
-    { text: "Japan Standard Time (+9:00)", key: "9"},
-    { text: "Australia Central Time (+9:30)", key: "9.5"},
-    { text: "Australia Eastern Time (+10:00)", key: "10"},
-    { text: "Solomon Standard Time (+11:00)", key: "11"},
-    { text: "New Zealand Standard Time (+12:00)", key: "12"},
-    { text: "Midway Islands Time (-11:00)", key: "-11"},
-    { text: "Hawaii Standard Time (-10:00)", key: "-10"},
-    { text: "Alaska Standard Time (-9:00)", key: "-9"},
-    { text: "Pacific Standard Time (-8:00)", key: "-8"},
-    { text: "Mountain, Phoenix Standard Time (-7:00)", key: "-7"},
-    { text: "Central Standard Time (-6:00)", key: "-6"},
-    { text: "Indiana and Eastern Standard Time (-5:00)", key: "-5"},
-    { text: "Puerto Rico and US Virgin Islands Time (-4:00)", key: "-4"},
-    { text: "Canada Newfoundland Time (-3:30)", key: "-3.5"},
-    { text: "Argentina Standard, Brazil Eastern Time (-3:00)", key: "-3"},
-    { text: "Central African Time (-1:00)", key: "-1"}
+  let optionsTimeZone: IComboBoxOption[] = [
+    { text: "", key: "" },
+    { text: "Greenwich Mean and Universal Coordinated Time (0)", key: "0" },
+    { text: "European Central Time (+1:00)", key: "1" },
+    { text: "Eastern European, Egypt Standard Time (+2:00)", key: "2" },
+    { text: "Eastern African Time (+3:00)", key: "3" },
+    { text: "Middle East Time (+3:30)", key: "3.5" },
+    { text: "Near East Time (+4:00)", key: "4" },
+    { text: "Pakistan Lahore Time (+5:00)", key: "5" },
+    { text: "India Standard Time (+5:30)", key: "5.5" },
+    { text: "Bangladesh Standard Time (+6:00)", key: "6" },
+    { text: "Vietnam Standard Time (+7:00)", key: "7" },
+    { text: "China Taiwan Time (+8:00)", key: "8" },
+    { text: "Japan Standard Time (+9:00)", key: "9" },
+    { text: "Australia Central Time (+9:30)", key: "9.5" },
+    { text: "Australia Eastern Time (+10:00)", key: "10" },
+    { text: "Solomon Standard Time (+11:00)", key: "11" },
+    { text: "New Zealand Standard Time (+12:00)", key: "12" },
+    { text: "Midway Islands Time (-11:00)", key: "-11" },
+    { text: "Hawaii Standard Time (-10:00)", key: "-10" },
+    { text: "Alaska Standard Time (-9:00)", key: "-9" },
+    { text: "Pacific Standard Time (-8:00)", key: "-8" },
+    { text: "Mountain, Phoenix Standard Time (-7:00)", key: "-7" },
+    { text: "Central Standard Time (-6:00)", key: "-6" },
+    { text: "Indiana and Eastern Standard Time (-5:00)", key: "-5" },
+    { text: "Puerto Rico and US Virgin Islands Time (-4:00)", key: "-4" },
+    { text: "Canada Newfoundland Time (-3:30)", key: "-3.5" },
+    { text: "Argentina Standard, Brazil Eastern Time (-3:00)", key: "-3" },
+    { text: "Central African Time (-1:00)", key: "-1" }
   ];
-  
-    var convertToNumberProps = {...props, convertToNumber:true}
-    var bubleContent = <div>Start by adding new items to the site script from here. Or create a new site script from the open menu. </div>
+
+  let convertToNumberProps = { ...props, convertToNumber: true };
+  let bubleContent = <div>Start by adding new items to the site script from here. Or create a new site script from the open menu. </div>;
+
   return (
     <NodeWrapper actionProps={actionProps} showCoachMark={true} bubleContent={bubleContent} bubleTitle="Add new items" smallTitle="Home" nodeName="NodeRoot">
       <div className="sd_site_hierarchy_node_root">
@@ -365,15 +365,15 @@ export  function NodeRoot(props: INodeProps) {
         </div> */}
         <div className="sd_row" >
           <div className="sd_col_50">
-            <SDTextField {...props} label="Theme" fieldName="themeName" infoText="Use the applyTheme verb to add a custom theme to the site. Note that this site action only works for applying custom themes; to apply one of our in-product SharePoint themes, create a copy as a custom one and reference that one."/>
+            <SDTextField {...props} label="Theme" fieldName="themeName" infoText="Use the applyTheme verb to add a custom theme to the site. Note that this site action only works for applying custom themes; to apply one of our in-product SharePoint themes, create a copy as a custom one and reference that one." />
           </div>
           <div className="sd_col_50">
-            <SDTextField {...props} label="Logo url" fieldName="url" infoText="Use the setSiteLogo verb to specify a logo for your site. Note: This action only works on the communication site template (68)."/>
+            <SDTextField {...props} label="Logo url" fieldName="url" infoText="Use the setSiteLogo verb to specify a logo for your site. Note: This action only works on the communication site template (68)." />
           </div>
         </div>
         <div className="sd_row">
           <div className="sd_col_50">
-            <SDTextField {...props} label="Hub site id" fieldName="hubSiteId" infoText="Use the joinHubSite verb to join the site to a designated hub site."/>
+            <SDTextField {...props} label="Hub site id" fieldName="hubSiteId" infoText="Use the joinHubSite verb to join the site to a designated hub site." />
           </div>
           <div className="sd_col_50">
             <SDComboBox
@@ -386,7 +386,7 @@ export  function NodeRoot(props: INodeProps) {
         </div>
         <div className="sd_row">
           <div className="sd_col_50">
-          <SDComboBox
+            <SDComboBox
               {...convertToNumberProps}
               label="Time zone"
               fieldName="timeZone"
@@ -404,12 +404,12 @@ export  function NodeRoot(props: INodeProps) {
         </div>
         <div className="sd_row">
           <div className="sd_col_50">
-           <SDComboBox
-            {...convertToNumberProps}
-            label="Sort order"
-            fieldName="sortOrder"
-            options={optionsSortOrder}
-          />
+            <SDComboBox
+              {...convertToNumberProps}
+              label="Sort order"
+              fieldName="sortOrder"
+              options={optionsSortOrder}
+            />
           </div>
           <div className="sd_col_50">
             <SDComboBox

@@ -229,13 +229,14 @@ export function convertJsonToSiteHierarchy(
     return siteColumn;
   }
   function createListSiteColumn(action: IAction) {
-    let { internalName } = action;
+    let { internalName,addToDefaultView} = action;
+
     const item: TreeItem = {
       children: [],
       type: "listSiteColumn",
       expanded: true,
       data: {
-        internalName
+        internalName,addToDefaultView
       }
     };
     return item;

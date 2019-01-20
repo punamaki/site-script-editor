@@ -9,10 +9,9 @@ import SDNumberField from "../../../components/sd-number-field";
 import SDToggle from "../../../components/sd-toggle";
 import SDCamlField from "../../../components/sd-caml-field";
 
-
-export  function NodeListView(props: INodeProps) {
-  var { path, treeData, setTreeAndScriptData } = props;
-  var actionProps = {
+export function NodeListView(props: INodeProps) {
+  const { path, treeData, setTreeAndScriptData } = props;
+  const actionProps = {
     iconProps: {
       iconName: "Delete"
     },
@@ -43,7 +42,6 @@ export  function NodeListView(props: INodeProps) {
         <div>
           <SDCamlField {...props} label="Query" fieldName="query" />
         </div>
-
       </div>
     </NodeWrapper>
   );

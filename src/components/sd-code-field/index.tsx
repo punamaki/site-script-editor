@@ -15,25 +15,23 @@ interface ISDCodeFieldState {
   isValid: boolean;
   fieldValue: string;
 }
-export default class SDCodeField extends React.Component<
-  ISDCodeFieldProps,
-  ISDCodeFieldState
-> {
+export default class SDCodeField extends React.Component<ISDCodeFieldProps, ISDCodeFieldState> {
   constructor(props: ISDCodeFieldProps) {
     super(props);
     this.state = { isValid: true, fieldValue: "" };
   }
+
   render() {
-    var getNodeKey = ({ treeIndex }: any) => treeIndex;
-    var { node, path, setTreeAndScriptData, treeData, label } = this.props;
+    const getNodeKey = ({ treeIndex }: any) => treeIndex;
+    const { node, path, setTreeAndScriptData, treeData, label } = this.props;
 
     return (
       <TextField
         onChanged={fieldValue => {
-          var newNode = {
+          const newNode = {
             ...node
           };
-          var jsonData = {};
+          let jsonData = {};
           try {
             jsonData = JSON.parse(fieldValue);
             newNode.data[this.props.fieldName] = jsonData;
@@ -45,7 +43,7 @@ export default class SDCodeField extends React.Component<
             this.setState({ isValid: false, fieldValue });
           }
         }}
-        borderless
+        borderless={true}
         value={
           this.state.isValid
             ? JSON.stringify(this.props.node.data[this.props.fieldName])
@@ -56,7 +54,7 @@ export default class SDCodeField extends React.Component<
           (this.state.isValid ? "" : " sd_site_hierarchy_code_field_not_valid")
         }
         label={label}
-        multiline
+        multiline={true}
         rows={4}
       />
     );

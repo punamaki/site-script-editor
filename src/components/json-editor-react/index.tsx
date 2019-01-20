@@ -4,26 +4,25 @@ import styled from "styled-components";
 import "jsoneditor/dist/jsoneditor.css";
 
 export interface JsonEditorProps {
-    onChange : (json : any) => void;
-    onDirty : () => void;
-    value : object;
-    options : any;
-    width : string;
-    height : string;
-    className?:string;
-    config?:object;
+    onChange: (json: any) => void;
+    onDirty: () => void;
+    value: object;
+    options: any;
+    width: string;
+    height: string;
+    className?: string;
+    config?: object;
 }
 
-class JsonEditorReact extends React.PureComponent < JsonEditorProps,
-any > {
-    private timeout:any = undefined;
-    private editor : JSONEditor;
-    private div : any;
+class JsonEditorReact extends React.PureComponent<JsonEditorProps, any> {
+    private timeout: any = undefined;
+    private editor: JSONEditor;
+    private div: any;
     public static defaultProps: Partial<JsonEditorProps> = {
         config: {},
-        onDirty: () => {}
+        onDirty: () => { }
     };
-    constructor(props : JsonEditorProps) {
+    constructor(props: JsonEditorProps) {
         super(props);
         this.state = {
             currentValue: props.value,
@@ -39,18 +38,18 @@ any > {
                 .get(),
             dirty: true
         });
-    };
+    }
 
     handleFocus = () => {
-        this.setState({controllingFocus: true});
-    };
+        this.setState({ controllingFocus: true });
+    }
 
     handleBlur = () => {
-        this.setState({controllingFocus: false});
-    };
+        this.setState({ controllingFocus: false });
+    }
 
     componentDidMount() {
-        const {value, options} = this.props;
+        const { value, options } = this.props;
 
         const mergedOptions = {
             ...options,
@@ -63,31 +62,31 @@ any > {
             .set(value);
     }
 
-    componentDidUpdate(prevProps:JsonEditorProps, prevState:JsonEditorProps) {
-        const {onChange, onDirty} = this.props;
+    componentDidUpdate(prevProps: JsonEditorProps, prevState: JsonEditorProps) {
+        const { onChange, onDirty } = this.props;
 
         if (this.state.dirty === true && this.state.controllingFocus) {
             onDirty();
         }
 
-        //if (this.state.dirty === true && !this.state.controllingFocus) {
-        if (this.state.dirty === true ) {
-                  this.timeout = setTimeout(() => {
+        // if (this.state.dirty === true && !this.state.controllingFocus) {
+        if (this.state.dirty === true) {
+            this.timeout = setTimeout(() => {
                 onChange(this.state.currentValue);
-                this.setState({dirty: false});
+                this.setState({ dirty: false });
             }, 200);
         }
 
-        //if (this.state.controllingFocus) {
+        // if (this.state.controllingFocus) {
         //    clearTimeout(this.timeout);
-        //}
+        // }
 
         if (prevProps.value !== this.props.value && !this.state.controllingFocus) {
 
             this
                 .editor
                 .set(this.props.value);
-            this.setState({currentValue: this.props.value, dirty: false});
+            this.setState({ currentValue: this.props.value, dirty: false });
         }
     }
 
@@ -100,23 +99,21 @@ any > {
     }
 
     render() {
-        const {className} = this.props;
+        const { className } = this.props;
 
         return (<div
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             className={className}
             ref={div => {
-            this.div = div;
-        }}/>);
+                this.div = div;
+            }} />);
     }
 }
 
-
-
 export default styled(JsonEditorReact).attrs({
-    width: (props:any) => props.width || "300px",
-    height: (props:any) => props.height || "300px"
+    width: (props: any) => props.width || "300px",
+    height: (props: any) => props.height || "300px"
 })`
   width: ${props => props.width};
   height: ${props => props.height};

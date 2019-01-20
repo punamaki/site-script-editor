@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {INodeProps} from '../../../types';
-import './node-list-field-customizers.css'
-import {  addFieldCustomizerToList} from '../../../helpers';
+import { INodeProps } from '../../../types';
+import './node-list-field-customizers.css';
+import { addFieldCustomizerToList } from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export  function NodeListFieldCustomizers(props : INodeProps) {
-    var {path,treeData, setTreeAndScriptData}=props
-    var actionProps = {
+export function NodeListFieldCustomizers(props: INodeProps) {
+    const { path, treeData, setTreeAndScriptData } = props;
+    const actionProps = {
         iconProps: {
             iconName: 'Add'
         },
@@ -16,12 +16,12 @@ export  function NodeListFieldCustomizers(props : INodeProps) {
                 {
                     key: 'newfieldCustomizer',
                     name: 'Add a field customizer',
-                    onClick: () => addFieldCustomizerToList(path,treeData,setTreeAndScriptData),
+                    onClick: () => addFieldCustomizerToList(path, treeData, setTreeAndScriptData),
                 }
             ]
         },
 
     };
-    var containerProps = {...props, actionProps, title:"Field customizers"}
-    return <NodeContainer {...containerProps}/>
+    const containerProps = { ...props, actionProps, title: "Field customizers" };
+    return <NodeContainer {...containerProps} />;
 } 

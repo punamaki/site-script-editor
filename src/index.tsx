@@ -22,8 +22,9 @@ const store = createStore<IStoreState, Action<any>, {}, {}>(
 
 export interface Props {
   siteScriptContainer?: ISiteScriptContainer | null;
-  onSiteScriptContainerChange?:(newSiteScriptContainer:ISiteScriptContainer)=>void;
-  showHelpCoachmarks?:boolean;
+  onSiteScriptContainerChange?: (newSiteScriptContainer: ISiteScriptContainer) => void;
+  showHelpCoachmarks?: boolean;
+  isVirtualized?: boolean;
 }
 
 export interface State {
@@ -32,34 +33,38 @@ export interface State {
 }
 
 export default class SiteScriptEditor extends React.Component<Props, State> {
-  public static defaultProps: Props = {showHelpCoachmarks:false};
+  public static defaultProps: Props = { showHelpCoachmarks: false };
 
   constructor(props: Props) {
     super(props);
-    this.state = { siteScriptContainerFromParent: null , siteScriptContainerOld:null};
+    this.state = { siteScriptContainerFromParent: null, siteScriptContainerOld: null };
   }
+
   @autobind
-  private setSiteScriptContainer(
-    siteScriptContainer: ISiteScriptContainer | null
-  ) {
+  private setSiteScriptContainer(siteScriptContainer: ISiteScriptContainer | null) {
     if (siteScriptContainer) {
       const oldTreeData = store.getState().treeData;
       let newTreeData = convertJsonToSiteHierarchy(siteScriptContainer);
-      if(oldTreeData && oldTreeData.length > 0) {
+      if (oldTreeData && oldTreeData.length > 0) {
         newTreeData = [setupExpansion(oldTreeData[0], newTreeData[0])];
       }
 
       store.dispatch(actions.setSiteScript(siteScriptContainer));
       store.dispatch(actions.setTreeData(newTreeData));
-      if(this.props.showHelpCoachmarks) {
+      if (this.props.showHelpCoachmarks) {
         store.dispatch(actions.showCoachmarks(this.props.showHelpCoachmarks));
       }
       this.setState({ siteScriptContainerFromParent: siteScriptContainer });
     }
   }
+
   public componentDidMount() {
     initializeIcons();
+    if (this.props.siteScriptContainer) {
+      this.setSiteScriptContainer(this.props.siteScriptContainer as ISiteScriptContainer);
+    }
   }
+
   @autobind
   public componentWillReceiveProps(newProps: Props) {
     if (
@@ -67,16 +72,16 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
     ) {
       this.setSiteScriptContainer(newProps.siteScriptContainer);
     }
-
-
-
   }
 
   render() {
     return (
       <Provider store={store}>
         <Fabric style={{ width: "100%", height: "100%" }}>
-          <Editor onSiteScriptContainerChange={this.props.onSiteScriptContainerChange}/>
+          <Editor
+            onSiteScriptContainerChange={this.props.onSiteScriptContainerChange}
+            isVirtualized={this.props.isVirtualized}
+          />
         </Fabric>
       </Provider>
     );

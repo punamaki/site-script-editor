@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {INodeProps} from '../../../types';
-import './node-list-view-command-sets.css'
-import {  addListViewCommandSet} from '../../../helpers';
+import { INodeProps } from '../../../types';
+import './node-list-view-command-sets.css';
+import { addListViewCommandSet } from '../../../helpers';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export  function NodeListViewCommandSets(props : INodeProps) {
-    var {path,treeData, setTreeAndScriptData}=props
-    var actionProps = {
+export function NodeListViewCommandSets(props: INodeProps) {
+    const { path, treeData, setTreeAndScriptData } = props;
+    const actionProps = {
         iconProps: {
             iconName: 'Add'
         },
@@ -16,12 +16,12 @@ export  function NodeListViewCommandSets(props : INodeProps) {
                 {
                     key: 'newListViewCommandSet',
                     name: 'Add a list view command set',
-                    onClick: () => addListViewCommandSet(path,treeData,setTreeAndScriptData),
+                    onClick: () => addListViewCommandSet(path, treeData, setTreeAndScriptData),
                 }
             ]
         },
 
     };
-    var containerProps = {...props, actionProps, title:"View command sets"}
-    return <NodeContainer {...containerProps}/>
+    const containerProps = { ...props, actionProps, title: "View command sets" };
+    return <NodeContainer {...containerProps} />;
 } 

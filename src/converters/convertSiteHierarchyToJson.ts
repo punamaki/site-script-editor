@@ -208,7 +208,7 @@ function actionCreateListSiteColumns(
     listActions = children.map(child => {
       switch (child.type) {
         case "listSiteColumn":
-          return { verb: "addSiteColumn", internalName: child.data.internalName };
+          return { verb: "addSiteColumn", internalName: child.data.internalName, addToDefaultView:child.data.addToDefaultView };
         default:
           return { verb: "" };
       }

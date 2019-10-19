@@ -106,8 +106,8 @@ display: none;
 }
 .numberCircle {
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 13px;
+    height: 13px;
     padding: 3px;
     background: rgb(158, 168, 187);
     color: rgb(255,255,255);

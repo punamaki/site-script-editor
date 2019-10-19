@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { addFieldToList, addDeleteFieldToList, addXMLFieldToList, addLookupXMLFieldToList } from '../../../helpers';
 import { INodeProps } from '../../../types';
-import './node-fields.css'
+import './node-fields.css';
 import NodeContainer from '../../../components/nodes/node-container';
 
-export  function NodeListFields(props : INodeProps) {
-    var {path,treeData, setTreeAndScriptData}=props
-    var actionProps = {
+export function NodeListFields(props: INodeProps) {
+    let { path, treeData, setTreeAndScriptData } = props;
+    let actionProps = {
         iconProps: {
             iconName: 'Add'
         },
@@ -16,24 +16,25 @@ export  function NodeListFields(props : INodeProps) {
                 {
                     key: 'newField',
                     name: 'Add a normal field',
-                    onClick: () => addFieldToList(path,treeData,setTreeAndScriptData),
-                },{
+                    onClick: () => addFieldToList(path, treeData, setTreeAndScriptData),
+                }, {
                     key: 'newXMLField',
                     name: 'Add a XML field',
-                    onClick: () => addXMLFieldToList(path,treeData,setTreeAndScriptData),
-                },{
+                    onClick: () => addXMLFieldToList(path, treeData, setTreeAndScriptData),
+                }, {
                     key: 'newLookupXMLField',
                     name: 'Add a lookup XML field',
-                    onClick: () => addLookupXMLFieldToList(path,treeData,setTreeAndScriptData),
+                    onClick: () => addLookupXMLFieldToList(path, treeData, setTreeAndScriptData),
                 }, {
                     key: 'newFieldDeletion',
                     name: 'Add a field deletion',
-                    onClick: () => addDeleteFieldToList(path,treeData,setTreeAndScriptData),
+                    onClick: () => addDeleteFieldToList(path, treeData, setTreeAndScriptData),
                 }
             ]
         },
         title: "Add a new field"
     };
-    var containerProps = {...props, actionProps, title:"Fields"}
-    return <NodeContainer {...containerProps}/>
+
+    const containerProps = { ...props, actionProps, title: "Fields" };
+    return <NodeContainer {...containerProps} />;
 }

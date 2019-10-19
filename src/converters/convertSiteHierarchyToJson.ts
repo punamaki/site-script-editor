@@ -1,5 +1,6 @@
 import { ISiteScriptContainer, IAction } from "../types";
 import { TreeItem } from "react-sortable-tree";
+import { escapeJSON } from "../helpers";
 
 export function convertSiteHierarchyToJson(
   siteScriptContainer: TreeItem[]
@@ -208,7 +209,7 @@ function actionCreateListSiteColumns(
     listActions = children.map(child => {
       switch (child.type) {
         case "listSiteColumn":
-          return { verb: "addSiteColumn", internalName: child.data.internalName, addToDefaultView:child.data.addToDefaultView };
+          return { verb: "addSiteColumn", internalName: child.data.internalName, addToDefaultView: child.data.addToDefaultView };
         default:
           return { verb: "" };
       }
@@ -261,7 +262,7 @@ function actionCreateFieldCustomizers(
   var listActions: IAction[] = [];
   if (children) {
     listActions = children.map(child => {
-      return { ...child.data, verb: "associateFieldCustomizer" };
+      return { ...child.data, verb: "associateFieldCustomizer", clientSideComponentProperties: escapeJSON(child.data.clientSideComponentProperties) };
     });
   }
   return listActions;
@@ -272,7 +273,7 @@ function actionCreateListViewCommandSets(
   var listActions: IAction[] = [];
   if (children) {
     listActions = children.map(child => {
-      return { ...child.data, verb: "associateListViewCommandSet" };
+      return { ...child.data, verb: "associateListViewCommandSet", clientSideComponentProperties: escapeJSON(child.data.clientSideComponentProperties) };
     });
   }
   return listActions;
@@ -290,11 +291,11 @@ function actionCreateListViews(children: TreeItem[] | undefined): IAction[] {
         default:
           const viewFields =
             child.children &&
-            child.children.length > 0 &&
-            child.children[0].children
+              child.children.length > 0 &&
+              child.children[0].children
               ? child.children![0].children!.map(
-                  fieldObj => fieldObj.data.viewField
-                )
+                fieldObj => fieldObj.data.viewField
+              )
               : [];
           return {
             verb: "addSPView",
@@ -303,6 +304,8 @@ function actionCreateListViews(children: TreeItem[] | undefined): IAction[] {
             rowLimit: Number(child.data.rowLimit),
             isPaged: child.data.isPaged,
             makeDefault: child.data.makeDefault,
+            scope: child.data.scope,
+            formatterJSON: escapeJSON(child.data.formatterJSON),
             viewFields
           };
       }
@@ -352,7 +355,8 @@ function actionCreateSiteColumns(children: TreeItem[] | undefined): IAction[] {
             displayName: child.data.displayName,
             isRequired: child.data.isRequired,
             group: child.data.group,
-            enforceUnique: child.data.enforceUnique
+            enforceUnique: child.data.enforceUnique,
+            id:child.data.id
           };
         default:
           return {
@@ -418,7 +422,7 @@ function actionCreateInstallSolutions(
       return {
         verb: "installSolution",
         id: child.data.id,
-        name:child.data.name
+        name: child.data.name
       };
     });
   }

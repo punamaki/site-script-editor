@@ -21,8 +21,6 @@
     "@types/jest": "^21.1.9",
     "@types/node": "^8.10.30",
     "@types/prop-types": "^15.5.6",
-    "@types/react": "^16.4.14",
-    "@types/react-dom": "^16.0.8",
     "@types/react-redux": "^5.0.21",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-sortable-tree": "^0.1.5",
@@ -44,8 +42,8 @@
   "dependencies": {
     "ajv": "^5.5.2",
     "jsoneditor": "^5.24.6",
-    "office-ui-fabric-react": "^6.98.1",
-    "react-dom": "^16.6.0",
+    "office-ui-fabric-react": "^6.142.1",
+    "react-dom": "^16.8.3",
     "react-ga": "^2.5.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -62,8 +60,8 @@
     "webfontloader": "^1.6.28"
   },
   "peerDependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.6.0"
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",

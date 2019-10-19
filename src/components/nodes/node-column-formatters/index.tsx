@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {addColumnFormatter } from '../../../helpers';
+import { addColumnFormatter } from '../../../helpers';
 import { INodeProps } from '../../../types';
-import "./node-column-formatters.css"
+import "./node-column-formatters.css";
 import NodeContainer from '../../../components/nodes/node-container';
 
-export function NodeColumnFormatters(props : INodeProps) {
-    var {path,treeData, setTreeAndScriptData}=props
-    var actionProps = {
+export function NodeColumnFormatters(props: INodeProps) {
+    const { path, treeData, setTreeAndScriptData } = props;
+    const actionProps = {
         iconProps: {
             iconName: 'Add'
         },
@@ -16,12 +16,13 @@ export function NodeColumnFormatters(props : INodeProps) {
                 {
                     key: 'newColumnFormatter',
                     name: 'Add a column formatter',
-                    onClick: () => addColumnFormatter(path,treeData,setTreeAndScriptData),
+                    onClick: () => addColumnFormatter(path, treeData, setTreeAndScriptData),
                 }
             ]
         },
         title: "Add a new field"
     };
-    var containerProps = {...props, actionProps, title:"Column formatters"}
-    return <NodeContainer {...containerProps}/>
+
+    const containerProps = { ...props, actionProps, title: "Column formatters" };
+    return <NodeContainer {...containerProps} />;
 }

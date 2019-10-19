@@ -26,10 +26,11 @@ export  function NodeFieldXML(props: INodeProps) {
             {...props}
             label="Add to default view"
             fieldName="addToDefaultView"
+            infoText={"True if the field will be added to the default view; otherwise, false."}
           />
         </div>
         <div className="sd_row">
-          <SDCamlField {...props} label="XML" fieldName="schemaXml" />
+          <SDCamlField {...props} label="XML" fieldName="schemaXml" infoText={"Enables defining fields and their elements using Collaborative Application Markup Language (CAML). Note that providing the ID attribute in the field schemaXml is very important in order to prevent the field from being created multiple times if the script is run more than once."}/>
         </div>
       </div>
     </NodeWrapper>

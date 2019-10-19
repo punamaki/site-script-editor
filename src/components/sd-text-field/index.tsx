@@ -43,7 +43,7 @@ export default function SDTextField(props: ISDTextFieldProps) {
         "sd_site_hierarchy_field sd_site_hierarchy_edit_field " + simpleClass
       }
       label={label}
-      onRenderLabel={(fieldProps)=>renderLabel(fieldProps, props.infoText)}
+      onRenderLabel={(fieldProps)=>renderLabel(props.label, props.infoText)}
     />
   );
 }

@@ -6,11 +6,9 @@ import { getNodeKey } from "../../../helpers";
 import { INodeProps } from "../../../types";
 import "./node-list-view-field.css";
 
-
-
-export  function NodeListViewField(props: INodeProps) {
-  var { path, treeData, setTreeAndScriptData } = props;
-  var actionProps = {
+export function NodeListViewField(props: INodeProps) {
+  const { path, treeData, setTreeAndScriptData } = props;
+  const actionProps = {
     iconProps: {
       iconName: "Delete"
     },
@@ -22,7 +20,7 @@ export  function NodeListViewField(props: INodeProps) {
   return (
     <NodeWrapper actionProps={actionProps} smallTitle="View field" infoText="Column that is shown in the view">
       <div className="sd_site_hierarchy_node_list_view_field">
-      <SDTextField {...props} label="Field" fieldName="viewField" />
+        <SDTextField {...props} label="Field" fieldName="viewField" />
       </div>
     </NodeWrapper>
   );

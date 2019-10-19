@@ -40,10 +40,10 @@ export function NodeList(props: INodeProps) {
       <div className="sd_site_hierarchy_node_list">
         <div className="sd_row">
           <div className="sd_col_50">
-            <SDTextField {...props} label="List name" fieldName="listName" />
+            <SDTextField {...props} label="List name" fieldName="listName" infoText="The name of the list" />
           </div>
           <div className="sd_col_50">
-            <SDTextField {...props} label="List title" fieldName="listTitle" />
+            <SDTextField {...props} label="List title" fieldName="listTitle" infoText="Renames the list. To create a new list with a specific name, instead of using setTitle use the listName parameter in the CreateSPList action."/>
           </div>
         </div>
         <div className="sd_row">
@@ -55,6 +55,7 @@ export function NodeList(props: INodeProps) {
               options={templateTypeOptions}
               allowFreeform={true}
               convertToNumber={true}
+              infoText="Which template to apply to the list. Typically you would use value 100."
             />
           </div>
           <div className="sd_col_50">
@@ -62,6 +63,7 @@ export function NodeList(props: INodeProps) {
               {...props}
               label="Description"
               fieldName="listDescription"
+              infoText={"Sets the description of the list."}
             />
           </div>
         </div>

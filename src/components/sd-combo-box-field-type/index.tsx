@@ -1,45 +1,52 @@
-import * as React from 'react';
-import {ComboBox, IComboBoxOption} from 'office-ui-fabric-react/lib/ComboBox';
-import {TreeItem, changeNodeAtPath} from 'react-sortable-tree';
-import './sd-combo-box.css';
-
+import * as React from "react";
+import { ComboBox, IComboBoxOption } from "office-ui-fabric-react/lib/ComboBox";
+import { TreeItem, changeNodeAtPath } from "react-sortable-tree";
+import "./sd-combo-box.css";
+import { renderLabel } from "../../helpers";
 
 interface ISDTextFieldProps {
-    node : TreeItem;
-    path : string[] | number[];
-    setTreeAndScriptData : (treeData : TreeItem[]) => void;
-    treeData : TreeItem[];
-    label : string;
-    fieldName : string;
-    options:IComboBoxOption[];
-
+  node: TreeItem;
+  path: string[] | number[];
+  setTreeAndScriptData: (treeData: TreeItem[]) => void;
+  treeData: TreeItem[];
+  label: string;
+  fieldName: string;
+  options: IComboBoxOption[];
+  infoText?: string;
 }
 
-export default function SDComboBoxFieldType(props : ISDTextFieldProps) {
+export default function SDComboBoxFieldType(props: ISDTextFieldProps) {
+  var getNodeKey = ({ treeIndex }: any) => treeIndex;
+  var { node, path, setTreeAndScriptData, treeData } = props;
+  var onChanged = (option: IComboBoxOption, index?: number, value?: string) => {
+    var newNode = { ...node };
+    newNode.data[props.fieldName] = option.key;
+    newNode.type = "field" + option.key;
+    setTreeAndScriptData(
+      changeNodeAtPath({
+        treeData,
+        path,
+        getNodeKey,
+        newNode
+      })
+    );
+  };
 
-    var getNodeKey = ({treeIndex} : any) => treeIndex;
-    var {node, path, setTreeAndScriptData, treeData, label} = props;
-    var onChanged = (option: IComboBoxOption, index?: number, value?: string) => {
-        var newNode = {...node};
-        newNode.data[props.fieldName] = option.key;
-        newNode.type = "field"+ option.key;
-        setTreeAndScriptData(changeNodeAtPath({
-            treeData,
-            path,
-            getNodeKey,
-            newNode
-        }));
-    }
-
-    return <ComboBox
+  return (
+    <div>
+      <label className="sd_site_hierarchy_combo_box_label">
+        {renderLabel(props.label, props.infoText)}
+      </label>
+      <ComboBox
         selectedKey={props.node.data[props.fieldName]}
-        label={label}
-        id='Basicdrop1'
-        ariaLabel='Basic ComboBox example'
-        autoComplete='on'
-        className={'sd_site_hierarchy_field sd_site_hierarchy_combo_box '}
+        id="Basicdrop1"
+        ariaLabel="Basic ComboBox example"
+        autoComplete="on"
+        className={"sd_site_hierarchy_field sd_site_hierarchy_combo_box "}
         options={props.options}
-        onMenuOpen={() => console.log('ComboBox menu opened')}
+        onMenuOpen={() => console.log("ComboBox menu opened")}
         onChanged={onChanged}
-        />
+      />
+    </div>
+  );
 }

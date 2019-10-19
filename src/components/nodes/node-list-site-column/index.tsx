@@ -31,6 +31,7 @@ export function NodeListSiteColumn(props: INodeProps) {
               {...props}
               label="Internal name"
               fieldName="internalName"
+              infoText="The internal name of the site column to add."
             />
           </div>
           <div className="sd_col_40">
@@ -38,6 +39,7 @@ export function NodeListSiteColumn(props: INodeProps) {
               {...props}
               label="Add to default view"
               fieldName="addToDefaultView"
+              infoText="Optional attribute that defaults to false. If true, the newly added field will also be added to the default view."
             />
           </div>
         </div>

@@ -57,7 +57,7 @@ export function nodeTypesProps(
       returnObj[action.nodeType] = action.nodeTypeProps;
       return returnObj;
     case "SET_ALL_NODE_TYPE_PROPS":
-      return action.allProps
+      return action.allProps;
     default:
       return state;
   }

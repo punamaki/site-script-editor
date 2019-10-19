@@ -2,6 +2,7 @@ import * as React from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { TreeItem, changeNodeAtPath } from "react-sortable-tree";
 import "./sd-code-field.css";
+import { renderLabel } from "../../helpers";
 
 interface ISDCodeFieldProps {
   node: TreeItem;
@@ -10,6 +11,7 @@ interface ISDCodeFieldProps {
   treeData: TreeItem[];
   label: string;
   fieldName: string;
+  infoText?:string;
 }
 interface ISDCodeFieldState {
   isValid: boolean;
@@ -55,6 +57,7 @@ export default class SDCodeField extends React.Component<ISDCodeFieldProps, ISDC
         }
         label={label}
         multiline={true}
+        onRenderLabel={(fieldProps)=>renderLabel(this.props.label, this.props.infoText)}
         rows={4}
       />
     );

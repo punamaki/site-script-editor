@@ -18,7 +18,7 @@ export function NodeFieldDeletion(props: INodeProps) {
 
     return <NodeWrapper actionProps={actionProps} smallTitle="Field deletion" menuClass="sd_site_hierarchy_node_menu_field_deletion" infoText="Deletes a default field that was provided by the selected template type.">
         <div className="sd_site_hierarchy_node_field_deletion">
-            <div><SDTextField {...props} label="Field display name" fieldName="displayName" /></div>
+            <div><SDTextField {...props} label="Field display name" fieldName="displayName" infoText={"The display name to identify the field to delete."}/></div>
         </div>
     </NodeWrapper>;
 }

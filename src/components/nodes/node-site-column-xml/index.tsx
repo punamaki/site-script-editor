@@ -29,10 +29,10 @@ export  function NodeSiteColumnXML(props: INodeWrapperProps) {
     >
       <div className="sd_site_hierarchy_node_type_siteColumnXML">
         <div className="sd_row">
-          <SDCamlField {...props} label="XML" fieldName="schemaXml" />
+          <SDCamlField {...props} label="XML" fieldName="schemaXml" infoText="The CAML block to define the field." />
         </div>
         <div className="sd_row">
-          <SDToggle {...props} label="Push changes" fieldName="pushChanges" />
+          <SDToggle {...props} label="Push changes" fieldName="pushChanges" infoText="Indicates whether this change should be pushed to lists that already reference this field. Defaults to true."/>
         </div>
       </div>
     </NodeWrapper>

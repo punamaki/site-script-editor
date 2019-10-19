@@ -1,6 +1,6 @@
 import { IAction, ISiteScriptContainer } from "../types";
 import { TreeItem } from "react-sortable-tree";
-import { ensureChildNode } from "../helpers";
+import { ensureChildNode, unescapeJSON } from "../helpers";
 
 export function convertJsonToSiteHierarchy(
   siteScriptContainer: ISiteScriptContainer
@@ -198,7 +198,8 @@ export function convertJsonToSiteHierarchy(
       displayName,
       isRequired,
       group,
-      enforceUnique
+      enforceUnique,
+      id
     } = action;
     const siteColumn: TreeItem = {
       children: [],
@@ -210,7 +211,8 @@ export function convertJsonToSiteHierarchy(
         displayName,
         isRequired,
         group,
-        enforceUnique
+        enforceUnique,
+        id
       }
     };
     return siteColumn;
@@ -229,14 +231,14 @@ export function convertJsonToSiteHierarchy(
     return siteColumn;
   }
   function createListSiteColumn(action: IAction) {
-    let { internalName,addToDefaultView} = action;
+    let { internalName, addToDefaultView } = action;
 
     const item: TreeItem = {
       children: [],
       type: "listSiteColumn",
       expanded: true,
       data: {
-        internalName,addToDefaultView
+        internalName, addToDefaultView
       }
     };
     return item;
@@ -297,7 +299,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addSPFieldXml":
             if (list.children) {
-              columnNode= ensureFieldsNode(list);
+              columnNode = ensureFieldsNode(list);
               let addToDefaultView = subaction.addToDefaultView
                 ? subaction.addToDefaultView
                 : false;
@@ -313,9 +315,29 @@ export function convertJsonToSiteHierarchy(
               }
             }
             break;
+          case "addSPLookupFieldXml":
+            if (list.children) {
+              columnNode = ensureFieldsNode(list);
+              let addToDefaultView = subaction.addToDefaultView
+                ? subaction.addToDefaultView
+                : false;
+              if (columnNode) {
+                columnNode.children!.push({
+                  type: "fieldLookupXML",
+                  data: {
+                    schemaXml: subaction.schemaXml,
+                    addToDefaultView,
+                    targetListName: subaction.targetListName,
+                    targetListUrl: subaction.targetListUrl
+                  },
+                  expanded: true
+                });
+              }
+            }
+            break;
           case "addSPField":
             if (list.children) {
-              columnNode= ensureFieldsNode(list);
+              columnNode = ensureFieldsNode(list);
               let isRequired = subaction.isRequired
                 ? subaction.isRequired
                 : false;
@@ -345,7 +367,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "deleteSPField":
             if (list.children) {
-              columnNode= ensureFieldsNode(list);
+              columnNode = ensureFieldsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "fieldDeletion",
@@ -359,7 +381,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addContentType":
             if (list.children) {
-              columnNode= ensureListContentTypesNode(list);
+              columnNode = ensureListContentTypesNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listContentType",
@@ -373,7 +395,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "removeContentType":
             if (list.children) {
-              columnNode= ensureListContentTypesNode(list);
+              columnNode = ensureListContentTypesNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listContentTypeDeletion",
@@ -387,7 +409,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "setSPFieldCustomFormatter":
             if (list.children) {
-              columnNode= ensureColumnFormattersNode(list);
+              columnNode = ensureColumnFormattersNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "columnFormatter",
@@ -402,7 +424,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "associateFieldCustomizer":
             if (list.children) {
-              columnNode= ensureFieldCustomizersNode(list);
+              columnNode = ensureFieldCustomizersNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listFieldCustomizer",
@@ -410,7 +432,7 @@ export function convertJsonToSiteHierarchy(
                     internalName: subaction.internalName,
                     clientSideComponentId: subaction.clientSideComponentId,
                     clientSideComponentProperties:
-                      subaction.clientSideComponentProperties
+                      unescapeJSON(subaction.clientSideComponentProperties)
                   },
                   expanded: true
                 });
@@ -419,7 +441,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "associateListViewCommandSet":
             if (list.children) {
-              columnNode= ensureListViewCommandSetsNode(list);
+              columnNode = ensureListViewCommandSetsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listViewCommandSet",
@@ -428,7 +450,7 @@ export function convertJsonToSiteHierarchy(
                     location: subaction.location,
                     clientSideComponentId: subaction.clientSideComponentId,
                     clientSideComponentProperties:
-                      subaction.clientSideComponentProperties
+                     unescapeJSON(subaction.clientSideComponentProperties)
                   },
                   expanded: true
                 });
@@ -437,7 +459,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "addSPView":
             if (list.children) {
-              columnNode= ensureViewsNode(list);
+              columnNode = ensureViewsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listView",
@@ -446,7 +468,9 @@ export function convertJsonToSiteHierarchy(
                     rowLimit: subaction.rowLimit,
                     isPaged: subaction.isPaged,
                     makeDefault: subaction.makeDefault,
-                    query: subaction.query
+                    query: subaction.query,
+                    scope: subaction.scope,
+                    formatterJSON: unescapeJSON(subaction.formatterJSON)
                   },
                   expanded: true,
                   children: [
@@ -470,7 +494,7 @@ export function convertJsonToSiteHierarchy(
             break;
           case "removeSPView":
             if (list.children) {
-              columnNode= ensureViewsNode(list);
+              columnNode = ensureViewsNode(list);
               if (columnNode) {
                 columnNode.children!.push({
                   type: "listViewDeletion",

@@ -165,6 +165,7 @@ export  function NodeContentType(props: INodeWrapperProps) {
               {...props}
               label="Content type name"
               fieldName="name"
+              infoText="The name of the content type to create."
             />
           </div>
           <div className="sd_col_50">
@@ -174,6 +175,7 @@ export  function NodeContentType(props: INodeWrapperProps) {
               fieldName="parentName"
               options={parentNameOptions}
               allowFreeform={true}
+              infoText="Name of the parent content type."
             />
           </div>
         </div>
@@ -183,6 +185,7 @@ export  function NodeContentType(props: INodeWrapperProps) {
               {...props}
               label="Content type id"
               fieldName="id"
+              infoText="ID of the content type."
             />
           </div>
           <div className="sd_col_50">
@@ -192,6 +195,7 @@ export  function NodeContentType(props: INodeWrapperProps) {
               fieldName="parentId"
               options={parentIdOptions}
               allowFreeform={true}
+              infoText="ID of the parent content type."
             />
           </div>
         </div>
@@ -201,6 +205,7 @@ export  function NodeContentType(props: INodeWrapperProps) {
               {...props}
               label="Hidden"
               fieldName="hidden"
+              infoText="Specifies whether the content type is visible or hidden."
             />
           </div>
           <div className="sd_col_50">
@@ -208,6 +213,7 @@ export  function NodeContentType(props: INodeWrapperProps) {
               {...props}
               label="Description"
               fieldName="description"
+              infoText="The optional description of the content type."
             />
           </div>
         </div>

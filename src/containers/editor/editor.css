@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap');
 
 #sd_hierarchy{
     background-color:#ffffff;
@@ -74,6 +75,12 @@ cursor: default;
 }
 .sd_col_30 {
     width:30%;
+}
+.sd_col_25 {
+    width:25%;
+}
+.sd_col_33 {
+    width:33%;
 }
 .sd_col_50 {
     width:50%;

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { TreeItem, changeNodeAtPath } from 'react-sortable-tree';
 import './sd-caml-field.css';
+import { renderLabel } from "../../helpers";
 
 interface ISDCodeFieldProps {
     node: TreeItem;
@@ -10,6 +11,7 @@ interface ISDCodeFieldProps {
     treeData: TreeItem[];
     label: string;
     fieldName: string;
+    infoText?:string;
 }
 
 export default class SDCamlField extends React.Component<ISDCodeFieldProps> {
@@ -38,6 +40,7 @@ export default class SDCamlField extends React.Component<ISDCodeFieldProps> {
             className={'sd_site_hierarchy_field sd_site_hierarchy_caml_field'}
             label={label}
             multiline={true}
+            onRenderLabel={(fieldProps)=>renderLabel(this.props.label, this.props.infoText)}
             rows={4} />;
     }
 

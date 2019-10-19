@@ -50,7 +50,11 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
     }
   ];
   return (
-    <NodeWrapper actionProps={actionProps} smallTitle={props.smallTitle} infoText="Adds a new field.">
+    <NodeWrapper
+      actionProps={actionProps}
+      smallTitle={props.smallTitle}
+      infoText="Adds a new field."
+    >
       <div className="sd_site_hierarchy_node_list_field">
         <div className="sd_row">
           <div className="sd_col_50">
@@ -58,6 +62,7 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
               {...props}
               label="Field title"
               fieldName="displayName"
+              infoText={"The display name of the field."}
             />
           </div>
           <div className="sd_col_50">
@@ -66,6 +71,9 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
               label="Field type"
               fieldName="fieldType"
               options={options}
+              infoText={
+                "The field type can be set to Text, Note, Number, Boolean, User, or DateTime. For other data types, see the addSPFieldXml action."
+              }
             />
           </div>
         </div>
@@ -75,6 +83,9 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
               {...props}
               label="Internal name"
               fieldName="internalName"
+              infoText={
+                "An optional attribute. If provided, specifies the internal name of the field. If not provided, the internal name is based on the display name."
+              }
             />
           </div>
           <div className="sd_col_50">
@@ -82,6 +93,7 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
               {...props}
               label="Enforce unique"
               fieldName="enforceUnique"
+              infoText={"An optional attribute that defaults to false. If true, all values for this field must be unique."}
             />
           </div>
         </div>
@@ -91,10 +103,16 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
               {...props}
               label="Add to default view"
               fieldName="addToDefaultView"
+              infoText={"True if the field will be added to the default view; otherwise, false."}
             />
           </div>
           <div className="sd_col_50">
-            <SDToggle {...props} label="Is required" fieldName="isRequired" />
+            <SDToggle
+              {...props}
+              label="Is required"
+              fieldName="isRequired"
+              infoText={"True if this field is required to contain information; otherwise, false."}
+            />
           </div>
         </div>
         {props.children}

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { TreeItem, changeNodeAtPath } from 'react-sortable-tree';
 import './sd-number-field.css';
+import { renderLabel } from '../../helpers';
 
 interface ISDTextFieldProps {
     node: TreeItem;
@@ -11,6 +12,7 @@ interface ISDTextFieldProps {
     label: string;
     simple?: boolean;
     fieldName: string;
+    infoText?:string;
 }
 
 export default function SDNumberField(props: ISDTextFieldProps) {
@@ -31,5 +33,6 @@ export default function SDNumberField(props: ISDTextFieldProps) {
         borderless={true}
         value={props.node.data[props.fieldName]}
         className={'sd_site_hierarchy_field sd_site_hierarchy_edit_field ' + simpleClass}
-        label={label} />;
+        label={label}
+        onRenderLabel={(fieldProps)=>renderLabel(props.label, props.infoText)} />;
 }

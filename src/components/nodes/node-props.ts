@@ -57,7 +57,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: true
   },
   fieldLookupXML: {
-    height: 202,
+    height: 248,
     canDrag: true,
     canDrop: true
   },
@@ -97,7 +97,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listFieldCustomizer: {
-    height: 202,
+    height: 255,
     canDrag: true,
     canDrop: true
   },
@@ -132,7 +132,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listView: {
-    height: 252,
+    height: 355,
     canDrag: true,
     canDrop: true
   },
@@ -152,7 +152,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   listViewCommandSet: {
-    height: 256,
+    height: 306,
     canDrag: true,
     canDrop: true
   },

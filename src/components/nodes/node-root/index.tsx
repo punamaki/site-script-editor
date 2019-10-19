@@ -314,14 +314,45 @@ export function NodeRoot(props: INodeProps) {
       key: "",
       text: ""
     },
-    {
-      key: "6",
-      text: "6"
-    },
-    {
-      key: "25",
-      text: "Default (25)"
-    }
+    {key: "0", text: "0 Albanian"},
+    {key: "1", text: "1 Arabic"},
+    {key: "2", text: "2 Chinese Pronunciation"},
+    {key: "3", text: "3 Chinese Stroke Count"},
+    {key: "4", text: "4 Chinese (Traditional) Bopomofo"},
+    {key: "5", text: "5 Chinese (Traditional) Stroke Count"},
+    {key: "6", text: "6 Croatian"},
+    {key: "7", text: "7 Cyrillic"},
+    {key: "8", text: "8 Czech"},
+    {key: "9", text: "9 Danish/Norwegian"},
+    {key: "10", text: "10 Estonian"},
+    {key: "11", text: "11 Finnish/Swedish"},
+    {key: "12", text: "12 French"},
+    {key: "13", text: "13 Georgian Modern"},
+    {key: "14", text: "14 German Phone Book"},
+    {key: "15", text: "15 Greek"},
+    {key: "16", text: "16 Hebrew"},
+    {key: "17", text: "17 Hindi"},
+    {key: "18", text: "18 Hungarian"},
+    {key: "19", text: "19 Hungarian Technical"},
+    {key: "20", text: "20 Icelandic"},
+    {key: "21", text: "21 Japanese"},
+    {key: "22", text: "22 Japanese Unicode"},
+    {key: "23", text: "23 Korean"},
+    {key: "24", text: "24 Korean Unicode"},
+    {key: "25", text: "25 General"},
+    {key: "26", text: "26 Latvian"},
+    {key: "27", text: "27 Lithuanian"},
+    {key: "28", text: "28 Lithuanian Classic"},
+    {key: "29", text: "29 Spanish Traditional"},
+    {key: "30", text: "30 Spanish Modern"},
+    {key: "31", text: "31 Polish"},
+    {key: "32", text: "32 Romanian"},
+    {key: "33", text: "33 Slovak"},
+    {key: "34", text: "34 Slovenian"},
+    {key: "35", text: "35 Thai"},
+    {key: "36", text: "36 Turkish"},
+    {key: "37", text: "37 Ukrainian"},
+    {key: "38", text: "38 Vietnamese"}
   ];
   let optionsTimeZone: IComboBoxOption[] = [
     { text: "", key: "" },
@@ -381,6 +412,7 @@ export function NodeRoot(props: INodeProps) {
               label="Manage guest access"
               fieldName="capability"
               options={options}
+              infoText={"Use the setSiteExternalSharingCapability action to manage guest access. More info from https://docs.microsoft.com/en-gb/sharepoint/external-sharing-overview"}
             />
           </div>
         </div>
@@ -391,6 +423,7 @@ export function NodeRoot(props: INodeProps) {
               label="Time zone"
               fieldName="timeZone"
               options={optionsTimeZone}
+              infoText={"A number specifying the time zone"}
             />
           </div>
           <div className="sd_col_50">
@@ -399,6 +432,7 @@ export function NodeRoot(props: INodeProps) {
               label="Locale"
               fieldName="locale"
               options={optionsLocale}
+              infoText={"A number specifying the culture LCID."}
             />
           </div>
         </div>
@@ -409,6 +443,7 @@ export function NodeRoot(props: INodeProps) {
               label="Sort order"
               fieldName="sortOrder"
               options={optionsSortOrder}
+              infoText={"A number specifying the sort order. 25 is the general order"}
             />
           </div>
           <div className="sd_col_50">
@@ -417,6 +452,7 @@ export function NodeRoot(props: INodeProps) {
               label="Hour format"
               fieldName="hourFormat"
               options={optionsHourFormat}
+              infoText={"Specifies whether the site should use 12-hour or 24-hour time format"}
             />
           </div>
         </div>

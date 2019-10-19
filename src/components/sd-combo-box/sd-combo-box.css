@@ -12,3 +12,11 @@
     box-shadow: inset -1px 1px 4px -2px rgba(0,0,0,0.26);
     height:22px;
 }
+.sd_site_hierarchy_combo_box_label {
+        font-size: 11px;
+        padding: 0 0 3px 3px;
+        display: block;
+        font-weight: 400;
+        margin: 0 0 0 10px;
+        font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}

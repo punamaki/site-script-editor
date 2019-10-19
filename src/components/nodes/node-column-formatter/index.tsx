@@ -20,8 +20,8 @@ export function NodeColumnFormatter(props: INodeProps) {
 
     return <NodeWrapper actionProps={actionProps} smallTitle="Column formatter" menuClass="sd_site_hierarchy_node_menu_regular" infoText="Sets column formatting for a field.">
         <div className="sd_site_hierarchy_node_column_formatter">
-            <div><SDTextField {...props} label="Field display name" fieldName="fieldDisplayName" /></div>
-            <div><SDCodeField {...props} label="Formatter JSON" fieldName="formatterJSON" /></div>
+            <div><SDTextField {...props} label="Field display name" fieldName="fieldDisplayName" infoText=" The display name of the field to operate on."/></div>
+            <div><SDCodeField {...props} label="Formatter JSON" fieldName="formatterJSON" infoText="A JSON object to use as the field CustomFormatter."/></div>
         </div>
     </NodeWrapper>;
 }

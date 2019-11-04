@@ -18,7 +18,7 @@ export function NodeListContentType(props: INodeProps) {
 
     return <NodeWrapper actionProps={actionProps} smallTitle="List content type" menuClass="sd_site_hierarchy_node_menu_list_content_type" infoText="Adds a content type to the list. Currently these are limited to the default content types included in the site template or ones defined in a script by using the createContentType action.">
         <div className="sd_site_hierarchy_node_list_content_type">
-            <div><SDTextField {...props} label="Content type name" fieldName="name" /></div>
+            <div><SDTextField {...props} label="Content type name" fieldName="name" infoText="The name of the content type to add."/></div>
         </div>
     </NodeWrapper>;
 }

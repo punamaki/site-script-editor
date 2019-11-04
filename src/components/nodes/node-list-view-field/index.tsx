@@ -20,7 +20,7 @@ export function NodeListViewField(props: INodeProps) {
   return (
     <NodeWrapper actionProps={actionProps} smallTitle="View field" infoText="Column that is shown in the view">
       <div className="sd_site_hierarchy_node_list_view_field">
-        <SDTextField {...props} label="Field" fieldName="viewField" />
+        <SDTextField {...props} label="Field" fieldName="viewField" infoText="Internal name of the field in your view"/>
       </div>
     </NodeWrapper>
   );

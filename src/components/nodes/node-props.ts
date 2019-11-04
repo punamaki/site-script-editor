@@ -22,7 +22,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   fieldText: {
-    height: 202,
+    height: 252,
     canDrag: true,
     canDrop: true
   },
@@ -107,7 +107,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   navLink: {
-    height: 202,
+    height: 256,
     canDrag: true,
     canDrop: true
   },
@@ -117,7 +117,7 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
     canDrop: false
   },
   removeNavLink: {
-    height: 105,
+    height: 155,
     canDrag: true,
     canDrop: false
   },
@@ -233,6 +233,11 @@ export const nodeProps: IDictionary<INodeTypeProps> = {
   },
   associateExtension: {
     height: 255,
+    canDrag: true,
+    canDrop: true
+  },
+  siteBranding: {
+    height: 165,
     canDrag: true,
     canDrop: true
   }

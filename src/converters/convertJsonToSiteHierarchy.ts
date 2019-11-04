@@ -91,6 +91,10 @@ export function convertJsonToSiteHierarchy(
           let associateExtension = createAssociateExtension(action);
           associateExtensionNode.children!.push(associateExtension);
           break;
+        case "setSiteBranding":
+          let siteBranding = createSiteBranding(action);
+          children.push(siteBranding);
+          break;
         default:
           break;
       }
@@ -112,32 +116,42 @@ export function convertJsonToSiteHierarchy(
     };
     return item;
   }
+  function createSiteBranding(action: IAction) {
+    let { navigationLayout, headerLayout, headerBackground, showFooter } = action;
+    const item: TreeItem = {
+      children: [],
+      type: "siteBranding",
+      expanded: true,
+      data: {
+        navigationLayout,
+        headerLayout,
+        headerBackground,
+        showFooter
+      }
+    };
+    return item;
+  }
   function createNavLink(action: IAction) {
-    let { url, displayName, isWebRelative } = action;
-    const navLink: TreeItem = {
+    let { verb, ...jsonData } = action;
+    return {
       children: [],
       type: "navLink",
       expanded: true,
       data: {
-        url,
-        displayName,
-        isWebRelative
+        ...jsonData
       }
     };
-    return navLink;
   }
   function createRemoveNavLink(action: IAction) {
-    let { displayName, isWebRelative } = action;
-    const removeNavLink: TreeItem = {
+    let { verb, ...jsonData } = action;
+    return {
       children: [],
       type: "removeNavLink",
       expanded: true,
       data: {
-        displayName,
-        isWebRelative
+        ...jsonData
       }
     };
-    return removeNavLink;
   }
   function createAddUser(action: IAction) {
     let { principal, group } = action;
@@ -154,7 +168,7 @@ export function convertJsonToSiteHierarchy(
   }
   function createInstallSolution(action: IAction) {
     let { id, name } = action;
-    const navLink: TreeItem = {
+    const returnObj: TreeItem = {
       children: [],
       type: "installSolution",
       expanded: true,
@@ -163,7 +177,7 @@ export function convertJsonToSiteHierarchy(
         name
       }
     };
-    return navLink;
+    return returnObj;
   }
   function createAssociateExtension(action: IAction) {
     let {
@@ -175,7 +189,7 @@ export function convertJsonToSiteHierarchy(
       registrationType,
       scope
     } = action;
-    const navLink: TreeItem = {
+    const returnObj: TreeItem = {
       children: [],
       type: "associateExtension",
       expanded: true,
@@ -189,7 +203,7 @@ export function convertJsonToSiteHierarchy(
         scope
       }
     };
-    return navLink;
+    return returnObj;
   }
   function createSiteColumn(action: IAction) {
     let {
@@ -354,7 +368,8 @@ export function convertJsonToSiteHierarchy(
                 isRequired,
                 addToDefaultView,
                 fieldType,
-                enforceUnique
+                enforceUnique,
+                id: subaction.id
               };
               if (columnNode) {
                 columnNode.children!.push({
@@ -450,7 +465,7 @@ export function convertJsonToSiteHierarchy(
                     location: subaction.location,
                     clientSideComponentId: subaction.clientSideComponentId,
                     clientSideComponentProperties:
-                     unescapeJSON(subaction.clientSideComponentProperties)
+                      unescapeJSON(subaction.clientSideComponentProperties)
                   },
                   expanded: true
                 });

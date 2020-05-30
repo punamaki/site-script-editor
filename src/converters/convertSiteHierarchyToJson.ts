@@ -371,9 +371,10 @@ function actionCreateSiteColumns(children: TreeItem[] | undefined): IAction[] {
 }
 function actionCreateContentTypes(children: TreeItem[] | undefined): IAction[] {
   var listActions: IAction[] = [];
-  let subactions: IAction[] = [];
+
   if (children) {
     listActions = children.map(child => {
+      let subactions: IAction[] = [];
       if (child.children) {
         child.children.forEach(child2 => {
           switch (child2.type) {

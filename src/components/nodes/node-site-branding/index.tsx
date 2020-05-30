@@ -16,7 +16,7 @@ export function NodeSiteBranding(props: INodeProps) {
     onClick: () =>
       setTreeAndScriptData(removeNodeAtPath({ treeData, path, getNodeKey })),
     title: "Remove branding properties"
-  };
+  }; 
   var navigationLayoutOptions = [
     {key:"Cascade",text: "Cascade"},
     {key:"Megamenu",text: "Megamenu"}

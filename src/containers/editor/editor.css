@@ -19,8 +19,15 @@
     flex-direction: row;
     width: 100%;
     position: relative;
+    align-items: stretch;
 }
-
+.sd_editor_wrapper {
+    height: calc(100vh - 90px);
+    display: flex;
+}
+.ace_content {
+    height: 100%!important;
+}
 .Resizer {
     background: #000;
     opacity: .2;

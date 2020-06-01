@@ -1,7 +1,7 @@
 
 .sd_site_hierarchy_tree {
-    height: calc(100% - 60px);
     overflow: auto;
+    height:100%;
 }
 
 .rst__row .rst__rowContents {

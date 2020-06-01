@@ -20,7 +20,7 @@ export  function NodeListViewDeletion(props: INodeProps) {
     <NodeWrapper actionProps={actionProps} smallTitle="View removal" infoText="Removes a view from a list. This action can also be used to remove a view applied by the site template.">
       <div className="sd_site_hierarchy_node_list_view_deletion">
         <div>
-          <SDTextField {...props} label="View name that is removed" fieldName="name" />
+          <SDTextField {...props} label="View name that is removed" fieldName="name" infoText="The name of the view to remove." />
         </div>
       </div>
     </NodeWrapper>

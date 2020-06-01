@@ -6,3 +6,9 @@ div.jsoneditor-menu {
 div.jsoneditor-menu .jsoneditor-poweredBy{
     display: none;
 }
+div.jsoneditor {
+    overflow: visible;
+}
+div.ace_scroller {
+    bottom:-12px!important;
+}

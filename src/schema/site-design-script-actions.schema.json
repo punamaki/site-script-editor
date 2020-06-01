@@ -239,6 +239,10 @@
           "enforceUnique": {
             "type": "boolean",
             "description": "Optional attribute that defaults to false. If true, then all values for this field must be unique."
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional attribute. The ID Guid of the field. This needs to be uniquely generated Guid. It is strongly recommended that you include this attribute to ensure that this action is reentrant."
           }
         },
         "required": [ "displayName", "fieldType", "isRequired", "verb" ]
@@ -776,6 +780,10 @@
             "enforceUnique": {
               "type": "boolean",
               "description": "Optional attribute that defaults to false. If true, then all values for this column must be unique."
+            },
+            "id": {
+              "type": "string",
+              "description": "Optional attribute. The ID Guid of the field. This needs to be uniquely generated Guid. It is strongly recommended that you include this attribute to ensure that this action is reentrant."
             }
           },
           "required": [ "fieldType", "verb", "internalName", "isRequired" ]
@@ -856,10 +864,42 @@
           "required": [ "sortOrder", "verb" ]
         }
       ]
+    },
+    "setSiteBranding": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/definitions/baseAction" },
+        {
+          "properties": {
+            "verb": {
+              "type": "string",
+              "pattern": "^setSiteBranding$"
+            },
+            "navigationLayout": {
+              "type": "string",
+              "pattern": "^(Cascade|Megamenu)$",
+              "description": "Specifies the layout of the navigation. If this parameter is omitted, the layout will not be changed."
+            },
+            "headerLayout": {
+              "type": "string",
+              "pattern": "^(Standard|Compact)$",
+              "description": "Specifies the layout of the header. If this parameter is omitted, the layout will not be changed."
+            },
+            "headerBackground": {
+              "type": "string",
+              "pattern": "^(None|Neutral|Soft|Strong)$",
+              "description": "Specifies the emphasis on the background color of the header. If this parameter is omitted, it will not be changed."
+            },
+            "showFooter": {
+              "type": "boolean",
+              "description": "Specifies whether the footer should be visible. If this parameter is omitted. The visibility of the footer will not be changed."
+            }
+          },
+          "required": [ "verb" ]
+        }
+      ]
     }
   },
-
-
   "type": "object",
   "properties": {
     "actions": {
@@ -881,6 +921,7 @@
           { "$ref": "#/definitions/joinHubSite" },
           { "$ref": "#/definitions/removeNavLink" },
           { "$ref": "#/definitions/setRegionalSettings" },
+          { "$ref": "#/definitions/setSiteBranding" },
           { "$ref": "#/definitions/setSiteLogo" },
           { "$ref": "#/definitions/setSiteExternalSharingCapability" },
           { "$ref": "#/definitions/triggerFlow" }

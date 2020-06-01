@@ -46,3 +46,4 @@ export * from "./node-remove-nav-link";
 export * from "./node-props";
 export * from "./node-associate-extension";
 export * from "./node-associate-extensions";
+export * from "./node-site-branding";

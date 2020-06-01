@@ -99,6 +99,9 @@ export function convertSiteHierarchyToJson(
           };
           actions = actions.concat(triggerFlowAction);
           break;
+        case "siteBranding":
+          actions.push(actionCreateSiteBranding(child));
+          break;
         default:
           break;
       }
@@ -319,9 +322,7 @@ function actionCreateNavLinks(children: TreeItem[] | undefined): IAction[] {
     listActions = children.map(child => {
       return {
         verb: "addNavLink",
-        displayName: child.data.displayName,
-        isWebRelative: child.data.isWebRelative,
-        url: child.data.url
+        ...child.data
       };
     });
   }
@@ -335,8 +336,7 @@ function actionCreateRemoveNavLinks(
     listActions = children.map(child => {
       return {
         verb: "removeNavLink",
-        displayName: child.data.displayName,
-        isWebRelative: child.data.isWebRelative
+        ...child.data
       };
     });
   }
@@ -356,7 +356,7 @@ function actionCreateSiteColumns(children: TreeItem[] | undefined): IAction[] {
             isRequired: child.data.isRequired,
             group: child.data.group,
             enforceUnique: child.data.enforceUnique,
-            id:child.data.id
+            id: child.data.id
           };
         default:
           return {
@@ -371,9 +371,10 @@ function actionCreateSiteColumns(children: TreeItem[] | undefined): IAction[] {
 }
 function actionCreateContentTypes(children: TreeItem[] | undefined): IAction[] {
   var listActions: IAction[] = [];
-  let subactions: IAction[] = [];
+
   if (children) {
     listActions = children.map(child => {
+      let subactions: IAction[] = [];
       if (child.children) {
         child.children.forEach(child2 => {
           switch (child2.type) {
@@ -469,4 +470,13 @@ function actionAddUsers(children: TreeItem[] | undefined): IAction[] {
     });
   }
   return listActions;
+}
+function actionCreateSiteBranding(child: TreeItem): IAction {
+  return {
+    verb: "setSiteBranding",
+    navigationLayout: child.data.navigationLayout,
+    headerLayout: child.data.headerLayout,
+    headerBackground: child.data.headerBackground,
+    showFooter: child.data.showFooter
+  };
 }

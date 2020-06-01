@@ -57,25 +57,15 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
     >
       <div className="sd_site_hierarchy_node_list_field">
         <div className="sd_row">
-          <div className="sd_col_50">
+
             <SDTextField
               {...props}
               label="Field title"
               fieldName="displayName"
               infoText={"The display name of the field."}
             />
-          </div>
-          <div className="sd_col_50">
-            <SDComboBoxFieldType
-              {...props}
-              label="Field type"
-              fieldName="fieldType"
-              options={options}
-              infoText={
-                "The field type can be set to Text, Note, Number, Boolean, User, or DateTime. For other data types, see the addSPFieldXml action."
-              }
-            />
-          </div>
+
+
         </div>
         <div className="sd_row">
           <div className="sd_col_50">
@@ -89,11 +79,35 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
             />
           </div>
           <div className="sd_col_50">
+          <SDComboBoxFieldType
+              {...props}
+              label="Field type"
+              fieldName="fieldType"
+              options={options}
+              infoText={
+                "The field type can be set to Text, Note, Number, Boolean, User, or DateTime. For other data types, see the addSPFieldXml action."
+              }
+            />
+
+          </div>
+        </div>
+        <div className="sd_row">
+          <div className="sd_col_50">
+          <SDTextField
+              {...props}
+              label="Id"
+              fieldName="id"
+              infoText={
+                "An optional attribute. If provided, specifies the id of the field. It needs to be a unique, randomly generated GUID. Providing a value for this is strongly recommended to ensure the field is not added multiple times if the script is re-run."
+              }
+            />
+          </div>
+          <div className="sd_col_50">
             <SDToggle
               {...props}
-              label="Enforce unique"
-              fieldName="enforceUnique"
-              infoText={"An optional attribute that defaults to false. If true, all values for this field must be unique."}
+              label="Is required"
+              fieldName="isRequired"
+              infoText={"True if this field is required to contain information; otherwise, false."}
             />
           </div>
         </div>
@@ -107,11 +121,11 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
             />
           </div>
           <div className="sd_col_50">
-            <SDToggle
+          <SDToggle
               {...props}
-              label="Is required"
-              fieldName="isRequired"
-              infoText={"True if this field is required to contain information; otherwise, false."}
+              label="Enforce unique"
+              fieldName="enforceUnique"
+              infoText={"An optional attribute that defaults to false. If true, all values for this field must be unique."}
             />
           </div>
         </div>

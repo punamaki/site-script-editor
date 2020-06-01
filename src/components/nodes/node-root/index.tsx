@@ -11,7 +11,8 @@ import {
   addInstallSolutionToTree,
   addUserToTree,
   addRemoveNavLinkToTree,
-  addAssociateExtensionToTree
+  addAssociateExtensionToTree,
+  addBrandingToTree
 } from "../../../helpers";
 import { INodeProps } from "../../../types";
 import "./node-root.css";
@@ -78,6 +79,11 @@ export function NodeRoot(props: INodeProps) {
           key: "newAssociateExtension",
           name: "Associate extension",
           onClick: () => addAssociateExtensionToTree(treeData, setTreeAndScriptData)
+        },
+        {
+          key: "newBranding",
+          name: "Branding properties",
+          onClick: () => addBrandingToTree(treeData, setTreeAndScriptData)
         }
       ]
     },

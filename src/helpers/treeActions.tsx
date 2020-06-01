@@ -548,3 +548,25 @@ export function addAssociateExtensionToTree(
   });
   setTreeAndScriptData(newTree);
 }
+export function addBrandingToTree(
+  treeData: TreeItem[],
+  setTreeAndScriptData: (treeData: TreeItem[]) => void
+) {
+  var newTree = [...treeData];
+  var parentNode = newTree[0];
+  var newNavNode = {
+    type: "siteBranding",
+    expanded: true,
+    data: {
+      navigationLayout: "Cascade",
+      headerLayout:"Standard",
+      headerBackground:"None",
+      showFooter:false
+    }
+  };
+  
+  parentNode!.children!.push({
+    ...newNavNode
+  });
+  setTreeAndScriptData(newTree);
+}

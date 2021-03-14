@@ -16,7 +16,7 @@ export interface JsonEditorProps {
 
 class JsonEditorReact extends React.PureComponent<JsonEditorProps, any> {
     private timeout: any = undefined;
-    private editor: JSONEditor;
+    private editor?: JSONEditor;
     private div: any;
     public static defaultProps: Partial<JsonEditorProps> = {
         config: {},
@@ -34,7 +34,7 @@ class JsonEditorReact extends React.PureComponent<JsonEditorProps, any> {
     handleChange = () => {
         this.setState({
             currentValue: this
-                .editor
+                .editor!
                 .get(),
             dirty: true
         });
@@ -84,17 +84,17 @@ class JsonEditorReact extends React.PureComponent<JsonEditorProps, any> {
         if (prevProps.value !== this.props.value && !this.state.controllingFocus) {
 
             this
-                .editor
+                .editor!
                 .set(this.props.value);
             this.setState({ currentValue: this.props.value, dirty: false });
         }
     }
 
     componentWillUnmount() {
-        this
-            .editor
-            .destroy();
-        delete this.editor;
+        if(this.editor) {
+            this.editor.destroy();
+            delete this.editor;
+        }
         clearTimeout(this.timeout);
     }
 

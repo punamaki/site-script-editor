@@ -29,20 +29,20 @@ export default class SDCodeField extends React.Component<ISDCodeFieldProps, ISDC
 
     return (
       <TextField
-        onChanged={fieldValue => {
+        onChange={(e, fieldValue) => {
           const newNode = {
             ...node
           };
           let jsonData = {};
           try {
-            jsonData = JSON.parse(fieldValue);
+            jsonData = JSON.parse(fieldValue!);
             newNode.data[this.props.fieldName] = jsonData;
             setTreeAndScriptData(
               changeNodeAtPath({ treeData, path, getNodeKey, newNode })
             );
             this.setState({ isValid: true });
           } catch (e) {
-            this.setState({ isValid: false, fieldValue });
+            this.setState({ isValid: false, fieldValue:fieldValue! });
           }
         }}
         borderless={true}

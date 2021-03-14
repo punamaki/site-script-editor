@@ -3,20 +3,25 @@
     margin: 0 10px!important;
     width: calc(100% - 20px);
 }
-.sd_site_hierarchy_field input{
-    padding:0;
+
+.sd_site_hierarchy_field input {
+    padding: 0;
 }
+
 .sd_site_hierarchy_field .ms-Label {
     font-size: 11px;
     padding: 0 0 3px 3px;
 }
+
 .sd_site_hierarchy_edit_field .ms-TextField-field {
-    color: rgb(80,80,80);
-    border: 1px solid rgb(204, 204, 204);
-    box-shadow: inset -1px 1px 4px -2px rgba(0,0,0,0.26);
+    color: rgb(80, 80, 80);
+    /* border: 1px solid rgb(204, 204, 204); */
+    border: 1px solid rgb(96, 94, 92);
+    box-shadow: inset -1px 1px 4px -2px rgba(0, 0, 0, 0.26);
     padding-left: 3px;
     height: 24px;
 }
+
 .sd_site_hierarchy_edit_field_simple input {
-    border-top:0!important;
+    border-top: 0!important;
 }

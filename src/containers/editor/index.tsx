@@ -16,7 +16,7 @@ import {
   convertSiteHierarchyToJson
 } from "../../converters";
 import { TreeItem } from "react-sortable-tree";
-import { autobind } from "@uifabric/utilities";
+
 import { setupExpansion } from "../../helpers";
 
 export interface IDispatchProps {
@@ -114,13 +114,13 @@ class Editor extends React.Component<
     return isIE;
   }
 
-  @autobind
-  public componentWillReceiveProps(
+
+  public componentWillReceiveProps = (
     newProps: IStateProps & IDispatchProps & IProps
-  ) {
+  ) => {
     if (
       this.state.siteScriptContainerOld !==
-        newProps.currentSiteScriptContainer &&
+      newProps.currentSiteScriptContainer &&
       this.props.onSiteScriptContainerChange
     ) {
       this.props.onSiteScriptContainerChange(
@@ -129,14 +129,13 @@ class Editor extends React.Component<
     }
   }
 
-  @autobind
-  private setTreeAndScriptData(treeData: TreeItem[]) {
+
+  private setTreeAndScriptData = (treeData: TreeItem[]) => {
     this.props.setTreeData(treeData);
     this.props.setSiteScriptContainer(convertSiteHierarchyToJson(treeData));
   }
 
-  @autobind
-  private reloadTree() {
+  private reloadTree = () => {
     // THIS IS NOT IN USE. 2018.10.12 Things seem to refresh ok without this. It was causing reload of the tree and scrolling to the top
     this.setState({
       siteHierarchyKey: Math.floor(Math.random() * 1000000 + 1).toString()

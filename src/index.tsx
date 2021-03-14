@@ -10,7 +10,6 @@ import Editor from "./containers/editor";
 import { rootReducer } from "./reducers";
 import { initializeIcons } from "@uifabric/icons";
 import * as actions from "./actions";
-import { autobind } from "@uifabric/utilities";
 import { convertJsonToSiteHierarchy } from "./converters";
 import { setupExpansion } from './helpers';
 
@@ -40,8 +39,8 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
     this.state = { siteScriptContainerFromParent: null, siteScriptContainerOld: null };
   }
 
-  @autobind
-  private setSiteScriptContainer(siteScriptContainer: ISiteScriptContainer | null) {
+
+  private setSiteScriptContainer = (siteScriptContainer: ISiteScriptContainer | null) => {
     if (siteScriptContainer) {
       const oldTreeData = store.getState().treeData;
       let newTreeData = convertJsonToSiteHierarchy(siteScriptContainer);
@@ -65,8 +64,8 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
     }
   }
 
-  @autobind
-  public componentWillReceiveProps(newProps: Props) {
+
+  public componentWillReceiveProps = (newProps: Props) => {
     if (
       newProps.siteScriptContainer && this.state.siteScriptContainerFromParent !== newProps.siteScriptContainer
     ) {

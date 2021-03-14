@@ -25,7 +25,7 @@ export default function SDTextField(props: ISDTextFieldProps) {
 
   return (
     <TextField
-      onChanged={fieldValue => {
+      onChange={(e,fieldValue) => {
         var newNode = { ...node };
         newNode.data[props.fieldName] = fieldValue;
         setTreeAndScriptData(

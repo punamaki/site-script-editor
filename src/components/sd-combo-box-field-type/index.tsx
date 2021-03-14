@@ -18,7 +18,7 @@ interface ISDTextFieldProps {
 export default function SDComboBoxFieldType(props: ISDTextFieldProps) {
   var getNodeKey = ({ treeIndex }: any) => treeIndex;
   var { node, path, setTreeAndScriptData, treeData } = props;
-  var onChanged = (option: IComboBoxOption, index?: number, value?: string) => {
+  var onChanged = (e:any, option: IComboBoxOption, index?: number, value?: string) => {
     var newNode = { ...node };
     newNode.data[props.fieldName] = option.key;
     newNode.type = "field" + option.key;
@@ -45,7 +45,7 @@ export default function SDComboBoxFieldType(props: ISDTextFieldProps) {
         className={"sd_site_hierarchy_field sd_site_hierarchy_combo_box "}
         options={props.options}
         onMenuOpen={() => console.log("ComboBox menu opened")}
-        onChanged={onChanged}
+        onChange={onChanged}
       />
     </div>
   );

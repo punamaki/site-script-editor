@@ -20,7 +20,7 @@ interface ISDTextFieldProps {
 export default function SDComboBox(props: ISDTextFieldProps) {
   var getNodeKey = ({ treeIndex }: any) => treeIndex;
   var { node, path, setTreeAndScriptData, treeData } = props;
-  var onChanged = (
+  var onChanged = (e: any,
     option: IComboBoxOption,
     index?: number,
     value?: string | number
@@ -69,7 +69,7 @@ export default function SDComboBox(props: ISDTextFieldProps) {
         autoComplete="on"
         className={"sd_site_hierarchy_field sd_site_hierarchy_combo_box "}
         options={props.options}
-        onChanged={onChanged}
+        onChange={onChanged}
         text={convertToText(props.node.data[props.fieldName])}
       />
     </div>

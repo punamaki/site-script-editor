@@ -3,7 +3,7 @@ import "./node-wrapper.css";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { TooltipHost } from "office-ui-fabric-react/lib/Tooltip";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { createRef, autobind } from "@uifabric/utilities";
+
 import { TeachingBubbleContent } from "office-ui-fabric-react/lib/TeachingBubble";
 import { Coachmark } from "office-ui-fabric-react/lib/Coachmark";
 import { DirectionalHint } from "office-ui-fabric-react/lib/common/DirectionalHint";
@@ -40,23 +40,21 @@ export function mapDispatchToProps(dispatch: any): IConnectedDispatch {
 }
 
 class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & IConnectedDispatch> {
-  private menuButtonRef = createRef<HTMLDivElement>();
+  private menuButtonRef: any;
   private info = this.props.infoText ? (
     <TooltipHost content={this.props.infoText} calloutProps={{ gapSpace: 0 }}>
       <Icon iconName="Info" className="sd_site_hierarchy_node_info_icon" />
     </TooltipHost>
   ) : (
-      ""
-    );
+    ""
+  );
 
   private wrapperRef: any;
-
-  @autobind
-  private setWrapperRef(node: any) {
+  private setWrapperRef = (node: any) => {
     this.wrapperRef = node;
   }
-  @autobind
-  private handleClickOutside(event: any) {
+
+  private handleClickOutside = (event: any) => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       if (this.props.nodeName) {
         this.props.setCoachMarkState(this.props.nodeName, false);
@@ -65,6 +63,8 @@ class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & 
   }
 
   componentDidMount() {
+    this.wrapperRef = React.createRef<HTMLDivElement>();
+    this.menuButtonRef= React.createRef<HTMLDivElement>();
     if (this.props.showCoachMark) {
       document.addEventListener("mousedown", this.handleClickOutside);
       if (this.props.showCoachMark && this.props.nodeName && !this.props.coachmarkStates.hasOwnProperty(this.props.nodeName)) {
@@ -80,8 +80,8 @@ class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & 
     }
   }
 
-  @autobind
-  private showCoachMark() {
+
+  private showCoachMark = () => {
     const showCoachMark = this.props.showCoachMark ? true : false;
     return showCoachMark && this.props.nodeName && this.props.coachmarkStates[this.props.nodeName] && this.props.coachmarkStates[this.props.nodeName];
   }
@@ -96,8 +96,8 @@ class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & 
               {this.info}
             </div>
           ) : (
-              <div />
-            )}
+            <div />
+          )}
           <div className="sd_site_hierarchy_node_content">
             {this.props.children}
           </div>
@@ -112,8 +112,8 @@ class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & 
             <IconButton {...this.props.actionProps} />
           </div>
         ) : (
-            <div />
-          )}
+          <div />
+        )}
         {this.showCoachMark() && (
           <div ref={this.setWrapperRef}>
             <Coachmark

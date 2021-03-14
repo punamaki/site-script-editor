@@ -13,7 +13,6 @@ import {
   IDictionary
 } from "../../types";
 import "react-sortable-tree/style.css";
-import { autobind } from "@uifabric/utilities";
 import * as nodes from "../../components/nodes/";
 
 interface ISiteHierarchyProps {
@@ -42,8 +41,8 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     return "Node" + nodeName.charAt(0).toUpperCase() + nodeName.slice(1);
   }
 
-  @autobind
-  private calcRowHeight(data: any) {
+
+  private calcRowHeight = (data: any) => {
     if (
       this.props.nodeTypesProps &&
       this.props.nodeTypesProps[data.node.type]
@@ -53,8 +52,7 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     return 72;
   }
 
-  @autobind
-  private canDrag(data: ExtendedNodeData) {
+  private canDrag = (data: ExtendedNodeData) => {
     if (
       this.props.nodeTypesProps &&
       this.props.nodeTypesProps[data.node.type]
@@ -64,8 +62,8 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     return false;
   }
 
-  @autobind
-  private canDrop(data: PreviousAndNextLocation & NodeData) {
+
+  private canDrop = (data: PreviousAndNextLocation & NodeData) => {
     if (
       this.props.nodeTypesProps &&
       this.props.nodeTypesProps[data.node.type]

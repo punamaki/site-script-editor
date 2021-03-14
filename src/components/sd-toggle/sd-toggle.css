@@ -1,22 +1,22 @@
-
 .sd_site_hierarchy_toggle {
     margin-bottom: 4px!important;
 }
-.sd_site_hierarchy_toggle .ms-Toggle-innerContainer {
-    color: rgb(80,80,80);
 
+.sd_site_hierarchy_toggle .ms-Toggle-innerContainer {
+    color: rgb(80, 80, 80);
     padding-left: 3px;
     height: 24px;
 }
-.sd_site_hierarchy_toggle  .ms-Toggle-background {
 
-    border-color: rgb(204,204,204);
-    box-shadow: inset -1px 1px 4px -2px rgba(0,0,0,0.26);
+.sd_site_hierarchy_toggle .ms-Toggle-background {
+    /* border-color: rgb(204,204,204); */
+    box-shadow: inset -1px 1px 4px -2px rgba(0, 0, 0, 0.26);
 }
+
 .sd_site_hierarchy_toggle .ms-Toggle-thumb {
-    border-color: rgb(107,107,107);
-    
+    border-color: rgb(107, 107, 107);
 }
+
 .sd_site_hierarchy_toggle.is-checked .ms-Toggle-background {
     background-color: rgb(125, 195, 140);
 }

@@ -20,7 +20,7 @@ export default function SDNumberField(props: ISDTextFieldProps) {
     var { node, path, setTreeAndScriptData, treeData, label } = props;
     var simpleClass = props.simple ? "sd_site_hierarchy_edit_field_simple" : "";
     return <TextField
-        onChanged={fieldValue => {
+        onChange={(e, fieldValue) => {
             var newNode = { ...node };
             newNode.data[props.fieldName] = fieldValue;
             setTreeAndScriptData(changeNodeAtPath({

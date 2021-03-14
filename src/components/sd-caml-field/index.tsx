@@ -25,7 +25,7 @@ export default class SDCamlField extends React.Component<ISDCodeFieldProps> {
         const { node, path, setTreeAndScriptData, treeData, label } = this.props;
 
         return <TextField
-            onChanged={fieldValue => {
+            onChange={(e,fieldValue) => {
                 var newNode = { ...node };
                 newNode.data[this.props.fieldName] = fieldValue;
                 setTreeAndScriptData(changeNodeAtPath({

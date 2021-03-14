@@ -38,7 +38,6 @@ export function mapDispatchToProps(dispatch: any): IConnectedDispatch {
     }
   };
 }
-
 class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & IConnectedDispatch> {
   private menuButtonRef: any;
   private info = this.props.infoText ? (
@@ -71,7 +70,6 @@ class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & 
         this.props.setCoachMarkState(this.props.nodeName, true);
       }
     }
-
   }
 
   componentWillUnmount() {
@@ -79,7 +77,6 @@ class NodeWrapper extends React.Component<INodeWrapperProps & IConnectedState & 
       document.removeEventListener("mousedown", this.handleClickOutside);
     }
   }
-
 
   private showCoachMark = () => {
     const showCoachMark = this.props.showCoachMark ? true : false;

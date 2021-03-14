@@ -57,15 +57,12 @@ export default function NodeFieldWrapper(props: INodeWrapperProps) {
     >
       <div className="sd_site_hierarchy_node_list_field">
         <div className="sd_row">
-
             <SDTextField
               {...props}
               label="Field title"
               fieldName="displayName"
               infoText={"The display name of the field."}
             />
-
-
         </div>
         <div className="sd_row">
           <div className="sd_col_50">

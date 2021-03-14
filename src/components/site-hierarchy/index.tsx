@@ -41,7 +41,6 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     return "Node" + nodeName.charAt(0).toUpperCase() + nodeName.slice(1);
   }
 
-
   private calcRowHeight = (data: any) => {
     if (
       this.props.nodeTypesProps &&
@@ -61,7 +60,6 @@ export class SiteHierarchy extends React.Component<ISiteHierarchyProps, any> {
     }
     return false;
   }
-
 
   private canDrop = (data: PreviousAndNextLocation & NodeData) => {
     if (

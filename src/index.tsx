@@ -39,7 +39,6 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
     this.state = { siteScriptContainerFromParent: null, siteScriptContainerOld: null };
   }
 
-
   private setSiteScriptContainer = (siteScriptContainer: ISiteScriptContainer | null) => {
     if (siteScriptContainer) {
       const oldTreeData = store.getState().treeData;
@@ -63,7 +62,6 @@ export default class SiteScriptEditor extends React.Component<Props, State> {
       this.setSiteScriptContainer(this.props.siteScriptContainer as ISiteScriptContainer);
     }
   }
-
 
   public componentWillReceiveProps = (newProps: Props) => {
     if (

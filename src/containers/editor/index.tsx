@@ -114,7 +114,6 @@ class Editor extends React.Component<
     return isIE;
   }
 
-
   public componentWillReceiveProps = (
     newProps: IStateProps & IDispatchProps & IProps
   ) => {
@@ -128,7 +127,6 @@ class Editor extends React.Component<
       );
     }
   }
-
 
   private setTreeAndScriptData = (treeData: TreeItem[]) => {
     this.props.setTreeData(treeData);

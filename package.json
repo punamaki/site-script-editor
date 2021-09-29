@@ -43,7 +43,7 @@
         "react": "^16.8.3",
         "react-dom": "^16.8.3",
         "ajv": "^5.5.2",
-        "jsoneditor": "^5.24.6",
+        "jsoneditor": "^9.5.6",
         "office-ui-fabric-react": "^7.164.0",
         "react-ga": "^2.5.3",
         "react-redux": "^5.0.7",
